@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="format-detection" content="telephone=no" />
+  <title>酷狗</title>
+  <link rel="stylesheet" href="./static/public.css">
+  <style type="text/css">
+    html{
+      height: 100%;
+    }
+    body{
+      height: 100%;
+      background-color: rgba(166, 166, 166, 0.42);
+    }
+  </style>
+</head>
+<body>
+<div id="app"></div>
+<!-- built files will be auto injected -->
+</body>
+<script>
+  var  $html=document.getElementById("html");
+  function _resize(){
+    var winw=$html.offsetWidth;
+    var fontsize=winw/1920*100;
+    $html.style.fontSize=fontsize+"px";
+  }
+  _resize();
+  window.addEventListener("resize",_resize);
+</script>
+</html>
