@@ -3,8 +3,10 @@
    <div class="topMusicClass clearfix">
      <div class="topm fr">
        <ul class="musicClassUl">
-         <li class="musicClassLis" :class="{choseLis:choseIndex==index}" v-for="(item,index) in option" @click="choseTab(item,index)">{{item}}</li>
+         <li class="musicClassLis" :class="{choseLis:choseIndex==index}" v-for="(item,index) in option" @click="choseTab(item,index)">{{item}}
+         </li>
        </ul>
+       <span class="bottomLine" :style="{left:(90+73*choseIndex)+'px'}"></span>
      </div>
    </div>
    <div class="bottomMusicClass">
@@ -16,10 +18,14 @@
         <lycirSet></lycirSet>
       </div>
     </div>
+     <radioBox v-if="false"></radioBox>
+     <MVBox ></MVBox>
    </div>
   </div>
 </template>
 <script>
+  import radioBox from './radioBox/radioBox.vue'
+  import MVBox from './MVBox/MVBox.vue'
   import lycirSet from './lycirSet.vue'
   export default{
     data(){
@@ -31,7 +37,7 @@
       }
     },
     props:[],
-    components:{lycirSet},
+    components:{lycirSet,radioBox,MVBox},
     methods:{
       choseTab:function (item,index) {
         this.choseItem = item;
@@ -77,6 +83,7 @@
   .topm{
     width:688px;
     height:100%;
+    position: relative;
   }
   .musicClassUl{
     width:100%;
@@ -85,6 +92,7 @@
     justify-content: center;
     align-items: center;
     flex-flow: row nowrap;
+    position: relative;
   }
   .musicClassLis{
     width:73px;
@@ -101,6 +109,19 @@
   }
   .musicClassLis.choseLis{
     color: #288FE7;
+  }
+  .bottomLine{
+    display: inline-block;
+    width:73px;
+    height:2px;
+    background-color: #288FE7;
+    position: absolute;
+    bottom:-1px;
+    left:0;
+    transition: all 0.1s ease;
+  }
+  .hideBgc .bottomLine{
+    display: none;
   }
   .musicClass.hideBgc .musicClassLis.choseLis{
     color: #FBFDA2;
