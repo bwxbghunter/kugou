@@ -8,7 +8,7 @@
     <div class="operate">
       <span class="upgrade" title="一键升级无损音质"></span>
       <span class="share" title="分享"></span>
-      <span class="menu" title="列表菜单"></span>
+      <span class="menu" title="列表菜单 "></span>
     </div>
   </div>
 </template>
