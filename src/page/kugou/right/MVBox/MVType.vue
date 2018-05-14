@@ -177,7 +177,7 @@
     width:100%;
   }
   .MVType .typeBox{
-    margin-bottom:60px;
+    margin-bottom:10px;
   }
   .typeTitle{
     width:100%;

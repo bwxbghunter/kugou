@@ -39,16 +39,16 @@
         }
         let ul=document.querySelector(".MVType").children;
         for(let i=ul.length-1;i>-1;i--){
-          if(ul[i].offsetTop<=scrllTops.scrollTop+5){
+          if(ul[i].offsetTop<=scrllTops.scrollTop+60){
             this.letterType = i;
-            console.log(i,'&&&&&',scrllTops.scrollTop);
+            console.log(ul[i].offsetTop,'&&&&&',scrllTops.scrollTop+4);
             return false;
           }
         }
       },
       anniTop:function (c,t) {/****缓动函数*****/
       let numc=c.scrollTop;
-        let ot=t.offsetTop;
+        let ot=t.offsetTop-55;
         let cn=(ot-numc)/5;
         c.scrollTop=numc+cn;
         if(Math.abs(cn)<1 || numc==c.scrollTop){
@@ -67,7 +67,8 @@
         let scrllTops=this.$refs.scrllTops;
         let ul=document.querySelector(".MVType").children[i];
 //        this.letterType = i;
-        this.setScroTop(scrllTops,ul);
+        scrllTops.scrollTop=ul.offsetTop-55;
+        //this.setScroTop(scrllTops,ul); // 加入缓动动画调次函数-注释上面一句代码
       },
       /****************自定义滚动条****************************/
       mouseWheel_:function(){
