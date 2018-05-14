@@ -4,11 +4,11 @@
     <div class="nav">
       <navBar></navBar>
     </div>
-    <div class="MVbody"  ref="mvBody" @mousewheel ="paperScroll($event)">
-      <div class="tabBarBox" :class="{topHead:fixedNav}">
-        <tabBar></tabBar>
-      </div>
-      <div class="MVTypeBox">
+    <div class="tabBarBox" :class="{topHead:fixedNav}">
+      <tabBar @changeIndex="changeIndex" :letterType="letterType"></tabBar>
+    </div>
+    <div class="MVbody"  @scroll="scrollCindex" ref="scrllTops">
+      <div class="MVTypeBox" >
         <MVType></MVType>
       </div>
     </div>
@@ -21,6 +21,8 @@
   export default{
     data(){
       return{
+        letterType:0,
+        anniTime:'',
         fixedNav:false,
         scrollBar:function () {},/****滚动条函数引用*****/
       }
@@ -28,16 +30,48 @@
     props:[],
     components:{navBar,tabBar,MVType},
     methods:{
-      paperScroll:function(e){
-        if(this.$refs.b.offsetTop>0){
-          this.fixedNav = true;
-        }else if(this.$refs.b.offsetTop==0){
-          this.fixedNav = false;
+      scrollCindex:function () {/***设置当前索引***/
+        let scrllTops=this.$refs.scrllTops;
+        if(scrllTops.scrollTop>0){
+            this.fixedNav = true
+        }else{
+          this.fixedNav = false
         }
+        let ul=document.querySelector(".MVType").children;
+        for(let i=ul.length-1;i>-1;i--){
+          if(ul[i].offsetTop<=scrllTops.scrollTop+5){
+            this.letterType = i;
+            console.log(i,'&&&&&',scrllTops.scrollTop);
+            return false;
+          }
+        }
+      },
+      anniTop:function (c,t) {/****缓动函数*****/
+      let numc=c.scrollTop;
+        let ot=t.offsetTop;
+        let cn=(ot-numc)/5;
+        c.scrollTop=numc+cn;
+        if(Math.abs(cn)<1 || numc==c.scrollTop){
+          clearInterval(this.anniTime);
+        }
+      },
+      setScroTop:function (c,t) {/****设置定时器控制缓动函数*****/
+        clearInterval(this.anniTime);
+        this.anniTime=setInterval(()=>{
+          this.anniTop(c,t);
+        },30);
+      },
+
+      /**************选中tab索引*****************/
+      changeIndex:function(i){
+        let scrllTops=this.$refs.scrllTops;
+        let ul=document.querySelector(".MVType").children[i];
+//        this.letterType = i;
+        this.setScroTop(scrllTops,ul);
       },
       /****************自定义滚动条****************************/
       mouseWheel_:function(){
-        this.scrollBar = $g.scrollV(this.$refs.mvBody,this.$refs.scrollbar,this.$refs.b);////设置自定义滚动条/////
+        this.scrollBar = $g.scrollV(this.$refs.scrllTops,this.$refs.scrollbar,this.$refs.b);////设置自定义滚动条/////
         setTimeout(()=>{
           this.scrollBar();
         })
@@ -71,26 +105,27 @@
     position: relative;
   }
   .tabBarBox{
-    width:calc(100% - 20px);
+    width:calc(100% - 9px);
     height:50px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom:6px;
+    background-color: #fff;
   }
   .tabBarBox.topHead{
     position: absolute;
-    top:0;
+    top:35px;
     left:0;
     background-color: #fff;
     z-index: 11;
-    box-shadow: 0px 0px 1px #d7d7d7;
-    transition: all 0.2s linear;
+    box-shadow: 0px 0px 1px #eae8e8;
+    /*transition: all 0.2s ease;*/
   }
   .MVTypeBox{
     width:100%;
     height:calc(100% - 56px);
-    transition: all 0.2s linear;
+    /*transition: all 0.2s ease;*/
   }
   .scrollbar{
     width:7px;

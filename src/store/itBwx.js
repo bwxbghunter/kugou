@@ -13,7 +13,7 @@ function isPC() {
   }
   return flag
 }
-function scrollV(Diva, tiaoa, tiaob) {
+itBwx.scrollV = function scrollV(Diva, tiaoa, tiaob) {
   var isPcsd = isPC();
   if(tiaoa['style']){
     tiaoa.style.display='none';
@@ -67,5 +67,17 @@ function scrollV(Diva, tiaoa, tiaob) {
   })
   return sethanshu;
 }
-itBwx.scrollV = scrollV;
+// 截取图片
+itBwx.cutImg = function cutImg(num,img){
+  var classElements=img;
+  for(var i=0;i<classElements.length;i++){
+    if(classElements[i].width>classElements[i].height){
+      classElements[i].style.height = num+'px';
+      classElements[i].style.width =classElements[i].width+(classElements[i].width+num)/2+'px';
+      classElements[i].style.marginLeft =-(classElements[i].width-num)/2+'px';
+    }else{
+      classElements[i].width = num;
+    }
+  }
+}
 export default itBwx;

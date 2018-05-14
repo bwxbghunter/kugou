@@ -1,7 +1,7 @@
 <template>
   <div class="tabBar">
     <ul>
-      <li :class="{chagngeLi:chosedIndex==index}" v-for="(item,index) in option" @click="changeTab(item,index)">{{item.name}}</li>
+      <li :class="{chagngeLi:letterType==index}" v-for="(item,index) in option" @click="changeTab(item,index)">{{item.name}}</li>
     </ul>
   </div>
 </template>
@@ -9,7 +9,6 @@
   export default{
     data(){
       return{
-        chosedIndex:0,
         option:[
           {id:0,name:'热门'},
           {id:1,name:'儿童'},
@@ -24,11 +23,12 @@
         ]
       }
     },
-    props:[],
+    props:['letterType'],
     components:{},
     methods:{
       changeTab:function(item,index){
-        this.chosedIndex = index;
+        console.log(index,'******',this.letterType);
+        this.$emit('changeIndex',index);
       }
     },
     computed:{},

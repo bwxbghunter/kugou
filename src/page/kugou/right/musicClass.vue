@@ -18,8 +18,10 @@
         <lycirSet></lycirSet>
       </div>
     </div>
-     <radioBox v-if="false"></radioBox>
-     <MVBox ></MVBox>
+     <div class="tabList" >
+       <radioBox v-if="false"></radioBox>
+       <MVBox ></MVBox>
+     </div>
    </div>
   </div>
 </template>
@@ -51,7 +53,8 @@
       hideLeftList:function(){
          this.ishideList = !this.ishideList;
          this.$emit('hideLeft',this.ishideList)
-      }
+      },
+
     },
     computed:{},
     mounted(){
@@ -197,5 +200,12 @@
   }
   .lycBox:hover .lycr{
     right: 0;
+  }
+  .hideBgc .tabList{
+    display: none;
+  }
+  .tabList{
+    width:100%;
+    height:100%;
   }
 </style>

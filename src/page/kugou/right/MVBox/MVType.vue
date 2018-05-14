@@ -1,11 +1,12 @@
 <template>
-  <div class="MVType">
+  <div class="MVType" >
      <div class="typeBox" v-for="item in option">
        <p class="typeTitle">{{item.type}}</p>
        <div class="Typebox">
          <ul class="typeboxUl clearfix">
            <li class="typeboxLis fl" v-for="val in item.data_list">
-             <div class="imgBox"></div><p> <span></span>{{val.online}}人在看</p>
+             <div class="imgBox">
+               <img class="imgTarget" :src="val.url_img" alt=""></div><p> <span></span>{{val.online}}人在看</p>
            </li>
          </ul>
        </div>
@@ -16,125 +17,126 @@
   export default{
     data(){
       return{
+
         option:[
           {
             type:'热门',
             data_list:[
-              {url_img:'',online:'1.2万'},
-              {url_img:'',online:'4065'},
-              {url_img:'',online:'56'},
-              {url_img:'',online:'998'},
-              {url_img:'',online:'8056'},
-              {url_img:'',online:'1.3万'},
-              {url_img:'',online:'9991'},
+              {url_img:'/static/images/mv_img/1.jpg',online:'1.2万'},
+              {url_img:'/static/images/mv_img/8.jpg',online:'4065'},
+              {url_img:'/static/images/mv_img/9.jpg',online:'56'},
+              {url_img:'/static/images/mv_img/4.jpg',online:'998'},
+              {url_img:'/static/images/mv_img/5.jpg',online:'8056'},
+              {url_img:'/static/images/mv_img/6.jpg',online:'1.3万'},
+              {url_img:'/static/images/mv_img/7.jpg',online:'9991'},
             ]
           },
           {
             type:'儿童',
             data_list:[
-              {url_img:'',online:'1.2万'},
-              {url_img:'',online:'4065'},
-              {url_img:'',online:'56'},
-              {url_img:'',online:'998'},
-              {url_img:'',online:'8056'},
-              {url_img:'',online:'1.3万'},
-              {url_img:'',online:'9991'},
+              {url_img:'/static/images/mv_img/20.jpg',online:'1.2万'},
+              {url_img:'/static/images/mv_img/19.jpg',online:'4065'},
+              {url_img:'/static/images/mv_img/18.jpg',online:'56'},
+              {url_img:'/static/images/mv_img/17.jpg',online:'998'},
+              {url_img:'/static/images/mv_img/16.jpg',online:'8056'},
+              {url_img:'/static/images/mv_img/15.jpg',online:'1.3万'},
+              {url_img:'/static/images/mv_img/14.jpg',online:'9991'},
             ]
           },
           {
             type:'诱惑',
             data_list:[
-              {url_img:'',online:'1.2万'},
-              {url_img:'',online:'4065'},
-              {url_img:'',online:'56'},
-              {url_img:'',online:'998'},
-              {url_img:'',online:'8056'},
-              {url_img:'',online:'1.3万'},
-              {url_img:'',online:'9991'},
+              {url_img:'/static/images/mv_img/33.jpg',online:'1.2万'},
+              {url_img:'/static/images/mv_img/32.jpg',online:'4065'},
+              {url_img:'/static/images/mv_img/31.jpg',online:'56'},
+              {url_img:'/static/images/mv_img/30.jpg',online:'998'},
+              {url_img:'/static/images/mv_img/29.jpg',online:'8056'},
+              {url_img:'/static/images/mv_img/28.jpg',online:'1.3万'},
+              {url_img:'/static/images/mv_img/24.jpg',online:'9991'},
             ]
           },
           {
             type:'场景',
             data_list:[
-              {url_img:'',online:'1.2万'},
-              {url_img:'',online:'4065'},
-              {url_img:'',online:'56'},
-              {url_img:'',online:'998'},
-              {url_img:'',online:'8056'},
-              {url_img:'',online:'1.3万'},
-              {url_img:'',online:'9991'},
+              {url_img:'/static/images/mv_img/25.jpg',online:'1.2万'},
+              {url_img:'/static/images/mv_img/26.jpg',online:'4065'},
+              {url_img:'/static/images/mv_img/27.jpg',online:'56'},
+              {url_img:'/static/images/mv_img/15.jpg',online:'998'},
+              {url_img:'/static/images/mv_img/16.jpg',online:'8056'},
+              {url_img:'/static/images/mv_img/17.jpg',online:'1.3万'},
+              {url_img:'/static/images/mv_img/18.jpg',online:'9991'},
             ]
           },
           {
             type:'主题',
             data_list:[
-              {url_img:'',online:'1.2万'},
-              {url_img:'',online:'4065'},
-              {url_img:'',online:'56'},
-              {url_img:'',online:'998'},
-              {url_img:'',online:'8056'},
-              {url_img:'',online:'1.3万'},
-              {url_img:'',online:'9991'},
+              {url_img:'/static/images/mv_img/20.jpg',online:'1.2万'},
+              {url_img:'/static/images/mv_img/19.jpg',online:'4065'},
+              {url_img:'/static/images/mv_img/18.jpg',online:'56'},
+              {url_img:'/static/images/mv_img/17.jpg',online:'998'},
+              {url_img:'/static/images/mv_img/16.jpg',online:'8056'},
+              {url_img:'/static/images/mv_img/15.jpg',online:'1.3万'},
+              {url_img:'/static/images/mv_img/14.jpg',online:'9991'},
             ]
           },
           {
             type:'现场',
             data_list:[
-              {url_img:'',online:'1.2万'},
-              {url_img:'',online:'4065'},
-              {url_img:'',online:'56'},
-              {url_img:'',online:'998'},
-              {url_img:'',online:'8056'},
-              {url_img:'',online:'1.3万'},
-              {url_img:'',online:'9991'},
+              {url_img:'/static/images/mv_img/21.jpg',online:'1.2万'},
+              {url_img:'/static/images/mv_img/22.jpg',online:'4065'},
+              {url_img:'/static/images/mv_img/23.jpg',online:'56'},
+              {url_img:'/static/images/mv_img/20.jpg',online:'998'},
+              {url_img:'/static/images/mv_img/19.jpg',online:'8056'},
+              {url_img:'/static/images/mv_img/6.jpg',online:'1.3万'},
+              {url_img:'/static/images/mv_img/11.jpg',online:'9991'},
             ]
           },
           {
             type:'影视',
             data_list:[
-              {url_img:'',online:'1.2万'},
-              {url_img:'',online:'4065'},
-              {url_img:'',online:'56'},
-              {url_img:'',online:'998'},
-              {url_img:'',online:'8056'},
-              {url_img:'',online:'1.3万'},
-              {url_img:'',online:'9991'},
+              {url_img:'/static/images/mv_img/33.jpg',online:'1.2万'},
+              {url_img:'/static/images/mv_img/32.jpg',online:'4065'},
+              {url_img:'/static/images/mv_img/31.jpg',online:'56'},
+              {url_img:'/static/images/mv_img/30.jpg',online:'998'},
+              {url_img:'/static/images/mv_img/29.jpg',online:'8056'},
+              {url_img:'/static/images/mv_img/28.jpg',online:'1.3万'},
+              {url_img:'/static/images/mv_img/24.jpg',online:'9991'},
             ]
           },
           {
             type:'舞蹈',
             data_list:[
-              {url_img:'',online:'1.2万'},
-              {url_img:'',online:'4065'},
-              {url_img:'',online:'56'},
-              {url_img:'',online:'998'},
-              {url_img:'',online:'8056'},
-              {url_img:'',online:'1.3万'},
-              {url_img:'',online:'9991'},
+              {url_img:'/static/images/mv_img/20.jpg',online:'1.2万'},
+              {url_img:'/static/images/mv_img/19.jpg',online:'4065'},
+              {url_img:'/static/images/mv_img/18.jpg',online:'56'},
+              {url_img:'/static/images/mv_img/17.jpg',online:'998'},
+              {url_img:'/static/images/mv_img/16.jpg',online:'8056'},
+              {url_img:'/static/images/mv_img/15.jpg',online:'1.3万'},
+              {url_img:'/static/images/mv_img/14.jpg',online:'9991'},
             ]
           },
           {
             type:'歌手',
             data_list:[
-              {url_img:'',online:'1.2万'},
-              {url_img:'',online:'4065'},
-              {url_img:'',online:'56'},
-              {url_img:'',online:'998'},
-              {url_img:'',online:'8056'},
-              {url_img:'',online:'1.3万'},
-              {url_img:'',online:'9991'},
+              {url_img:'/static/images/mv_img/1.jpg',online:'1.2万'},
+              {url_img:'/static/images/mv_img/8.jpg',online:'4065'},
+              {url_img:'/static/images/mv_img/9.jpg',online:'56'},
+              {url_img:'/static/images/mv_img/4.jpg',online:'998'},
+              {url_img:'/static/images/mv_img/5.jpg',online:'8056'},
+              {url_img:'/static/images/mv_img/6.jpg',online:'1.3万'},
+              {url_img:'/static/images/mv_img/7.jpg',online:'9991'},
             ]
           },
           {
             type:'语言',
             data_list:[
-              {url_img:'',online:'1.2万'},
-              {url_img:'',online:'4065'},
-              {url_img:'',online:'56'},
-              {url_img:'',online:'998'},
-              {url_img:'',online:'8056'},
-              {url_img:'',online:'1.3万'},
-              {url_img:'',online:'9991'},
+              {url_img:'/static/images/mv_img/21.jpg',online:'1.2万'},
+              {url_img:'/static/images/mv_img/22.jpg',online:'4065'},
+              {url_img:'/static/images/mv_img/23.jpg',online:'56'},
+              {url_img:'/static/images/mv_img/26.jpg',online:'998'},
+              {url_img:'/static/images/mv_img/25.jpg',online:'8056'},
+              {url_img:'/static/images/mv_img/24.jpg',online:'1.3万'},
+              {url_img:'/static/images/mv_img/27.jpg',online:'9991'},
             ]
           }
         ]
@@ -142,12 +144,18 @@
     },
     props:[],
     components:{},
-    methods:{},
+    methods:{
+
+    },
     computed:{},
-    mounted(){}
+    mounted(){
+      if(this.option.length>0){
+         $g.cutImg(135,document.getElementsByClassName('imgTarget'));
+      }
+    }
   }
 </script>
-<style scoped>
+<style>
   .MVType{
     width:calc(100% - 20px);
     height:100%;
@@ -155,7 +163,9 @@
   }
   .typeBox{
     width:100%;
-
+  }
+  .MVType .typeBox{
+    margin-bottom:60px;
   }
   .typeTitle{
     width:100%;
@@ -185,7 +195,11 @@
   .typeboxLis .imgBox{
     width:100%;
     height:110px;
-    background-color: #cccccc;
+    overflow: hidden;
+  }
+  .typeboxLis .imgBox img{
+    width:100%;
+    height: 100%;
   }
   .typeboxLis p{
     width:100%;
