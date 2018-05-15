@@ -39,6 +39,7 @@
       return{
         musicIndex:-1,
         music_list:[],
+        player_src:''
       }
     },
     props:['option'],
@@ -95,11 +96,15 @@
         this.music.music_name = music.name;
         //改变歌曲路径
         this.music.src = music.src;
+        this.player_src = music.src;
+        console.log(this.music.player.src,'---------======',this.player_src);
       },
     },
     computed:{...mapState(['music'])},
     mounted(){
         this.music_list=document.getElementsByTagName('audio');
+//        this.player_src =this.option[0].src;
+//      console.log(this.player_src,'########');
     },
     watch:{}
   }

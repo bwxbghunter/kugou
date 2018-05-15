@@ -11,7 +11,6 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state:{
     music:{
-      list:[],// 音乐列表
       player:'',// 播放标签
       music_name:'',// 音乐名称
       music_time:'00:00',// 当前播放时间进度

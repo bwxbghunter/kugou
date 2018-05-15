@@ -129,7 +129,6 @@
     mounted(){
       this.chosedLis(0);
       this.mouseWheel();
-      this.music.list = this.locality;
     },
     watch:{},
   }
