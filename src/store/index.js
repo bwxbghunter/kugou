@@ -11,13 +11,16 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state:{
     music:{
+      list:[],// 音乐列表
       player:'',// 播放标签
       music_name:'',// 音乐名称
       music_time:'00:00',// 当前播放时间进度
       music_bar:0,// 进度条
       music_duration:'00:00',// 音乐总时长
-      play_fn:function(){},// 播放音乐
+      playM:function(){},// 播放音乐
+      pauseM:function(){},// 暂停音乐
       status:false, // 播放状态
+      btns:false,// 按钮状态
     }
   },
   getters,

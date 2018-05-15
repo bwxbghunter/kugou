@@ -38,7 +38,6 @@
       /************播放音乐*****************/
       playerMusic:function(){
         this.musicIndex = this.index;
-        this.music.player = this.$refs.audio;
         //paused,表示当前音乐是否为暂停状态
         if(this.music.player.paused){
           // 播放当前音乐
@@ -49,15 +48,17 @@
           this.music.player.pause();
           this.music.status = false;
         }
-        // 调用载入歌曲信息函数
-        this.loadMusic();
       },
       // 播放
       playMusic:function(){
         this.music.player.play();
+        // 调用载入歌曲信息函数
+        this.loadMusic();
       },
       // 载入歌曲信息
       loadMusic:function(){
+        var music=this.music.list[0].data_list[this.index];
+        console.log(music,'-----------',this.music.player);
         let dt,cur,ss,dur;
         dt = this.music.player.duration;
         cur = parseFloat((dt/60+'').split('.')[0])<10?'0'+(dt/60+'').split('.')[0]:(dt/60+'').split('.')[0];
@@ -87,10 +88,12 @@
       },
     },
     computed:{...mapState(['music'])},
-    mounted(){
-
-    },
-    watch:{}
+    mounted(){this.music.player=this.$refs.audio},
+    watch:{
+      'music.btns':function(){
+//        this.playerMusic();
+      }
+    }
   }
 </script>
 <style>

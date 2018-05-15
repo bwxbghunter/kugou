@@ -17,10 +17,7 @@
     props:['option'],
     components:{singleMusic},
     methods:{
-    /*  /!************播放音乐*****************!/
-      playMusic:function(index){
-        this.musicIndex =index;
-      },*/
+
     },
     computed:{},
     mounted(){},

@@ -44,6 +44,7 @@
 </div>
 </template>
 <script>
+  import {mapState} from 'vuex'
   import commonList from './commonList.vue'
   export default{
     data(){
@@ -124,10 +125,11 @@
         })
       }
     },
-    computed:{},
+    computed:{...mapState(['music'])},
     mounted(){
       this.chosedLis(0);
       this.mouseWheel();
+      this.music.list = this.locality;
     },
     watch:{},
   }

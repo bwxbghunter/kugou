@@ -1,6 +1,7 @@
 <template>
  <div class="play">
   <div class="prebtn" @click="preMusic()"></div>
+   {{option}}
   <div class="pausebtn" :class="{playbtn:music.status}" @click="playMusic"></div>
   <div class="nextbtn"></div>
   <div class="progressBox">
@@ -36,14 +37,13 @@
     data(){
       return{
         isbtn:false,
-        displace:0
       }
     },
     props:['option'],
     components:{},
     methods:{
       playMusic:function(){
-        console.log(this.music.status);
+        this.music.btns = !this.music.btns;
         if(this.music.status){
           this.music.player.pause();
           this.music.status = false;
@@ -72,9 +72,7 @@
         let moment = this.music.music_time;
         let second = (time.split(':')[0]*60)+Number(time.split(':')[1]);
         let present = (moment.split(':')[0]*60)+Number(moment.split(':')[1]);
-        this.displace = present/second*370+'px';
-        return this.displace;
-//        return present/second*370+'px';
+        return present/second*370+'px';
       },
     },
     mounted(){},
