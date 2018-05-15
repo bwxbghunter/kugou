@@ -10,8 +10,9 @@
       <div class="musicTime">{{music.music_time}}/{{music.music_duration}}</div>
     </div>
     <div class="slider">
-      <div class="sliderBg">
-        <span class="circle" :style="{left:left_}"></span>
+      <div class="sliderBg" ref="sliderbg" @mousedown="mouseDown($event)">
+        <span class="barBg" :style="{left:circleLeft}"></span>
+        <span class="circle" :style="{left:circleLeft}" ref="circle"></span>
       </div>
     </div>
   </div>
@@ -35,33 +36,49 @@
     data(){
       return{
         isbtn:false,
+        displace:0
       }
     },
     props:['option'],
     components:{},
     methods:{
       playMusic:function(){
-        this.isbtn = !this.isbtn;
-         if(this.music.status&&this.isbtn){
-          this.music.play_fn();
+        console.log(this.music.status);
+        if(this.music.status){
+          this.music.player.pause();
+          this.music.status = false;
          }else{
-           this.music.play_fn();
+          this.music.player.play();
+          this.music.status = true;
          }
       },
       preMusic:function(){
 
       },
-
+      mouseDown:function (e) {
+        let sliderbg = this.$refs.sliderbg;
+        let x = e.clientX; // 鼠标x轴距离
+        let barLeft = sliderbg.offsetLeft;// bar距离左侧的offsetLeft
+        let w = x-barLeft-18;// 鼠标点击与offsetLeft差值--偏移量
+        let circle = this.$refs.circle;
+        circle.style.left = w+'px';
+        console.log(x,'88888',barLeft,w);
+      }
     },
     computed:{
       ...mapState(['music']),
-      left_:function(){
-        return this.music.music_bar/370 +'px';
-      }
+      circleLeft:function () {
+        let time = this.music.music_duration;
+        let moment = this.music.music_time;
+        let second = (time.split(':')[0]*60)+Number(time.split(':')[1]);
+        let present = (moment.split(':')[0]*60)+Number(moment.split(':')[1]);
+        this.displace = present/second*370+'px';
+        return this.displace;
+//        return present/second*370+'px';
+      },
     },
     mounted(){},
     watch:{
-
     }
   }
 </script>
@@ -130,6 +147,7 @@
     justify-content: center;
     align-items: center;
     flex-flow: column;
+    overflow: hidden;
   }
   .musicName{
     width:100%;
@@ -196,6 +214,20 @@
     width:100%;
     height:100%;
     position: relative;
+    background: url("/static/images/barBg.png") no-repeat center;
+    -webkit-background-size:100% 100%;
+    background-size:100% 100%;
+    cursor: pointer;
+  }
+  .barBg{
+    display: block;
+    width:100%;
+    height:100%;
+    position: absolute;
+    left:0;
+    top: 0;
+    margin:auto;
+    background-color: #80B3D4;
   }
   .circle{
     width:10px;

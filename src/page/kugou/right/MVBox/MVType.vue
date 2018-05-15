@@ -23,7 +23,6 @@
   export default{
     data(){
       return{
-
         option:[
           {
             type:'热门',

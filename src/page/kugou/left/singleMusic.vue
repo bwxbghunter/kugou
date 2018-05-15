@@ -1,5 +1,5 @@
 <template>
-  <div class="singleMusicBox" :class="{lisBg:musicIndex == index}" @dblclick="playMusic">
+  <div class="singleMusicBox" :class="{lisBg:musicIndex == index}" @dblclick="playerMusic">
     <span class="addMusic"></span>
     <div class="musicPH">
       <div class="musicP"  v-show="musicIndex != index"><span>{{option.name}}</span></div>
@@ -36,56 +36,59 @@
     components:{},
     methods:{
       /************播放音乐*****************/
-      playMusic:function(){
+      playerMusic:function(){
         this.musicIndex = this.index;
-        /*if(this.music.status){
-          this.music.play_fn();
-        }else{
-          this.music.play_fn();
-        }*/
-//        this.music.play_fn();
-        this.audio_fn();
-      },
-      audio_fn:function(){
-        let audio = this.$refs.audio;
-        this.music.status = audio.paused;
-        if(audio.paused){
-          audio.play()
-//          this.music.play_fn= audio.play;
-        }else{
-          audio.pause()
-//          this.music.pause_fn=audio.pause;
+        this.music.player = this.$refs.audio;
+        //paused,表示当前音乐是否为暂停状态
+        if(this.music.player.paused){
+          // 播放当前音乐
+          this.playMusic();
+          this.music.status = true;
+        }else {
+          // 暂停当前音乐
+          this.music.player.pause();
+          this.music.status = false;
         }
+        // 调用载入歌曲信息函数
+        this.loadMusic();
+      },
+      // 播放
+      playMusic:function(){
+        this.music.player.play();
+      },
+      // 载入歌曲信息
+      loadMusic:function(){
         let dt,cur,ss,dur;
-        //获取播放总时长
-        dt = audio.duration;
+        dt = this.music.player.duration;
         cur = parseFloat((dt/60+'').split('.')[0])<10?'0'+(dt/60+'').split('.')[0]:(dt/60+'').split('.')[0];
         ss = parseInt((dt%60+'').substr(0,2))<10?'0'+parseInt((dt%60+'').substr(0,2)):parseInt((dt%60+'').substr(0,2));
         dur = cur+':'+ss;
-        //获取播放时长
-        audio.addEventListener("timeupdate",()=>{
-          let ct =parseInt(audio.currentTime);
+        this.music.player.addEventListener("timeupdate",()=>{
+          let ct =parseInt(this.music.player.currentTime);
           if(ct<10){
-              ct = '00:'+'0'+ct;
+            ct = '00:'+'0'+ct;
           }else if(ct<60){
-              ct = '00:'+ct;
+            ct = '00:'+ct;
           }else if(ct>=60){
-              let se = (ct%60).toFixed(0)<10?'0'+(ct%60).toFixed(0):(ct%60).toFixed(0);
-              ct ='0'+parseInt(ct/60)+':'+se;
+            let se = (ct%60).toFixed(0)<10?'0'+(ct%60).toFixed(0):(ct%60).toFixed(0);
+            ct ='0'+parseInt(ct/60)+':'+se;
           }
-          this.music.music_time = ct;
+        //获取当前播放时长
+        this.music.music_time = ct;
         });
-        audio.addEventListener("loadedmetadata",function(){
-          this.play();
-        });
-        this.music.music_name = this.option.name;
+        // 获取总时长
         this.music.music_duration = dur;
-        this.music.music_bar = dt;
+        //改变专辑图片
+        this.music.photo_src =this.option.img;
+        //改变歌曲名
+        this.music.music_name = this.option.name;
+        //改变歌曲路径
+        this.music.src = this.option.src;
       },
     },
     computed:{...mapState(['music'])},
     mounted(){
-      this.music.play_fn= this.audio_fn;
+
     },
     watch:{}
   }
