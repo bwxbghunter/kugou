@@ -88,7 +88,9 @@
       },
     },
     computed:{...mapState(['music'])},
-    mounted(){this.music.player=this.$refs.audio},
+    mounted(){
+      this.music.player = this.$refs.audio;
+      console.log(this.music.player);},
     watch:{
       'music.btns':function(){
 //        this.playerMusic();
