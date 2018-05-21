@@ -1,14 +1,10 @@
 <template>
-  <div class="radioBox">
-      电台
-  </div>
+  <div class="boradcast">直播</div>
 </template>
 <script>
   export default{
     data(){
-      return{
-
-      }
+      return{}
     },
     props:[],
     components:{},
@@ -18,8 +14,9 @@
   }
 </script>
 <style>
-  .radioBox{
+  .boradcast{
     width:100%;
     height:100%;
+    position: relative;
   }
 </style>

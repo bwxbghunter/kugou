@@ -1,7 +1,5 @@
 <template>
-  <div class="radioBox">
-      电台
-  </div>
+  <div class="ktv">KTV </div>
 </template>
 <script>
   export default{
@@ -18,7 +16,7 @@
   }
 </script>
 <style>
-  .radioBox{
+  .ktv{
     width:100%;
     height:100%;
   }

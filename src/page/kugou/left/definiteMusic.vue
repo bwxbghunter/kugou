@@ -73,6 +73,7 @@
       },
       // 载入歌曲信息
       loadMusic:function(){
+        if(this.option.length<1) return;
         let music=this.option[this.musicIndex];
         let dt,cur,ss,dur,audio_src;
         dt = this.music.player.duration;
@@ -112,7 +113,14 @@
 //        this.player_src =this.option[0].src;
 //      console.log(this.player_src,'########');
     },
-    watch:{}
+    watch:{
+      'music.btns':function(val){
+
+        /*if(this.musicIndex ==-1){
+          this.playerMusic(0);
+        }*/
+      }
+    }
   }
 </script>
 <style >

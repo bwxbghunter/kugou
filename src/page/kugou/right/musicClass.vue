@@ -19,8 +19,13 @@
       </div>
     </div>
      <div class="tabList" >
-       <radioBox v-if="false"></radioBox>
-       <MVBox ></MVBox>
+       <songbook  v-if="choseItem=='乐库'"></songbook>
+       <radioBox v-if="choseItem=='电台'"></radioBox>
+       <songList v-if="choseItem=='歌单'"></songList>
+       <MVBox v-if="choseItem=='MV'"></MVBox>
+       <boradcast v-if="choseItem=='直播'"></boradcast>
+       <KTV  v-if="choseItem=='KTV'"></KTV>
+       <songwords></songwords>
      </div>
    </div>
   </div>
@@ -28,6 +33,11 @@
 <script>
   import radioBox from './radioBox/radioBox.vue'
   import MVBox from './MVBox/MVBox.vue'
+  import songList from './songList/songList.vue'
+  import boradcast from './boradcast/boradcast.vue'
+  import songbook from './songbook/songbook.vue'
+  import KTV from './KTV/KTV.vue'
+  import songwords from './songwords/songwords.vue'
   import lycirSet from './lycirSet.vue'
   export default{
     data(){
@@ -39,7 +49,7 @@
       }
     },
     props:[],
-    components:{lycirSet,radioBox,MVBox},
+    components:{lycirSet,radioBox,MVBox,songList,boradcast,songbook,KTV,songwords},
     methods:{
       choseTab:function (item,index) {
         this.choseItem = item;
@@ -202,7 +212,7 @@
     right: 0;
   }
   .hideBgc .tabList{
-    display: none;
+    /*display: none;*/
   }
   .tabList{
     width:100%;

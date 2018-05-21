@@ -1,7 +1,5 @@
 <template>
-  <div class="radioBox">
-      电台
-  </div>
+  <div class="songbook">乐库</div>
 </template>
 <script>
   export default{
@@ -18,7 +16,7 @@
   }
 </script>
 <style>
-  .radioBox{
+  .songbook{
     width:100%;
     height:100%;
   }

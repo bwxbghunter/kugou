@@ -1,14 +1,12 @@
 <template>
-  <div class="radioBox">
-      电台
+  <div class="songList">
+    div.
   </div>
 </template>
 <script>
   export default{
     data(){
-      return{
-
-      }
+      return{}
     },
     props:[],
     components:{},
@@ -18,8 +16,9 @@
   }
 </script>
 <style>
-  .radioBox{
+  .songList{
     width:100%;
     height:100%;
+    position: relative;
   }
 </style>
