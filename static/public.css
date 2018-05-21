@@ -65,19 +65,25 @@ address,cite,dfn,em,code,var,caption,th{font-style:normal;font-weight:normal;}
   border-radius: 10px;
   background-color: #ccc;
 }
-/*头部标题背景色*/
-.head-bgc{
-  background-color: #767676;
+.scrollbar{
+  width:7px;
+  height:100%;
+  position: absolute;
+  border-radius: 5px;
+  right:2px;
+  top:0px;
+  background-color:rgba(0,0,0,0)!important;
+  z-index: 3;
 }
-.head-fontColor{
-  color: #F0F0F0;
-}
-/*电影信息展示侧边栏margin-top*/
-@media screen and (min-width:1024px) and (max-width: 1280px){
-  .detaLeft .movieMatter{
-    margin-top:0.08rem;
-  }
-  .detailsContent .detaLeft .provinceShow{
-    margin-top:0.1rem;
-  }
+.scrollbar b{
+  display: block;
+  width:100%;
+  height:20px;
+  border-radius: 5px;
+  background-color:#D6D7D9;
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  margin:auto;
 }

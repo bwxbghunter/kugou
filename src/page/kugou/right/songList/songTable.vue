@@ -1,0 +1,134 @@
+<template>
+  <div class="songTable">
+    <ul class="songTableUl clearfix">
+      <li class="songTableLis" v-for="item in songAry">
+        <div class="songTableLisImg">
+          <img class="songImg" :src="item.img" alt="">
+          <div class="headsetBox"><span class="headset"></span><span>{{item.num}}万</span></div>
+        </div>
+        <div class="songTableLIsText">
+          <p class="songTitle">{{item.title}}</p>
+          <p class="songauthor"><span class="editername">{{item.author}}</span><span class="songlistIcon"></span></p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</template>
+<script>
+  export default{
+    data(){
+      return{
+
+      }
+    },
+    props:['songAry'],
+    components:{},
+    methods:{},
+    computed:{},
+    mounted(){
+      if(this.songAry.length>0){
+        $g.cutImg(150,document.getElementsByClassName('songImg'));
+      }
+    }
+  }
+</script>
+<style>
+  .songTable{
+    width:100%;
+  }
+  .songTableUl{
+    width:100%;
+  }
+  .songTableLis{
+    width:150px;
+    height:200px;
+    margin-right:16px;
+    float: left;
+    margin-bottom:15px;
+  }
+  .songTableLis:nth-child(4n){
+    margin-right:0px;
+  }
+  .songTableLisImg{
+    width:100%;
+    height:150px;
+    position: relative;
+    overflow: hidden;
+  }
+  .songTableLisImg img{
+    width:100%;
+    height:100%;
+  }
+  .headsetBox{
+    width:100%;
+    height:25px;
+    line-height:25px;
+    font-size:12px;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: #ffffff;
+    position: absolute;
+    top:0;
+    left:0;
+    background: -webkit-linear-gradient(left,rgba(255,255,255,0) , rgba(0,0,0,0.2)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, rgba(255,255,255,0) , rgba(0,0,0,0.2)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, rgba(255,255,255,0) , rgba(0,0,0,0.2)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, rgba(255,255,255,0) , rgba(0,0,0,0.2));
+  }
+  .headsetBox span:last-child{
+    margin-right:10px;
+  }
+  .headsetBox span:first-child{
+    display: inline-block;
+    width:16px;
+    height:16px;
+    background: url("/static/images/headset.png")no-repeat center;
+    -webkit-background-size:100% 100%;
+    background-size:100% 100%;
+    margin-right:8px;
+  }
+  .songTableLIsText{
+    width:100%;
+    height:50px;
+  }
+  .songTitle{
+    width:100%;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size:13px;
+    line-height:25px;
+    color: #333333;
+  }
+  .songauthor{
+    width:100%;
+    height:25px;
+    line-height:18px;
+    color: #999999;
+    font-size:12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .songlistIcon{
+    display: inline-block;
+    width:15px;
+    height:15px;
+    background:url("/static/images/songlist.png")no-repeat center;
+    -webkit-background-size:100% 100%;
+    background-size:100% 100%;
+  }
+  .songTitle:hover,.editername:hover{
+    color: #68A9EC;
+    cursor: pointer;
+  }
+  .songlistIcon:hover{
+    background: url("/static/images/songlist_hover.png")no-repeat center;
+    -webkit-background-size:100% 100%;
+    background-size:100% 100%;
+    cursor: pointer;
+  }
+</style>

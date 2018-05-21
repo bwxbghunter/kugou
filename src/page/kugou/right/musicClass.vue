@@ -21,11 +21,11 @@
      <div class="tabList" >
        <songbook  v-if="choseItem=='乐库'"></songbook>
        <radioBox v-if="choseItem=='电台'"></radioBox>
-       <songList v-if="choseItem=='歌单'"></songList>
+       <songList v-if="choseItem=='歌单'" @submitContribute_="submitContribute"></songList>
        <MVBox v-if="choseItem=='MV'"></MVBox>
        <boradcast v-if="choseItem=='直播'"></boradcast>
        <KTV  v-if="choseItem=='KTV'"></KTV>
-       <songwords></songwords>
+       <songwords  v-if="choseItem=='歌词'"></songwords>
      </div>
    </div>
   </div>
@@ -51,6 +51,10 @@
     props:[],
     components:{lycirSet,radioBox,MVBox,songList,boradcast,songbook,KTV,songwords},
     methods:{
+      /********歌单投稿************/
+      submitContribute:function(){
+        this.$emit('submitContribute_fn')
+      },
       choseTab:function (item,index) {
         this.choseItem = item;
         this.choseIndex = index;

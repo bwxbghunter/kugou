@@ -16,12 +16,13 @@
         <musicList></musicList>
       </div>
       <div class="contentRight">
-        <musicClass @hideLeft="hideLeft_fn" @changeTab="changeTab_fn"></musicClass>
+        <musicClass @hideLeft="hideLeft_fn" @changeTab="changeTab_fn" @submitContribute_fn="showContribute=true"></musicClass>
       </div>
     </div>
     <div class="footBox">
       <play></play>
     </div>
+    <contribute v-if="showContribute" @closeContribute="showContribute=false"></contribute>
   </div>
 </template>
 <script>
@@ -31,15 +32,17 @@
   import musicList from './left/musicList.vue'
   import musicClass from './right/musicClass.vue'
   import play from './foot/play.vue'
+  import contribute from './right/songList/contribute.vue'
   export default{
     data(){
       return{
         ishide:false,
         isrightTab:false,
+        showContribute:false,//显示歌单征集令----歌单投稿
       }
     },
     props:[],
-    components:{account,searchBox,handles,musicList,musicClass,play},
+    components:{account,searchBox,handles,musicList,musicClass,play,contribute},
     methods:{
       /*********侧边栏收起和展开***********/
       hideLeft_fn:function(val){
