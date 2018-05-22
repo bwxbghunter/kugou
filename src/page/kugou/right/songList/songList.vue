@@ -1,16 +1,16 @@
 <template>
-  <div class="songList">
+  <div class="songList" ref="songList" @click="hideType">
     <div class="scrollbar" ref="scrollbar1"><b ref="b"></b></div>
-    <div class="songlistBox" ref="songlistBox">
+    <div class="songlistBox" ref="songlistBox" @scroll="scrollTop_">
       <div class="tabItem">
         <div class="leftItem" :class="{styleC:isshowType}">
-          <div class="leftClassify"  @click="showType">{{typeText=='全部'?typeText+'分类':typeText}} <span class="arrow"></span> <span class="lineLeftright"></span></div>
+          <div class="leftClassify" ref="leftClass" @click="showType">{{typeText=='全部'?typeText+'分类':typeText}} <span class="arrow"></span> <span class="lineLeftright"></span></div>
           <div class="contribute" @click="submitContribute"><span class="msg"></span>歌单投稿</div>
           <category v-show="!isshowType"  @closeSongType="hideCategory"></category>
         </div>
         <div class="rightItem">
           <ul class="rightItemUl">
-            <li class="rightItemLis" :class="{chosedRightItemlis:itemLisIndex==index}" v-for="(item,index) in option">{{item.name}}</li>
+            <li class="rightItemLis" @click="choseTab(item,index)" :class="{chosedRightItemlis:itemLisIndex==index}" v-for="(item,index) in option">{{item.name}}</li>
           </ul>
         </div>
       </div>
@@ -20,7 +20,7 @@
         </ul>
       </div>
       <div class="songListBox">
-        <songTable :songAry="songAry"></songTable>
+        <songTable :songAry="dataAry"></songTable>
       </div>
     </div>
   </div>
@@ -134,12 +134,236 @@
           img:'/static/images/mv_img/21.jpg',
           author:'谛听',
         },
-      ]
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/12.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/5.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/8.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/32.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/27.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/24.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/25.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/22.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/26.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/19.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/18.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/17.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/16.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/13.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/21.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/12.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/5.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/8.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/32.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/27.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/24.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/25.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/22.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/26.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/19.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/18.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/17.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/16.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/13.jpg',
+          author:'谛听',
+        },
+        {
+          num:18.3 ,
+          title:'日系温柔女生，柔情似雪 若如初见',
+          img:'/static/images/mv_img/21.jpg',
+          author:'谛听',
+        },
+      ],
+        dataAry:[],
+        page:0,
+        curent:12,
+        flag:false,
       }
     },
     props:[],
     components:{songTable,category},
     methods:{
+      scrollTop_:function(){
+        //获取滚动条滑动的距离
+        let scrollTop = this.$refs.songlistBox.scrollTop;
+        // 获取可视窗口高度
+        let offsetHeight = this.$refs.songList.offsetHeight;
+        let lis = document.getElementsByClassName('songTableLis');
+        let loadText = document.getElementsByClassName('loadText')[0];
+        for(let i=0;i<lis.length;i++){
+          if(lis[i].offsetTop<scrollTop+offsetHeight){
+            this.lazyLoad();
+          }
+        }
+      },
+      /***********加载更多****/
+      lazyLoad:function(){
+        if(this.flag){
+           return;
+        }
+        this.flag = true;
+        setTimeout(()=>{
+          for(let i=this.page*this.curent;i<(this.page+1)*this.curent&&i<this.songAry.length;i++){
+              this.dataAry.push(this.songAry[i]);
+          }
+          this.page++;
+          this.flag=false;
+        },2000)
+      },
+      /****************点击其他地方隐藏分类组件***/
+      hideType:function(e){
+        let div = this.$refs.leftClass;
+        if(div){
+            if(!div.contains(e.target)){
+              this.isshowType = true;
+            }
+        }
+      },
+      /****************选择推荐、最热*********/
+      choseTab:function(item,index){
+         this.itemLisIndex = index;
+      },
       /****************隐藏分类组件*********/
       hideCategory:function(item){
         this.typeText = item.text;
@@ -157,12 +381,16 @@
       mouseWheel_:function(){
         this.scrollBar = $g.scrollV(this.$refs.songlistBox,this.$refs.scrollbar1,this.$refs.b);////设置自定义滚动条/////
         setTimeout(()=>{
+
+          this.lazyLoad();
           this.scrollBar();
         })
       },
     },
     computed:{},
     mounted(){
+//        this.scrollTop_();
+        this.lazyLoad();
         this.mouseWheel_();////设置自定义滚动条/////
     }
   }

@@ -4,14 +4,19 @@
       <li class="songTableLis" v-for="item in songAry">
         <div class="songTableLisImg">
           <img class="songImg" :src="item.img" alt="">
+          <div class="likeAndPlay clearfix">
+            <span class="guessLike" title="收藏歌单"></span>
+            <span class="playSong" title="全部播放"></span>
+          </div>
           <div class="headsetBox"><span class="headset"></span><span>{{item.num}}万</span></div>
         </div>
         <div class="songTableLIsText">
-          <p class="songTitle">{{item.title}}</p>
-          <p class="songauthor"><span class="editername">{{item.author}}</span><span class="songlistIcon"></span></p>
+          <p class="songTitle" :title="item.title">{{item.title}}</p>
+          <p class="songauthor"><span class="editername" :title="item.author">{{item.author}}</span><span class="songlistIcon" title="所有曲目"></span></p>
         </div>
       </li>
     </ul>
+    <div class="loadText">加载更多</div>
   </div>
 </template>
 <script>
@@ -58,6 +63,40 @@
   .songTableLisImg img{
     width:100%;
     height:100%;
+  }
+  .likeAndPlay{
+    position: absolute;
+    bottom:10px;
+    right:10px;
+    margin:auto;
+    width:70px;
+    height:30px;
+    display: none;
+  }
+  .songTableLis:hover .likeAndPlay{
+    display: block;
+  }
+  .guessLike,.playSong{
+    float: left;
+    width:30px;
+    height:30px;
+    display: block;
+    cursor: pointer;
+    opacity: 0.8;
+  }
+  .guessLike{
+    margin-right:10px;
+    background: url("/static/images/guess_like.png")no-repeat center;
+    -webkit-background-size:100% 100%;
+    background-size:100% 100%;
+  }
+  .playSong{
+    background: url("/static/images/pause.png")no-repeat center;
+    -webkit-background-size:100% 100%;
+    background-size:100% 100%;
+  }
+  .guessLike:hover,.playSong:hover{
+    opacity: 1;
   }
   .headsetBox{
     width:100%;
@@ -130,5 +169,14 @@
     -webkit-background-size:100% 100%;
     background-size:100% 100%;
     cursor: pointer;
+  }
+  .loadText{
+    width:100%;
+    height:30px;
+    font-size:15px;
+    color: #555;
+    text-align: center;
+    line-height:30px;
+    display: none;
   }
 </style>
