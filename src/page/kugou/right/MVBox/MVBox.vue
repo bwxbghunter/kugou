@@ -1,6 +1,6 @@
 <template>
   <div class="MVBox">
-    <div class="scrollbar" ref="scrollbar"><b ref="b"></b></div>
+    <div class="scrollbar1" ref="scrollbar"><b ref="b"></b></div>
     <div class="nav">
       <navBar></navBar>
     </div>
@@ -128,7 +128,7 @@
     height:calc(100% - 56px);
     /*transition: all 0.2s ease;*/
   }
-  .scrollbar{
+  .scrollbar1{
     width:7px;
     height:calc(100% - 35px);
     position: absolute;
@@ -138,7 +138,7 @@
     background-color:rgba(0,0,0,0)!important;
     z-index: 3;
   }
-  .scrollbar b{
+  .scrollbar1 b{
     display: block;
     width:100%;
     height:20px;

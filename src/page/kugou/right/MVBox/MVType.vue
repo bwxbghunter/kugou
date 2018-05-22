@@ -166,7 +166,7 @@
     }
   }
 </script>
-<style>
+<style >
   .MVType{
     width:calc(100% - 20px);
     height:100%;

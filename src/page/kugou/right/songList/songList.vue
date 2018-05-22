@@ -3,9 +3,10 @@
     <div class="scrollbar" ref="scrollbar1"><b ref="b"></b></div>
     <div class="songlistBox" ref="songlistBox">
       <div class="tabItem">
-        <div class="leftItem">
-          <div class="leftClassify">全部分类</div>
+        <div class="leftItem" :class="{styleC:isshowType}">
+          <div class="leftClassify"  @click="showType">{{typeText=='全部'?typeText+'分类':typeText}} <span class="arrow"></span> <span class="lineLeftright"></span></div>
           <div class="contribute" @click="submitContribute"><span class="msg"></span>歌单投稿</div>
+          <category v-show="!isshowType"  @closeSongType="hideCategory"></category>
         </div>
         <div class="rightItem">
           <ul class="rightItemUl">
@@ -26,10 +27,13 @@
 </template>
 <script>
   import songTable from './songTable.vue'
+  import category from './category.vue'
   export default{
     data(){
       return{
         scrollBar:function () {},/****滚动条函数引用*****/
+        isshowType:true,// 控制样式  显示隐藏分类组件
+        typeText:'全部',
         itemLisIndex:0,
         option:[
           {id:0,name:'推荐'},
@@ -134,8 +138,17 @@
       }
     },
     props:[],
-    components:{songTable},
+    components:{songTable,category},
     methods:{
+      /****************隐藏分类组件*********/
+      hideCategory:function(item){
+        this.typeText = item.text;
+        this.isshowType = true;
+      },
+      /****************显示分类组件***********/
+      showType:function(){
+        this.isshowType = !this.isshowType;
+      },
       /****************歌单投稿******/
       submitContribute:function(){
         this.$emit('submitContribute_')
@@ -170,6 +183,9 @@
     overflow-y: scroll;
     overflow-x: hidden;
   }
+  .styleC .category{
+    display: none;
+  }
   .tabItem{
     width:100%;
     height:54px;
@@ -180,7 +196,7 @@
     flex-flow: row nowrap;
   }
   .leftClassify,.contribute{
-    width:100px;
+    /*width:100px;*/
     border: 1px solid #CCCCCC;
     border-radius: 3px;
     height:26px;
@@ -189,15 +205,44 @@
     color: #555555;
     text-align: center;
     cursor: pointer;
-  }
-  .contribute{
-    margin-left:10px;
+    padding:0 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-flow: row nowrap;
+    position: relative;
   }
-  .contribute:hover{
+  .arrow{
+    display: inline-block;
+    width:15px;
+    height:15px;
+    background: url('/static/images/arrow-down.png') no-repeat center;
+    -webkit-background-size:100% 100%;
+    background-size:100% 100%;
+    margin:0 0 0 10px;
+    transform: rotate(180deg);
+  }
+  .styleC .arrow{
+    transform: rotate(0deg);
+  }
+  .lineLeftright{
+    display: inline-block;
+    position: absolute;
+    top: 100%;
+    height: 6px;
+    width: 100%;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    background: #fff;
+    z-index: 3;
+  }
+  .styleC .lineLeftright{
+    display: none;
+  }
+  .contribute{
+    margin-left:10px;
+  }
+  .contribute:hover,.styleC  .leftClassify:hover{
     color: #68A9EC;
     border: 1px solid #68A9EC;
   }
@@ -206,11 +251,17 @@
     -webkit-background-size:100% 100%;
     background-size:100% 100% ;
   }
+  .styleC .leftClassify:hover .arrow{
+    background: url('/static/images/arrow-down_hover.png') no-repeat center;
+    -webkit-background-size:100% 100%;
+    background-size:100% 100%;
+  }
   .leftItem{
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-flow: row nowrap;
+    position: relative;
   }
   .msg{
     display: inline-block;
