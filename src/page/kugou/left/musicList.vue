@@ -68,6 +68,11 @@
                 name:'格子兮 - 西塘有雨',
                 img:'/static/images/kg_logo.jpg',
                 src:'/static/audios/格子兮 - 西塘有雨.flac'
+              },
+              {
+                name:'时砂 - 解锁',
+                img:'/static/images/kg_logo.jpg',
+                src:'/static/audios/时砂 - 解锁.mp3'
               }
             ]
           },
