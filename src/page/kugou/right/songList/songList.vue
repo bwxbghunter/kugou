@@ -354,7 +354,7 @@
           }
           this.page++;
           this.flag=false;
-        },2000)
+        },1000)
       },
       /****************点击其他地方隐藏分类组件***/
       hideType:function(e){
