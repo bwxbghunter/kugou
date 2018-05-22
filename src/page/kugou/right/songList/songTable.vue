@@ -16,7 +16,7 @@
         </div>
       </li>
     </ul>
-    <div class="loadText">正在加载中 <span class="loadgif"></span></div>
+    <div class="loadText" style="display: none;">正在加载中 <span class="loadgif"></span></div>
   </div>
 </template>
 <script>
