@@ -331,9 +331,14 @@
         let offsetHeight = this.$refs.songList.offsetHeight;
         let lis = document.getElementsByClassName('songTableLis');
         let loadText = document.getElementsByClassName('loadText')[0];
+        let loadgif = document.getElementsByClassName('loadgif')[0];
         for(let i=0;i<lis.length;i++){
           if(lis[i].offsetTop<scrollTop+offsetHeight){
             this.lazyLoad();
+            if(this.dataAry.length==this.songAry.length){
+              loadText.innerHTML='已经到底了！';
+              loadgif.style.display= 'none';
+            }
           }
         }
       },

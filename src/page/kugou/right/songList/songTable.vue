@@ -16,7 +16,7 @@
         </div>
       </li>
     </ul>
-    <div class="loadText">加载更多</div>
+    <div class="loadText">正在加载中 <span class="loadgif"></span></div>
   </div>
 </template>
 <script>
@@ -174,9 +174,20 @@
     width:100%;
     height:30px;
     font-size:15px;
-    color: #555;
+    color: #ccc;
     text-align: center;
     line-height:30px;
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .loadgif{
+    display: inline-block;
+    width:25px;
+    height:25px;
+    background: url("/static/images/loading.gif")no-repeat center;
+    -webkit-background-size:100% 100%;
+    background-size:100% 100%;
+    margin-left:10px;
   }
 </style>
