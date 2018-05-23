@@ -12,7 +12,6 @@
         <div class="roomTitle">{{item.title}}</div>
       </li>
     </ul>
-    <!--<div class="loadText">正在加载中 <span class="loadgif"></span></div>-->
   </div>
 </template>
 <script>
@@ -147,25 +146,5 @@
     color: #333333;
     font-size:14px;
     text-align: left;
-  }
-  .loadText{
-    width:100%;
-    height:30px;
-    font-size:15px;
-    color: #ccc;
-    text-align: center;
-    line-height:30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .loadgif{
-    display: inline-block;
-    width:25px;
-    height:25px;
-    background: url("/static/images/loading.gif")no-repeat center;
-    -webkit-background-size:100% 100%;
-    background-size:100% 100%;
-    margin-left:10px;
   }
 </style>

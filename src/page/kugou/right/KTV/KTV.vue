@@ -423,7 +423,7 @@
         let scrollTop = this.$refs.ktvBox.scrollTop;
         let clientHeight = this.$refs.ktvBox.offsetHeight-230;
         let nodeTop = node.offsetTop-230;
-        console.log(nodeTop ,'-----', scrollTop,'++++',clientHeight);
+//        console.log(nodeTop ,'-----', scrollTop,'++++',clientHeight);
         if(nodeTop<scrollTop+clientHeight){
             return true
         }else{
@@ -431,7 +431,7 @@
         }
       },
       checkShow:function(){
-        console.log(222);
+//        console.log(222);
         let pictures = document.getElementsByClassName('pictures');
         let hotroomsLis = document.getElementsByClassName('hotroomsLis');
         for(let i=0;i<hotroomsLis.length;i++){

@@ -190,4 +190,7 @@
     background-size:100% 100%;
     margin-left:10px;
   }
+  .hidegif .loadgif{
+    display: none;
+  }
 </style>

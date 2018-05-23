@@ -41,7 +41,7 @@
         for(let i=ul.length-1;i>-1;i--){
           if(ul[i].offsetTop<=scrllTops.scrollTop+60){
             this.letterType = i;
-            console.log(ul[i].offsetTop,'&&&&&',scrllTops.scrollTop+4);
+//            console.log(ul[i].offsetTop,'&&&&&',scrllTops.scrollTop+4);
             return false;
           }
         }

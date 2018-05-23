@@ -2,11 +2,11 @@
   <div class="makefriends">
     <div class="friendsTitle">
       <div class="leftTitle"> <span></span>K歌交友</div>
-      <div class="changes"><span class="changesIcon"></span>换一换</div>
+      <div class="changes" @click="changeGroup"><span class="changesIcon"></span>换一换</div>
     </div>
     <div class="stranger">
-      <ul class="strangerUl">
-        <li class="strangerLis" v-for="item in dataAry">
+      <ul class="strangerUl" v-if="showIndex==index" v-for="(ary,index) in dataAry">
+        <li class="strangerLis" v-for="item in ary">
           <div class="strangerPicture">
             <img :src="item.img" alt="">
             <div class="groundGlass"></div>
@@ -30,49 +30,130 @@
         girl:'/static/images/boy.png',
         boy:'/static/images/girl.png',
         dataAry:[
-          {
-            name:'梦游中',
+          [ {
+          name:'梦游中',
+          gender:true,
+          constellation:'水瓶座',
+          address:'合肥',
+          img:'/static/images/mv_img/20.jpg'
+        },
+            {
+              name:'最美主持是鳕熊、小潘潘',
+              gender:false,
+              constellation:'水瓶座',
+              address:'福建',
+              img:'/static/images/mv_img/19.jpg'
+            },
+            {
+              name:'文儿站在最中央',
+              gender:true,
+              constellation:'水瓶座',
+              address:'杭州',
+              img:'/static/images/mv_img/18.jpg'
+            },
+            {
+              name:'包头医学院',
+              gender:false,
+              constellation:'水瓶座',
+              address:'长沙',
+              img:'/static/images/mv_img/17.jpg'
+            },
+            {
+              name:'笑忘前生缘',
+              gender:true,
+              constellation:'水瓶座',
+              address:'武汉',
+              img:'/static/images/mv_img/16.jpg'
+            },
+          ],
+          [ {
+            name:'看不见你的脸',
+            gender:true,
+            constellation:'金牛座',
+            address:'赤峰',
+            img:'/static/images/mv_img/1.jpg'
+          },
+            {
+              name:'前世今生',
+              gender:true,
+              constellation:'白羊座',
+              address:'三亚',
+              img:'/static/images/mv_img/3.jpg'
+            },
+            {
+              name:'花谢的瞬间',
+              gender:true,
+              constellation:'摩羯座',
+              address:'重庆',
+              img:'/static/images/mv_img/2.jpg'
+            },
+            {
+              name:'曾经有过的誓言',
+              gender:false,
+              constellation:'双子座',
+              address:'天津',
+              img:'/static/images/mv_img/5.jpg'
+            },
+            {
+              name:'轻吻你的脸',
+              gender:true,
+              constellation:'处女座',
+              address:'上海',
+              img:'/static/images/mv_img/6.jpg'
+            },],
+          [ {
+            name:'流过的泪',
             gender:true,
             constellation:'水瓶座',
-            address:'北京',
-            img:'/static/images/mv_img/20.jpg'
+            address:'石家庄',
+            img:'/static/images/mv_img/30.jpg'
           },
-          {
-            name:'最美主持是鳕熊、小潘潘',
-            gender:false,
-            constellation:'水瓶座',
-            address:'北京',
-            img:'/static/images/mv_img/20.jpg'
-          },
-          {
-            name:'文儿站在最中央',
-            gender:true,
-            constellation:'水瓶座',
-            address:'北京',
-            img:'/static/images/mv_img/20.jpg'
-          },
-          {
-            name:'包头医学院',
-            gender:false,
-            constellation:'水瓶座',
-            address:'北京',
-            img:'/static/images/mv_img/20.jpg'
-          },
-          {
-            name:'笑忘前生缘',
-            gender:true,
-            constellation:'水瓶座',
-            address:'北京',
-            img:'/static/images/mv_img/20.jpg'
-          },
-        ]
+            {
+              name:'谁的思念',
+              gender:false,
+              constellation:'双鱼座',
+              address:'西安',
+              img:'/static/images/mv_img/31.jpg'
+            },
+            {
+              name:'看不见你的脸',
+              gender:true,
+              constellation:'天枰座',
+              address:'成都',
+              img:'/static/images/mv_img/32.jpg'
+            },
+            {
+              name:'忘不掉的红颜',
+              gender:false,
+              constellation:'巨蟹座',
+              address:'沈阳',
+              img:'/static/images/mv_img/34.jpg'
+            },
+            {
+              name:'天若赐我辉煌',
+              gender:true,
+              constellation:'水瓶座',
+              address:'哈尔滨',
+              img:'/static/images/mv_img/33.jpg'
+            },]
+        ],
+        showIndex:0,
       }
     },
     props:[],
     components:{},
-    methods:{},
+    methods:{
+      changeGroup:function(){
+        this.showIndex++;
+        if(this.showIndex>this.dataAry.length-1){
+          this.showIndex = 0;
+        }
+      }
+    },
     computed:{},
-    mounted(){}
+    mounted(){
+      this.changeGroup();
+    }
   }
 </script>
 <style>
@@ -142,7 +223,10 @@
   }
   .stranger{
     width:100%;
+    height:182px;
     margin-top:10px;
+    position: relative;
+    overflow: hidden;
   }
   .strangerUl{
     width:100%;
@@ -150,6 +234,9 @@
     align-items: flex-start;
     justify-content: flex-start;
     flex-flow: row nowrap;
+    position: absolute;
+    left:0;
+    top:0;
   }
   .strangerLis{
     width:116px;

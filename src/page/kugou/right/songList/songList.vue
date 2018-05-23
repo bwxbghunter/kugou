@@ -337,7 +337,6 @@
             this.lazyLoad();
             if(this.dataAry.length==this.songAry.length){
               loadText.innerHTML='已经到底了！';
-              loadgif.style.display= 'none';
             }
           }
         }
