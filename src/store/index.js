@@ -10,6 +10,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state:{
+    public:{
+      isshowSet:false,//设置用户
+    },
     music:{
       player:'',// 播放标签
       music_name:'',// 音乐名称

@@ -1,5 +1,5 @@
 <template>
-  <div class="mainPage">
+  <div class="mainPage" @click="hideClick">
     <div class="headBox">
       <div class="leftHead"><account></account></div>
       <div class="rightHead">
@@ -26,6 +26,7 @@
   </div>
 </template>
 <script>
+  import {mapState} from 'vuex'
   import account from './head/account.vue'
   import searchBox from './head/searchBox.vue'
   import handles from './head/handles.vue'
@@ -44,6 +45,15 @@
     props:[],
     components:{account,searchBox,handles,musicList,musicClass,play,contribute},
     methods:{
+      /*********隐藏用户设置************/
+      hideClick:function(e){
+        let accountSet = document.getElementsByClassName('accountSet')[0];
+        if(accountSet){
+          if(!accountSet.contains(e.target)){
+            this.public.isshowSet = false;
+          }
+        }
+      },
       /*********侧边栏收起和展开***********/
       hideLeft_fn:function(val){
         this.ishide = val;
@@ -53,7 +63,9 @@
         this.isrightTab = val;
       }
     },
-    computed:{},
+    computed:{
+      ...mapState(['public'])
+    },
     mounted(){},
     watch:{}
   }

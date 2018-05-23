@@ -1,23 +1,30 @@
 <template>
   <div class="account">
-   <div class="accountIcon"></div>
-    <div class="accountName">森界降临 <span></span>
-      <accountSet></accountSet>
+   <div class="accountIcon" @click="showSet"></div>
+    <div class="accountName" @click="showSet">森界降临 <span></span>
+      <accountSet v-if="public.isshowSet"></accountSet>
     </div>
   </div>
 </template>
 <script>
+  import {mapState} from 'vuex'
   import accountSet from './accountSet.vue'
   export default{
      data(){
        return{
-
+          isshowSet:false
        }
      },
     props:[],
     components:{accountSet},
-    methods:{},
-    computed:{},
+    methods:{
+      showSet:function(){
+         this.public.isshowSet = true
+      },
+    },
+    computed:{
+      ...mapState(['public'])
+    },
     mounted(){},
     watch:{}
   }
