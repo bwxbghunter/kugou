@@ -386,17 +386,21 @@
       mouseWheel_:function(){
         this.scrollBar = $g.scrollV(this.$refs.songlistBox,this.$refs.scrollbar1,this.$refs.b);////设置自定义滚动条/////
         setTimeout(()=>{
-
-          this.lazyLoad();
           this.scrollBar();
         })
       },
     },
     computed:{},
     mounted(){
-//        this.scrollTop_();
         this.lazyLoad();
         this.mouseWheel_();////设置自定义滚动条/////
+    },
+    watch:{
+      dataAry:function(){
+        setTimeout(()=>{
+          this.scrollBar();
+        })
+      }
     }
   }
 </script>

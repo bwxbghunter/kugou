@@ -80,13 +80,45 @@
             list_name:'每日歌曲推荐',
             list_length:30,
             list_id:1,
-            data_list:[]
+            data_list:[
+              {
+                name:'云朵 - 我的楼兰 (DJ沫沫版)',
+                img:'/static/images/kg_logo.jpg',
+                src:'/static/audios/云朵 - 我的楼兰 (DJ沫沫版).mp3'
+              },
+              {
+                name:'格子兮 - 西塘有雨',
+                img:'/static/images/kg_logo.jpg',
+                src:'/static/audios/格子兮 - 西塘有雨.flac'
+              },
+              {
+                name:'时砂 - 解锁',
+                img:'/static/images/kg_logo.jpg',
+                src:'/static/audios/时砂 - 解锁.mp3'
+              }
+            ]
           },
           {
             list_name:'最近播放',
             list_length:50,
             list_id:3,
-            data_list:[]
+            data_list:[
+              {
+                name:'云朵 - 我的楼兰 (DJ沫沫版)',
+                img:'/static/images/kg_logo.jpg',
+                src:'/static/audios/云朵 - 我的楼兰 (DJ沫沫版).mp3'
+              },
+              {
+                name:'格子兮 - 西塘有雨',
+                img:'/static/images/kg_logo.jpg',
+                src:'/static/audios/格子兮 - 西塘有雨.flac'
+              },
+              {
+                name:'时砂 - 解锁',
+                img:'/static/images/kg_logo.jpg',
+                src:'/static/audios/时砂 - 解锁.mp3'
+              }
+            ]
           }
         ],
         netAry:[

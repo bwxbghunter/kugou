@@ -1,23 +1,261 @@
 <template>
-  <div class="ktv">KTV </div>
+  <div class="ktv">
+    <div class="scrollbar" ref="scrollbar1"><b ref="b"></b></div>
+    <div class="ktvBox" ref="ktvBox">
+      <div class="ktvFriends">
+        <makefriends></makefriends>
+      </div>
+      <div class="hotRoom">
+        <hotrooms :dataAry="dataList"></hotrooms>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
+  import hotrooms from './hotrooms.vue'
+  import makefriends from './makefriends.vue'
   export default{
     data(){
       return{
-
+        scrollBar:function () {},/****滚动条函数引用*****/
+        dataList:[
+          {
+             isvip:true,
+             img:'/static/images/mv_img/1.jpg',
+             room_tip:'快来一起嗨',
+             title:'简简单单的爱'
+          },
+          {
+            isvip:true,
+            img:'/static/images/mv_img/2.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:true,
+            img:'/static/images/mv_img/3.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:true,
+            img:'/static/images/mv_img/4.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/5.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/6.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/7.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/8.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/9.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/10.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/11.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/12.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/13.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/14.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/15.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/16.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/17.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/18.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/19.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/20.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/21.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/22.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/23.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/24.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/25.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/26.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/27.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/28.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/29.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/30.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/31.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/32.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/33.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/34.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          }
+        ]
       }
     },
     props:[],
-    components:{},
-    methods:{},
+    components:{makefriends,hotrooms},
+    methods:{
+      /****************自定义滚动条****************************/
+      mouseWheel_:function(){
+        this.scrollBar = $g.scrollV(this.$refs.ktvBox,this.$refs.scrollbar1,this.$refs.b);////设置自定义滚动条/////
+        setTimeout(()=>{
+          this.scrollBar();
+        })
+      },
+    },
     computed:{},
-    mounted(){}
+    mounted(){
+    this.mouseWheel_();
+    },
+    watch:{
+      dataList:function(){
+        setTimeout(()=>{
+          this.scrollBar();
+        })
+      }
+    }
   }
 </script>
 <style>
   .ktv{
     width:100%;
     height:100%;
+    position: relative;
+    overflow: hidden;
+  }
+  .ktvBox{
+    width:calc(100% + 19px);
+    height:100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .ktvFriends{
+    display: block;
+    width:100%;
+    height:230px;
+    position: relative;
+    overflow: hidden;
   }
 </style>
