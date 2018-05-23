@@ -1,10 +1,13 @@
 <template>
   <div class="account">
    <div class="accountIcon"></div>
-    <div class="accountName">森界降临 <span></span></div>
+    <div class="accountName">森界降临 <span></span>
+      <accountSet></accountSet>
+    </div>
   </div>
 </template>
 <script>
+  import accountSet from './accountSet.vue'
   export default{
      data(){
        return{
@@ -12,7 +15,7 @@
        }
      },
     props:[],
-    components:{},
+    components:{accountSet},
     methods:{},
     computed:{},
     mounted(){},
@@ -46,5 +49,6 @@
     color: #ffffff;
     font-size:12px;
     cursor: pointer;
+    position: relative;
   }
 </style>

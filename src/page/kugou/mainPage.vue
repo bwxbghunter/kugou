@@ -70,7 +70,7 @@
   bottom:0;
   top:0;
   margin:auto;
-  background:url('/static/images/mv_img/16.jpg') no-repeat center center;
+  background:url('/static/images/mv_img/8.jpg') no-repeat center center;
   -webkit-background-size:130% 100%;
   background-size:130% 100%;
   opacity: 0.9;
