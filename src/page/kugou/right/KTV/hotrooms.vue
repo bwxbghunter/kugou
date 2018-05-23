@@ -5,13 +5,14 @@
       <li class="hotroomsLis" v-for="(item,index) in dataAry">
         <div class="pictureRoom">
           <div class="isvip" v-if="item.isvip">钻石</div>
-          <img :src="item.img" alt="">
+          <img class="pictures" src="/static/images/mv_img/1.jpg" alt="">
           <div class="callyou">{{item.room_tip}}</div>
           <div class="comeinRoom"><span class="goRoom">进入房间</span></div>
         </div>
         <div class="roomTitle">{{item.title}}</div>
       </li>
     </ul>
+    <!--<div class="loadText">正在加载中 <span class="loadgif"></span></div>-->
   </div>
 </template>
 <script>
@@ -29,7 +30,7 @@
 <style>
   .hotrooms{
     width:calc(100% - 40px);
-    position: relative;
+    /*position: relative;*/
     margin: auto;
   }
   .hotTitle{
@@ -146,5 +147,25 @@
     color: #333333;
     font-size:14px;
     text-align: left;
+  }
+  .loadText{
+    width:100%;
+    height:30px;
+    font-size:15px;
+    color: #ccc;
+    text-align: center;
+    line-height:30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .loadgif{
+    display: inline-block;
+    width:25px;
+    height:25px;
+    background: url("/static/images/loading.gif")no-repeat center;
+    -webkit-background-size:100% 100%;
+    background-size:100% 100%;
+    margin-left:10px;
   }
 </style>

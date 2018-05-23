@@ -70,9 +70,9 @@
   bottom:0;
   top:0;
   margin:auto;
-  background:url('/static/images/bg.png') no-repeat center;
-  -webkit-background-size:110% 100%;
-  background-size:110% 100%;
+  background:url('/static/images/mv_img/16.jpg') no-repeat center center;
+  -webkit-background-size:130% 100%;
+  background-size:130% 100%;
 }
   .headBox{
     width:100%;

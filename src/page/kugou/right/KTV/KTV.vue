@@ -1,13 +1,13 @@
 <template>
   <div class="ktv">
     <div class="scrollbar" ref="scrollbar1"><b ref="b"></b></div>
-    <div class="ktvBox" ref="ktvBox">
-      <div class="ktvFriends">
-        <makefriends></makefriends>
-      </div>
-      <div class="hotRoom">
-        <hotrooms :dataAry="dataList"></hotrooms>
-      </div>
+    <div class="ktvBox"  ref="ktvBox"  @scroll="scrollwheel_">
+        <div class="ktvFriends">
+          <makefriends></makefriends>
+        </div>
+        <div class="hotRoom" ref="hotRoom">
+          <hotrooms :dataAry="dataList"></hotrooms>
+        </div>
     </div>
   </div>
 </template>
@@ -210,13 +210,240 @@
             img:'/static/images/mv_img/34.jpg',
             room_tip:'快来一起嗨',
             title:'简简单单的爱'
+          },
+          {
+            isvip:true,
+            img:'/static/images/mv_img/1.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:true,
+            img:'/static/images/mv_img/2.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:true,
+            img:'/static/images/mv_img/3.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:true,
+            img:'/static/images/mv_img/4.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/5.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/6.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/7.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/8.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/9.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/10.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/11.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/12.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/13.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/14.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/15.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/16.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/17.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/18.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/19.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/20.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/21.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/22.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/23.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/24.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/25.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/26.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/27.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/28.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },{
+            isvip:false,
+            img:'/static/images/mv_img/29.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/30.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/31.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/32.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/33.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
+          },
+          {
+            isvip:false,
+            img:'/static/images/mv_img/34.jpg',
+            room_tip:'快来一起嗨',
+            title:'简简单单的爱'
           }
-        ]
+        ],
+        clock:0,
       }
     },
     props:[],
     components:{makefriends,hotrooms},
     methods:{
+      /****************懒加载**************/
+      scrollwheel_:function(){
+        if(this.clock){
+            clearTimeout(this.clock);
+        }
+        this.clock =setTimeout(()=>{
+            this.checkShow();
+        },300)
+      },
+      shouldShow:function(node){
+        let scrollTop = this.$refs.ktvBox.scrollTop;
+        let clientHeight = this.$refs.ktvBox.offsetHeight-230;
+        let nodeTop = node.offsetTop-230;
+        console.log(nodeTop ,'-----', scrollTop,'++++',clientHeight);
+        if(nodeTop<scrollTop+clientHeight){
+            return true
+        }else{
+            return false;
+        }
+      },
+      checkShow:function(){
+        console.log(222);
+        let pictures = document.getElementsByClassName('pictures');
+        let hotroomsLis = document.getElementsByClassName('hotroomsLis');
+        for(let i=0;i<hotroomsLis.length;i++){
+           if(this.shouldShow(hotroomsLis[i])){
+             this.showImg(pictures[i],i);
+           }
+       }
+      },
+      /****************显示图片************************/
+      showImg:function(img,index){
+        img.src=this.dataList[index].img;
+      },
       /****************自定义滚动条****************************/
       mouseWheel_:function(){
         this.scrollBar = $g.scrollV(this.$refs.ktvBox,this.$refs.scrollbar1,this.$refs.b);////设置自定义滚动条/////
@@ -227,7 +454,8 @@
     },
     computed:{},
     mounted(){
-    this.mouseWheel_();
+     this.checkShow();
+     this.mouseWheel_();
     },
     watch:{
       dataList:function(){
@@ -250,6 +478,7 @@
     height:100%;
     overflow-y: scroll;
     overflow-x: hidden;
+    /*position: relative;*/
   }
   .ktvFriends{
     display: block;
@@ -257,5 +486,8 @@
     height:230px;
     position: relative;
     overflow: hidden;
+  }
+  .hotRoom{
+    width:100%;
   }
 </style>
