@@ -8,6 +8,7 @@
         </ul>
       </div>
       <div class="slideshowBox"></div>
+
       <div class="radioTab" :class="{suspend:compare}"><tabBar :option="tabAry"  @changeIndex="changeIndex" :letterType="letterType"></tabBar></div>
       <div class="radioTypeBox" :class="{mbsuspend:compare}">
         <radioType :option="option"></radioType>
