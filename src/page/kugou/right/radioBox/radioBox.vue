@@ -185,7 +185,6 @@
           }else{
             this.compare = false;
           }
-          console.log(scrollT,'****************---------');
           let ul =document.getElementsByClassName('radiotypeBox');
           for(let i=ul.length-1;i>-1;i--){
              if(ul[i].offsetTop<scrollT+75){
@@ -196,12 +195,8 @@
         },
        /***************选择tabbar***********/
        changeIndex:function(index){
-//         let scrollT = this.$refs.radioscroll.scrollTop;
          let ul =document.getElementsByClassName('radiotypeBox')[index];
-//         this.letterType = index;
-         console.log(ul,'--------',ul.offsetTop);
          this.$refs.radioscroll.scrollTop = ul.offsetTop-65;
-//         console.log(scrollT,'************');
        },
        /***************选择电台*******************/
        choseRadio:function(item){
