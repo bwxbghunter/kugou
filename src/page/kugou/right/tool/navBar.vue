@@ -10,10 +10,10 @@
     data(){
       return{
         changeIndex:0,
-        option:[{id:0,name:'MV电台'},{id:1,name:'MV推荐'},{id:2,name:'繁星MV'}]
+//        option:[{id:0,name:'MV电台'},{id:1,name:'MV推荐'},{id:2,name:'繁星MV'}]
       }
     },
-    props:[],
+    props:['option'],
     components:{},
     methods:{
       choseTab:function(item,index){

@@ -2,10 +2,10 @@
   <div class="MVBox">
     <div class="scrollbar1" ref="scrollbar"><b ref="b"></b></div>
     <div class="nav">
-      <navBar></navBar>
+      <navBar :option="navAry"></navBar>
     </div>
     <div class="tabBarBox" :class="{topHead:fixedNav}">
-      <tabBar @changeIndex="changeIndex" :letterType="letterType"></tabBar>
+      <tabBar :option="tabAry" @changeIndex="changeIndex" :letterType="letterType"></tabBar>
     </div>
     <div class="MVbody"  @scroll="scrollCindex" ref="scrllTops">
       <div class="MVTypeBox" >
@@ -25,6 +25,19 @@
         anniTime:'',
         fixedNav:false,
         scrollBar:function () {},/****滚动条函数引用*****/
+        navAry:[{id:0,name:'MV电台'},{id:1,name:'MV推荐'},{id:2,name:'繁星MV'}],
+        tabAry:[
+          {id:0,name:'热门'},
+          {id:1,name:'儿童'},
+          {id:2,name:'诱惑'},
+          {id:3,name:'场景'},
+          {id:4,name:'主题'},
+          {id:5,name:'现场'},
+          {id:6,name:'影视'},
+          {id:7,name:'舞蹈'},
+          {id:8,name:'歌手'},
+          {id:9,name:'语言'},
+        ]
       }
     },
     props:[],

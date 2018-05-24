@@ -31,9 +31,9 @@
     methods:{},
     computed:{},
     mounted(){
-      if(this.songAry.length>0){
-        $g.cutImg(150,document.getElementsByClassName('songImg'));
-      }
+//      if(this.songAry.length>0){
+        $g.cutImg(160,document.getElementsByClassName('songImg'));
+//      }
     }
   }
 </script>

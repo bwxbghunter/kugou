@@ -61,7 +61,6 @@
       /*********右侧tab切换************/
       changeTab_fn:function(val){
         this.isrightTab = val;
-        console.log(11);
       }
     },
     computed:{

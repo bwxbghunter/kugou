@@ -9,25 +9,13 @@
   export default{
     data(){
       return{
-        option:[
-          {id:0,name:'热门'},
-          {id:1,name:'儿童'},
-          {id:2,name:'诱惑'},
-          {id:3,name:'场景'},
-          {id:4,name:'主题'},
-          {id:5,name:'现场'},
-          {id:6,name:'影视'},
-          {id:7,name:'舞蹈'},
-          {id:8,name:'歌手'},
-          {id:9,name:'语言'},
-        ]
       }
     },
-    props:['letterType'],
+    props:['letterType','option'],
     components:{},
     methods:{
       changeTab:function(item,index){
-        console.log(index,'******',this.letterType);
+//        console.log(index,'******',this.letterType);
         this.$emit('changeIndex',index);
       }
     },

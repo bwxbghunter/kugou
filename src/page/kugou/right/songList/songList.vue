@@ -349,11 +349,11 @@
         this.flag = true;
         setTimeout(()=>{
           for(let i=this.page*this.curent;i<(this.page+1)*this.curent&&i<this.songAry.length;i++){
-              this.dataAry.push(this.songAry[i]);
-          }
-          this.page++;
-          this.flag=false;
-        },1000)
+          this.dataAry.push(this.songAry[i]);
+        }
+        this.page++;
+        this.flag=false;
+      },500)
       },
       /****************点击其他地方隐藏分类组件***/
       hideType:function(e){
