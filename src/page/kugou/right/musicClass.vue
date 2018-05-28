@@ -19,13 +19,14 @@
       </div>
     </div>
      <div class="tabList" >
-       <songbook  v-if="choseItem=='乐库'"></songbook>
+       <songbook  v-if="choseItem=='乐库1'"></songbook>
        <radioBox v-if="choseItem=='电台'"></radioBox>
        <songList v-if="choseItem=='歌单'" @submitContribute_="submitContribute"></songList>
        <MVBox v-if="choseItem=='MV'"></MVBox>
        <boradcast v-if="choseItem=='直播'"></boradcast>
        <KTV  v-if="choseItem=='KTV'"></KTV>
        <songwords  v-if="choseItem=='歌词'"></songwords>
+       <changedata  v-if="choseItem=='乐库'"></changedata>
      </div>
    </div>
   </div>
@@ -38,6 +39,7 @@
   import songbook from './songbook/songbook.vue'
   import KTV from './KTV/KTV.vue'
   import songwords from './songwords/songwords.vue'
+  import changedata from './changeAccount/changedata.vue'
   import lycirSet from './lycirSet.vue'
   export default{
     data(){
@@ -49,7 +51,7 @@
       }
     },
     props:[],
-    components:{lycirSet,radioBox,MVBox,songList,boradcast,songbook,KTV,songwords},
+    components:{lycirSet,radioBox,MVBox,songList,boradcast,songbook,KTV,songwords,changedata},
     methods:{
       /********歌单投稿************/
       submitContribute:function(){

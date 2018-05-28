@@ -1,7 +1,7 @@
 <template>
   <div class="account">
    <div class="accountIcon" @click="showSet"></div>
-    <div class="accountName" @click="showSet">森界降临 <span></span>
+    <div class="accountName" @click="showSet">{{public.userName}} <span></span>
       <accountSet v-if="public.isshowSet"></accountSet>
     </div>
   </div>
