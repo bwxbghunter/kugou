@@ -7,7 +7,7 @@
           <li class="choseRadioLis" @click="choseRadio(item)" :class="{ischoosed:choseid==item.id}" v-for="(item,index) in tab">{{item.text}}</li>
         </ul>
       </div>
-      <div class="slideshowBox"></div>
+      <div class="slideshowBox"><slideShow></slideShow></div>
 
       <div class="radioTab" :class="{suspend:compare}"><tabBar :option="tabAry"  @changeIndex="changeIndex" :letterType="letterType"></tabBar></div>
       <div class="radioTypeBox" :class="{mbsuspend:compare}">
@@ -19,6 +19,7 @@
 <script>
   import tabBar from '../tool/tabBar.vue'
   import radioType from './radioType.vue'
+  import slideShow from '../tool/slideShow.vue'
   export default{
     data(){
       return{
@@ -176,7 +177,7 @@
       }
     },
     props:[],
-    components:{tabBar,radioType},
+    components:{tabBar,radioType,slideShow},
     methods:{
         /***********滚动事件********/
         onwheel:function(){
