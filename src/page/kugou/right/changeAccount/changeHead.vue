@@ -6,7 +6,7 @@
       <div class="picture" >
         <div class="pictureBoder"  @mousedown="mouseDown"></div>
         <div class="imgboxB">
-          <img  :style="{transform:'scale('+(multiple/100+1)+')'}" ref="ImgPic" :src="url" alt="">
+          <img  :style="{transform:'scale('+(multiple/10+1)+')'}" ref="ImgPic" :src="url" alt="">
         </div>
         <div class="frame" style="left: 9px;top: 9px; transform: rotate(90deg)"></div>
         <div class="frame" style="left: 9px;bottom: 9px;top: auto; transform: rotate(0deg)"></div>
@@ -18,7 +18,7 @@
       </div>
       <div class="picLine"></div>
       <div class="previewImg">
-        <img :style="{transform:'scale('+(multiple/100+1)+')'}" ref="ImgPic1" :src="url" alt="">
+        <img :style="{transform:'scale('+(multiple/10+1)+')'}" ref="ImgPic1" :src="url" alt="">
       </div>
     </div>
   </div>
@@ -42,7 +42,6 @@
     methods:{
       moveLeft:function(val){
         this.multiple = val;
-        console.log(val,'_______');
       },
       choseImg: function(inp,img,img1,noalert) {
         let fiel = inp;

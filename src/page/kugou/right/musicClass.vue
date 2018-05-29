@@ -1,5 +1,5 @@
 <template>
-  <div class="musicClass" :class="{hideBgc:choseItem=='歌词'}">
+  <div class="musicClass" :class="{hideBgc:public.choseItem=='歌词'}">
    <div class="topMusicClass clearfix">
      <div class="topm fr">
        <ul class="musicClassUl">
@@ -19,19 +19,20 @@
       </div>
     </div>
      <div class="tabList" >
-       <songbook  v-if="choseItem=='乐库1'"></songbook>
-       <radioBox v-if="choseItem=='电台'"></radioBox>
-       <songList v-if="choseItem=='歌单'" @submitContribute_="submitContribute"></songList>
-       <MVBox v-if="choseItem=='MV'"></MVBox>
-       <boradcast v-if="choseItem=='直播'"></boradcast>
-       <KTV  v-if="choseItem=='KTV'"></KTV>
-       <songwords  v-if="choseItem=='歌词'"></songwords>
-       <changedata  v-if="choseItem=='乐库'"></changedata>
+       <songbook  v-if="public.choseItem=='乐库'"></songbook>
+       <radioBox v-if="public.choseItem=='电台'"></radioBox>
+       <songList v-if="public.choseItem=='歌单'" @submitContribute_="submitContribute"></songList>
+       <MVBox v-if="public.choseItem=='MV'"></MVBox>
+       <boradcast v-if="public.choseItem=='直播'"></boradcast>
+       <KTV  v-if="public.choseItem=='KTV'"></KTV>
+       <songwords  v-if="public.choseItem=='歌词'"></songwords>
+       <changedata  v-if="public.choseItem=='修改资料'"></changedata>
      </div>
    </div>
   </div>
 </template>
 <script>
+  import {mapState} from 'vuex'
   import radioBox from './radioBox/radioBox.vue'
   import MVBox from './MVBox/MVBox.vue'
   import songList from './songList/songList.vue'
@@ -46,7 +47,6 @@
       return{
         ishideList:false,
         option:['乐库','电台','歌单','MV','直播','KTV','歌词'],
-        choseItem:'乐库',
         choseIndex:0,
       }
     },
@@ -58,9 +58,9 @@
         this.$emit('submitContribute_fn')
       },
       choseTab:function (item,index) {
-        this.choseItem = item;
-        this.choseIndex = index;
-        if(this.choseItem!='歌词'){
+        this.public.choseItem = item;
+        this.public.choseIndex = index;
+        if(this.public.choseItem!='歌词'){
           this.$emit('changeTab',true)
         }else{
           this.$emit('changeTab',false)
@@ -72,7 +72,9 @@
       },
 
     },
-    computed:{},
+    computed:{
+      ...mapState(['public'])
+    },
     mounted(){
 
     },

@@ -14,7 +14,7 @@ export default new Vuex.Store({
       isshowSet:false,//设置用户
       userName:'森界降临',
       gender:1,
-
+      choseItem:'乐库',
     },
     music:{
       player:'',// 播放标签
