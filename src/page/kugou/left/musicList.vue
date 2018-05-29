@@ -61,18 +61,23 @@
             data_list:[
               {
                  name:'云朵 - 我的楼兰 (DJ沫沫版)',
-                 img:'/static/images/kg_logo.jpg',
+                 img:'/static/images/mv_img/16.jpg',
                  src:'/static/audios/云朵 - 我的楼兰 (DJ沫沫版).mp3'
               },
               {
                 name:'格子兮 - 西塘有雨',
-                img:'/static/images/kg_logo.jpg',
+                img:'/static/images/mv_img/10.jpg',
                 src:'/static/audios/格子兮 - 西塘有雨.flac'
               },
               {
                 name:'时砂 - 解锁',
-                img:'/static/images/kg_logo.jpg',
+                img:'/static/images/mv_img/8.jpg',
                 src:'/static/audios/时砂 - 解锁.mp3'
+              },
+              {
+                name:'SISTAR - 바빠 (Bad Boy 很忙)',
+                img:'/static/images/mv_img/2.jpg',
+                src:'/static/audios/SISTAR - 바빠 (Bad Boy 很忙).flac'
               }
             ]
           },

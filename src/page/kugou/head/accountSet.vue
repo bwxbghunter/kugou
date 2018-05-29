@@ -2,7 +2,7 @@
   <div class="accountSet" @click="hideAll">
     <div class="accountSetBox">
       <div class="setItem">
-        <div class="imgB"><img src="" alt=""></div>
+        <div class="imgB"><img :src="public.userIcon" alt=""></div>
         <div class="userNameBox">
          <div class="topUser">
            <span class="userText">森界降临</span>
@@ -104,6 +104,16 @@
     height:48px;
     background-color: #F00;
     border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+  }
+  .imgB img{
+    width: 200%;
+    height: 115%;
+    position: absolute;
+    left: 50%;
+    margin-left: -100%;
+    top: 0;
   }
   .userNameBox{
     margin-left:15px;

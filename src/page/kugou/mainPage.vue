@@ -82,10 +82,13 @@
   bottom:0;
   top:0;
   margin:auto;
-  background:url('/static/images/mv_img/8.jpg') no-repeat center center;
+  /*background:url('/static/images/mv_img/1.jpg') no-repeat center center;
   -webkit-background-size:130% 100%;
-  background-size:130% 100%;
-  opacity: 0.9;
+  background-size:130% 100%;*/
+
+  background:url('/static/images/bg.png') no-repeat center center;
+  -webkit-background-size:105% 100%;
+  background-size:105% 100%;
 }
   .headBox{
     width:100%;

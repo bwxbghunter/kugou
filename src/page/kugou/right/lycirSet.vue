@@ -10,7 +10,7 @@
 <scripot>
 
 </scripot>
-<style scoped>
+<style>
   .lycirSet{
     width:100%;
     height:100%;

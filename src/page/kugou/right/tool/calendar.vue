@@ -1,11 +1,11 @@
 <template>
   <div class="calendar">
-    <div class="selectDate" @click="showContent"><span>{{isYear}}</span>-<span>{{isMonth}}</span>-<span>{{isDate}}</span></div>
+    <div class="selectDate" @click="showContent"><span>{{isYear}}</span>-<span>{{isMonth>9?isMonth:'0'+isMonth}}</span>-<span>{{isDate}}</span></div>
     <div class="calendarBox" v-show="showDate">
       <div class="calendarChange">
         <span class="preYear" @click="changeYear(1)"></span>
         <span class="preMonth" @click="changeMonth(1)"></span>
-        <span class="month">{{curMonth}}月</span>
+        <span class="month">{{curMonth>9?curMonth:'0'+curMonth}}月</span>
         <span class="year">{{curYear}}</span>
         <span class="nextMonth"  @click="changeMonth(-1)"></span>
         <span class="nextYear" @click="changeYear(-1)"></span>
@@ -33,13 +33,13 @@
       return{
         showDate:false,
         isYear:2018,
-        isMonth:'05',
+        isMonth:5,
         isDate:27,
         week:['日','一','二','三','四','五','六'],
         month:['一','二','三','四','五','六','七','八','九','十','十一','十二'],
         date:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],
         curYear:2018,
-        curMonth:'05',
+        curMonth:5,
         curDate:27,
         choseDa:0
       }
@@ -54,7 +54,7 @@
         let year = date.getFullYear();// 获取年份
         let month = date.getMonth()+1;// 获取月份
         let da = date.getDate();// 获取当前日
-        month = month>9?month:'0'+month;
+        // month = month>9?month:'0'+month;
        this.curYear = year;
        this.curMonth = month;
        this.curDate = da;
@@ -66,7 +66,7 @@
       // 确定按钮
       makeSure:function(){
         this.isYear = this.curYear;
-        this.curMonth = this.curMonth>9?this.curMonth:'0'+this.curMonth;
+        // this.curMonth = this.curMonth>9?this.curMonth:'0'+this.curMonth;
         this.isMonth = this.curMonth;
         this.choseDa = this.choseDa>9?this.choseDa:'0'+this.choseDa;
         this.isDate = this.choseDa;
@@ -76,7 +76,7 @@
       nowaday:function(){
         let mon = {一:'0',二:'02',三:'03',四:'04',五:'05',六:'06',七:'07',八:'08',九:'09',十:'10',十一:'11',十二:'12'};
         this.isYear = this.curYear;
-        this.curMonth = this.curMonth>9?this.curMonth:'0'+this.curMonth;
+        // this.curMonth = this.curMonth>9?this.curMonth:'0'+this.curMonth;
         this.isMonth = this.curMonth;
         this.choseDa = this.curDate>9?this.curDate:'0'+this.curDate;
         this.isDate = this.curDate;
@@ -89,9 +89,11 @@
       // 改变年份
       changeYear:function(val){
          if(val>0){
-           this.isYear = this.curYear--;
+           // this.isYear = this.curYear--;
+           this.curYear--;
          }else{
-           this.isYear = this.curYear++;
+           // this.isYear = this.curYear++;
+           this.curYear++;
 
          }
       },
@@ -99,19 +101,20 @@
       changeMonth:function(val){
         if(val>0){
           this.curMonth--;
-          this.curMonth = this.curMonth>9?this.curMonth:'0'+this.curMonth;
-          this.isMonth =  this.curMonth;
+          /*this.curMonth = this.curMonth>9?this.curMonth:'0'+this.curMonth;
+          this.isMonth =  this.curMonth;*/
           if(this.isMonth<=1 ||this.curMonth<=1){
-            this.isMonth =this.curMonth = '01'
+            this.curMonth = '01'
           }
         }else{
           this.curMonth++;
-          this.curMonth = this.curMonth>9?this.curMonth:'0'+this.curMonth;
-          this.isMonth = this.curMonth;
+
           if(this.isMonth >= 12||this.curMonth>=12){
-            this.isMonth = this.curMonth = 12;
+            this.curMonth = 12;
           }
         }
+        // this.curMonth = this.curMonth>9?this.curMonth:'0'+this.curMonth;
+        // this.isMonth = this.curMonth;
       }
     },
     computed:{},

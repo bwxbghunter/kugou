@@ -6,7 +6,7 @@
       <div class="musicH"  v-show="musicIndex == index">
         <!--<singleMusic :option="item" ></singleMusic>-->
         <div class="singleMusic">
-          <div class="imgPic"><img :src="option.img" alt=""></div>
+          <div class="imgPic"><img class="imgPicIcon" :src="option.img" alt=""></div>
           <div class="musicA">
             <div class="musicN">{{option.name}}</div>
             <div class="musicN">
@@ -90,7 +90,11 @@
     computed:{...mapState(['music'])},
     mounted(){
       this.music.player = this.$refs.audio;
-      console.log(this.music.player);},
+      console.log(this.music.player);
+      if(this.option.length>0){
+        $g.cutImg(135,document.getElementsByClassName('imgPicIcon'));
+      }
+      },
     watch:{
       'music.btns':function(){
 //        this.playerMusic();
@@ -125,8 +129,8 @@
     justify-content: center;
   }
   .imgPic img{
-    width:120%;
-    height:120%;
+    width:100%;
+    height:100%;
   }
   .musicA{
     width:calc(100% - 62px);
