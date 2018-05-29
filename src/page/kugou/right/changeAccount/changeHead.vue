@@ -118,11 +118,9 @@
         ['left','top','marginLeft','marginTop'].forEach((k)=>{
           img1.style[k]=img.style[k];
         })
-
       }
     },
     computed:{
-
       ...mapState(['public'])
     },
     mounted(){
@@ -179,7 +177,7 @@
     position: relative;
   }
   .picture .imgboxB img{
-    width:220px;
+    width:100%;
     position: absolute;
     top:0;
     left:0;
@@ -207,9 +205,8 @@
     background: linear-gradient(#F2F2F2,#DDDDDD, #F2F2F2); /* 标准的语法 */
   }
   .previewImg{
-    width:117px;
-    height:117px;
-    padding:8px;
+    width:220px;
+    height:220px;
     border: 1px solid #E0E0E0;
     border-radius: 4px;
     overflow: hidden;
@@ -217,9 +214,10 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    transform: scale(0.5);
   }
 .previewImg img{
-  width:117px;
+  width:100%;
   position: absolute;
   top:0;
   left:0;

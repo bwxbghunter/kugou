@@ -1,7 +1,7 @@
 <template>
   <div class="drag">
     <div class="left" @click="changeTransL(-1)"><span></span></div>
-    <div class="slider"> <span class="bar" :style="{left:transL+'%'}" @mousedown="mouseDown"></span></div>
+    <div class="slider"> <span ref="bar" class="bar" @mousedown="mouseDown"></span></div>
     <div class="right"  @click="changeTransL(1)"> <span></span></div>
   </div>
 </template>
@@ -27,16 +27,31 @@
         addEventListener('mouseup',this.mouseUp);
       },
       mouseMove:function(e){
+        console.log(11);
         let x = e.pageX - _this.startX;
-        _this.transL = parseInt((x/_this.pWidth*100).toFixed(0));
+        let bar = this.$refs.bar;
+        if(!bar.style) return;
+        let l = parseFloat(bar.style.left);
+        l = isNaN(l)?10:l;
+        _this.transL = parseFloat(x/_this.pWidth*100);
+        _this.transL+=l;
         if(_this.transL <= 0){
           _this.transL = 0;
         }else if(_this.transL>=100){
           _this.transL = 100;
         }
-        this.$emit('transLeft', _this.transL)
+        bar.style.marginLeft = (this.transL-l)+'%';
+        this.$emit('transLeft', this.transL);
+
       },
       mouseUp:function(){
+        let bar = this.$refs.bar;
+        if(!bar.style) return;
+        let ml = parseFloat(bar.style.marginLeft);
+        let l = parseFloat(bar.style.left);
+        l = isNaN(l)?10:l;
+        bar.style.marginLeft = 0;
+        bar.style.left = ml+l+'%';
         window.removeEventListener("mousemove",_this.mouseMove);
         window.removeEventListener("mouseup",_this.mouseMove);
       },
@@ -47,14 +62,16 @@
            if(this.transL>=100){
              this.transL = 100;
            }
-          this.transL = this.transL;
         }else{
           this.transL-=5;
           if(this.transL<=0){
             this.transL = 0;
           }
-          this.transL = this.transL;
+
         }
+        let bar = this.$refs.bar;
+        if(!bar.style) return;
+        bar.style.left = this.transL+'%';
         this.$emit('transLeft', this.transL);
       }
     },
@@ -110,7 +127,7 @@
     background-color: #7B8994;
     cursor: pointer;
     position: absolute;
-    left:5%;
+    left:10%;
     top:0;
     bottom:0;
     margin:auto;
