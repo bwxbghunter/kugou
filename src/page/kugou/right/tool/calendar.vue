@@ -101,20 +101,15 @@
       changeMonth:function(val){
         if(val>0){
           this.curMonth--;
-          /*this.curMonth = this.curMonth>9?this.curMonth:'0'+this.curMonth;
-          this.isMonth =  this.curMonth;*/
           if(this.isMonth<=1 ||this.curMonth<=1){
             this.curMonth = '01'
           }
         }else{
           this.curMonth++;
-
           if(this.isMonth >= 12||this.curMonth>=12){
             this.curMonth = 12;
           }
         }
-        // this.curMonth = this.curMonth>9?this.curMonth:'0'+this.curMonth;
-        // this.isMonth = this.curMonth;
       }
     },
     computed:{},
@@ -138,7 +133,7 @@
   }
   .calendarBox{
     width:175px;
-    height:200px;
+    height:210px;
     border: 1px solid #d2d1d1;
     background-color: #fff;
     position: absolute;
@@ -223,6 +218,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    margin-top: 5px;
   }
   .isnowaday,.isture{
     width:45px;

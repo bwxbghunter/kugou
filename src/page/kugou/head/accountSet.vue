@@ -7,7 +7,7 @@
          <div class="topUser">
            <span class="userText">森界降临</span>
            <div class="setIcon" @click="changeData">
-             <div class="setType" ref="setType" v-if="changeSet" title="选项">
+             <div class="setTypeData" ref="setType" v-if="changeSet" title="选项">
                <div class="changeData" @click="changeDatum">修改资料</div>
                <div class="changeData">切换账号</div>
                <div class="changeData">音乐空间</div>
@@ -73,7 +73,7 @@
     watch:{}
   }
 </script>
-<style>
+<style scoped>
  .accountSet{
    width:310px;
    height:180px;
@@ -137,7 +137,7 @@
     justify-content: flex-start;
     position: relative;
   }
-  .setType{
+  .setTypeData{
     position: absolute;
     left:25px;
     top:-5px;
