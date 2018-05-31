@@ -14,5 +14,9 @@ export default new Router({
       name: 'kugou',
       component: kugou,
     },
+
+
+
+
   ]
 })
