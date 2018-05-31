@@ -4,10 +4,10 @@
       <span class="pwdName"><span style="display: inline-block;vertical-align: bottom;color: #FF8736;font-size: 17px">*</span>
         原密码：</span>
       <div class="pwdInp">
-        <input class="inp" type="text">
+        <input class="inp" type="password"  v-model="oldPwd">
         <div class="tip">
-          <div class="trueTip" v-show="false"></div>
-          <div class="tipText"><span class="falseTip"></span></div>
+          <div class="trueTip" v-show="oldPwd_tip.istrue==1"></div>
+          <div class="tipText" v-show="oldPwd_tip.istrue==0"><span class="falseTip" ></span>{{oldPwd_tip.tip}}</div>
         </div>
       </div>
     </div>
@@ -15,10 +15,10 @@
       <span class="pwdName"><span style="display: inline-block;vertical-align: bottom;color: #FF8736;font-size: 17px">*</span>
         新密码：</span>
       <div class="pwdInp">
-        <input class="inp" type="text">
+        <input class="inp" type="password" maxlength="16" v-model="newPwd">
         <div class="tip">
-          <div class="trueTip" v-show="false"></div>
-          <div class="tipText"><span class="falseTip"></span></div>
+          <div class="trueTip" v-show="newPwd_tip.istrue==1"></div>
+          <div class="tipText" v-show="newPwd_tip.istrue==0"><span class="falseTip" ></span>{{newPwd_tip.tip}}</div>
         </div>
       </div>
     </div>
@@ -33,10 +33,10 @@
       <span class="pwdName"><span style="display: inline-block;vertical-align: bottom;color: #FF8736;font-size: 17px">*</span>
         确认密码：</span>
       <div class="pwdInp">
-        <input class="inp" type="text">
+        <input class="inp" type="password" maxlength="16" v-model="surePwd">
         <div class="tip">
-          <div class="trueTip" v-show="false"></div>
-          <div class="tipText"><span class="falseTip"></span></div>
+          <div class="trueTip" v-show="surePwd_tip.istrue==1"></div>
+          <div class="tipText" v-show="surePwd_tip.istrue==0"><span class="falseTip"></span>{{surePwd_tip.tip}}</div>
         </div>
       </div>
     </div>
@@ -44,9 +44,13 @@
       <span class="pwdName"><span style="display: inline-block;vertical-align: bottom;color: #FF8736;font-size: 17px">*</span>
         验证码：</span>
       <div class="pwdInp">
-        <input class="authCode" type="text">
+        <input class="authCode" type="text" v-model="authCode">
         <span class="showAuthCode"></span>
         <span class="changeother" >换一张</span>
+        <div class="tip authTip">
+          <div class="trueTip" v-show="authCode_tip.istrue==1"></div>
+          <div class="tipText" v-show="authCode_tip.istrue==0"><span class="falseTip"></span>{{authCode_tip.tip}}</div>
+        </div>
       </div>
     </div>
     <div class="pwdbox">
@@ -61,13 +65,76 @@
   export default{
     data(){
       return{
-
+        oldPwd:'',//原密码
+        newPwd:'',// 新密码
+        surePwd:'',// 确认密码
+        authCode:'',// 验证码
       }
     },
     props:[],
     components:{},
-    methods:{},
-    computed:{},
+    methods:{
+      isStrong:function(){
+        let cur=0;
+//        if()
+      }
+    },
+    computed:{
+      // 原密码
+       oldPwd_tip:function(){
+        let status = {tip:'',istrue:0}
+        if(this.oldPwd.length==0){
+           status.tip='不能为空';
+           return status;
+        }
+        status.istrue = 1;
+        return status;
+       },
+      // 新密码
+      newPwd_tip:function(){
+        let status = {tip:'',istrue:0}
+        if(this.newPwd.length==0){
+          status.tip='不能为空';
+          return status;
+        }
+        if(this.newPwd.length<6){
+           status.tip='请输入6-16位的数字、字母或符号。'
+          return status;
+        }
+        status.istrue = 1;
+        return status;
+      },
+      // 确认密码
+      surePwd_tip:function () {
+        let status = {tip:'',istrue:0}
+        if(this.surePwd.length==0){
+          status.tip='不能为空';
+          return status;
+        }
+        if(this.surePwd.length<6){
+          status.tip='请输入6-16位的数字、字母或符号。'
+          return status;
+        }
+        if(this.surePwd !=this.newPwd){
+          status.tip='两次密码不一致！';
+          return status;
+        }
+        status.istrue = 1;
+        return status;
+      },
+      // 验证码
+      authCode_tip:function () {
+        let status = {tip:'',istrue:0}
+        if(this.authCode.length==0){
+          status.tip='不能为空';
+          return status;
+        }
+        status.istrue = 1;
+        return status;
+      },
+
+
+    },
     mounted(){}
   }
 </script>
@@ -138,7 +205,7 @@
   }
   .authCode{
     display: inline-block;
-    width:98px;
+    width:88px;
     height:38px;
     outline: none;
     border: 1px solid #d2d1d1;
@@ -148,7 +215,7 @@
     color: #464646;
   }
   .showAuthCode{
-    width:110px;
+    width:100px;
     height:40px;
     background-color: #fff;
     margin-left:10px;
@@ -187,10 +254,13 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    line-height:18px;
   }
   .tip{
     height:100%;
     margin-left:10px;
+    display: flex;
+    align-items: center;
   }
   .trueTip{
     width:16px;
@@ -206,5 +276,6 @@
     background: url("/static/images/falseTip.png")no-repeat center;
     -webkit-background-size:100% 100%;
     background-size:100% 100%;
+    margin-right:10px;
   }
 </style>
