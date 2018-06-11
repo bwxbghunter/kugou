@@ -36,6 +36,7 @@ export default{
     },
     /***************展开和收起音乐列表****************/
     spread_fn:function(id){
+      console.log(111);
       if(this.itemId !=id){
         this.itemId = id;
       }else{
