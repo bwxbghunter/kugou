@@ -59,7 +59,7 @@
       },
       choseTab:function (item,index) {
         this.public.choseItem = item;
-        this.public.choseIndex = index;
+        this.choseIndex = index;
         if(this.public.choseItem!='歌词'){
           this.$emit('changeTab',true)
         }else{

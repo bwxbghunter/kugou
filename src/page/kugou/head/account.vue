@@ -1,6 +1,6 @@
 <template>
   <div class="account">
-   <div class="accountIcon" @click="showSet"></div>
+   <div class="accountIcon" @click="showSet"><img :src="public.userIcon" alt=""></div>
     <div class="accountName" @click="showSet">{{public.userName}} <span></span>
       <div  v-if="public.isshowSet" >
         <accountSet @closeSetPage="public.isshowSet=false"></accountSet>
@@ -45,10 +45,20 @@
     min-width: 40px;
     min-height:40px;
     border-radius: 50%;
-    background-color: #f00;
+    /*background-color: #f00;*/
     margin:0 15px;
     cursor: pointer;
+    overflow: hidden;
+    position: relative;
   }
+.accountIcon img{
+  width: 200%;
+  height: 115%;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin-left: -100%;
+}
   .accountName{
     width:calc(100% - 70px);
     height:100%;

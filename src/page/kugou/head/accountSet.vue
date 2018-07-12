@@ -2,12 +2,12 @@
   <div class="accountSet" @click="hideAll">
     <div class="accountSetBox">
       <div class="setItem">
-        <div class="imgB"><img src="" alt=""></div>
+        <div class="imgB"><img :src="public.userIcon" alt=""></div>
         <div class="userNameBox">
          <div class="topUser">
            <span class="userText">森界降临</span>
            <div class="setIcon" @click="changeData">
-             <div class="setType" ref="setType" v-if="changeSet" title="选项">
+             <div class="setTypeData" ref="setType" v-if="changeSet" title="选项">
                <div class="changeData" @click="changeDatum">修改资料</div>
                <div class="changeData">切换账号</div>
                <div class="changeData">音乐空间</div>
@@ -74,7 +74,7 @@
     watch:{}
   }
 </script>
-<style>
+<style scoped>
  .accountSet{
    width:310px;
    height:180px;
@@ -105,6 +105,16 @@
     height:48px;
     background-color: #F00;
     border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+  }
+  .imgB img{
+    width: 200%;
+    height: 115%;
+    position: absolute;
+    left: 50%;
+    margin-left: -100%;
+    top: 0;
   }
   .userNameBox{
     margin-left:15px;
@@ -128,7 +138,7 @@
     justify-content: flex-start;
     position: relative;
   }
-  .setType{
+  .setTypeData{
     position: absolute;
     left:25px;
     top:-5px;

@@ -10,7 +10,7 @@
             <div class="musicH"  v-show="musicIndex == index">
               <!--<singleMusic :option="item" ></singleMusic>-->
               <div class="singleMusic">
-                <div class="imgPic"><img :src="item.img" alt=""></div>
+                <div class="imgPic"><img class="imgPicIcon" :src="item.img" alt=""></div>
                 <div class="musicA">
                   <div class="musicN">{{item.name}}</div>
                   <div class="musicN">
@@ -112,6 +112,7 @@
         this.music_list=document.getElementsByTagName('audio');
 //        this.player_src =this.option[0].src;
 //      console.log(this.player_src,'########');
+
     },
     watch:{
       'music.btns':function(val){
@@ -173,8 +174,8 @@
     justify-content: center;
   }
   .imgPic img{
-    width:120%;
-    height:120%;
+    width:150%;
+    height:100%;
   }
   .musicA{
     width:calc(100% - 62px);

@@ -30,7 +30,7 @@
   export default{
     data(){
       return{
-        url:'/static/images/mv_img/32.jpg',
+        url:'/static/images/mv_img/16.jpg',
         showDrag:false,
         multiple:10,
         beginX:0,

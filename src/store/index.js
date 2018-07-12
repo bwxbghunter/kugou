@@ -15,6 +15,7 @@ export default new Vuex.Store({
       userName:'森界降临',
       gender:1,
       choseItem:'乐库',
+      userIcon:'/static/images/mv_img/8.jpg'
     },
     music:{
       player:'',// 播放标签
