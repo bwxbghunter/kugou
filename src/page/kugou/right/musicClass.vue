@@ -179,7 +179,7 @@
     width:15px;
     height:100%;
     display: inline-block;
-    background: rgba(249, 249, 249, 0.35) url("/static/images/hide_list.png") no-repeat 0px center;
+    background: rgba(249, 249, 249, 0.65) url("/static/images/hide_list.png") no-repeat 0px center;
     -webkit-background-size:18px 25px;
     background-size:18px 25px;
     transform: rotate(180deg);

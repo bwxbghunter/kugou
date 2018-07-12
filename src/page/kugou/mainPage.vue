@@ -1,5 +1,5 @@
 <template>
-  <div class="mainPage" @click="hideClick">
+  <div class="mainPage" @click="hideClick" >
     <div class="headBox">
       <div class="leftHead"><account></account></div>
       <div class="rightHead">
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="contentBox" :class="{ishideLeft:ishide,rightTab:isrightTab}">
-      <div class="contentLeft">
+      <div class="contentLeft" :style="{backgroundColor:valueRgab}">
         <musicList></musicList>
       </div>
       <div class="contentRight">
@@ -23,6 +23,10 @@
       <play></play>
     </div>
     <contribute v-if="showContribute" @closeContribute="showContribute=false"></contribute>
+    <div class="showSkin" v-show="skin.showPage">
+      <changeSkin ></changeSkin>
+    </div>
+    <img class="skinMainPage" :style="{background:imgValue,opacity:skin.skinCurrent}">
   </div>
 </template>
 <script>
@@ -34,6 +38,7 @@
   import musicClass from './right/musicClass.vue'
   import play from './foot/play.vue'
   import contribute from './right/songList/contribute.vue'
+  import changeSkin from './changeSkin/changeSkin'
   export default{
     data(){
       return{
@@ -43,7 +48,7 @@
       }
     },
     props:[],
-    components:{account,searchBox,handles,musicList,musicClass,play,contribute},
+    components:{account,searchBox,handles,musicList,musicClass,play,contribute,changeSkin},
     methods:{
       /*********隐藏用户设置************/
       hideClick:function(e){
@@ -61,10 +66,42 @@
       /*********右侧tab切换************/
       changeTab_fn:function(val){
         this.isrightTab = val;
+      },
+      // 将十六进制转为rgba格式
+      colorRgb:function(color,value) {
+        var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+        var sColor = color.toLowerCase();
+      if (sColor && reg.test(sColor)) {
+        if (sColor.length === 4) {
+          var sColorNew = "#";
+          for (var i = 1; i < 4; i += 1) {
+            sColorNew += sColor.slice(i, i + 1).concat(sColor.slice(i, i + 1));
+          }
+          sColor = sColorNew;
+        }
+        //处理六位的颜色值
+        var sColorChange = [];
+        for (var i = 1; i < 7; i += 2) {
+          sColorChange.push(parseInt("0x" + sColor.slice(i, i + 2)));
+        }
+        return "RGB(" + sColorChange.join(",")+ ','+value+ ")";
+      } else {
+        return sColor;
       }
+    }
     },
     computed:{
-      ...mapState(['public'])
+      ...mapState(['public','skin']),
+      valueRgab:function(){
+        return  this.colorRgb('#ffffff',this.skin.listCurrent);
+      },
+      imgValue:function(){
+        if(this.skin.mainSkin.indexOf('#')>-1){
+          return this.colorRgb(this.skin.mainSkin,this.skin.skinCurrent);
+        }else{
+          return 'url('+this.skin.mainSkin+')'+'no-repeat center 100%';
+        }
+      },
     },
     mounted(){},
     watch:{}
@@ -82,10 +119,17 @@
   bottom:0;
   top:0;
   margin:auto;
-  background:url('/static/images/mv_img/1.jpg') no-repeat center center;
-  -webkit-background-size:130% 100%;
-  background-size:130% 100%;
-  opacity: 0.9;
+}
+.skinMainPage{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background:url('/static/images/bg.png') no-repeat center center;
+  -webkit-background-size:auto 100% !important;
+  background-size:auto 100% !important;
 }
   .headBox{
     width:100%;
@@ -168,4 +212,14 @@
 .ishideLeft .hideLeft span{
   transform: rotate(0deg);
 }
+
+  /*换肤*/
+  .showSkin{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.11);
+  }
 </style>

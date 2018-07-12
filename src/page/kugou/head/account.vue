@@ -2,7 +2,9 @@
   <div class="account">
    <div class="accountIcon" @click="showSet"></div>
     <div class="accountName" @click="showSet">{{public.userName}} <span></span>
-      <accountSet v-if="public.isshowSet"></accountSet>
+      <div  v-if="public.isshowSet" >
+        <accountSet @closeSetPage="public.isshowSet=false"></accountSet>
+      </div>
     </div>
   </div>
 </template>
@@ -12,14 +14,13 @@
   export default{
      data(){
        return{
-          isshowSet:false
        }
      },
     props:[],
     components:{accountSet},
     methods:{
       showSet:function(){
-         this.public.isshowSet = true
+         this.public.isshowSet = true;
       },
     },
     computed:{

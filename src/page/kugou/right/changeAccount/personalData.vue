@@ -62,7 +62,6 @@
   export default{
     data(){
       return{
-
       }
     },
     props:[],
@@ -71,7 +70,9 @@
     computed:{
       ...mapState(['public']),
     },
-    mounted(){}
+    mounted(){
+
+    }
   }
 </script>
 <style>

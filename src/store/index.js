@@ -26,6 +26,13 @@ export default new Vuex.Store({
       pauseM:function(){},// 暂停音乐
       status:false, // 播放状态
       btns:false,// 按钮状态
+    },
+    skin:{
+      showPage:false,// 是否显示换肤页面
+      listCurrent:1,// 列表透明度
+      skinCurrent:1,// 皮肤透明度
+      mainSkin:'./static/images/mv_img/13.jpg',// 皮肤路径
+      skinId:0,// 皮肤id
     }
   },
   getters,

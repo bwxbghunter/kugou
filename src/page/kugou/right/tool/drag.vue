@@ -27,7 +27,6 @@
         addEventListener('mouseup',this.mouseUp);
       },
       mouseMove:function(e){
-        console.log(11);
         let x = e.pageX - _this.startX;
         let bar = this.$refs.bar;
         if(!bar.style) return;

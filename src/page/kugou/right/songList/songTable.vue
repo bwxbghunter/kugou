@@ -28,12 +28,24 @@
     },
     props:['songAry'],
     components:{},
-    methods:{},
+    methods:{
+      imgChange:function(){
+        let img = document.getElementsByClassName('songImg');
+        for(let i = 0; i<img.length;i++){
+          img[i].style.width = 200+'%';
+          img[i].style.marginLeft = -90 + 'px';
+        }
+        // $g.cutImg(135,document.getElementsByClassName('songImg'));
+      }
+    },
     computed:{},
     mounted(){
-//      if(this.songAry.length>0){
-        $g.cutImg(160,document.getElementsByClassName('songImg'));
-//      }
+     this.imgChange();
+    },
+    watch:{
+      songAry:function(val){
+        this.imgChange();
+      }
     }
   }
 </script>
@@ -60,7 +72,7 @@
     position: relative;
     overflow: hidden;
   }
-  .songTableLisImg img{
+  .songTableLisImg img.songImg{
     width:100%;
     height:100%;
   }

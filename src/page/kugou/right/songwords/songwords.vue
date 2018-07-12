@@ -1,5 +1,5 @@
 <template>
-  <div class="songword">歌词 </div>
+  <div class="songword"> </div>
 </template>
 <script>
   export default{

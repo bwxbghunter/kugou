@@ -63,7 +63,8 @@
         }
       },
       changeDatum:function(){
-        this.public.choseItem = '修改资料'
+        this.public.choseItem = '修改资料';
+        this.$emit('closeSetPage')
       }
     },
     computed:{

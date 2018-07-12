@@ -81,4 +81,6 @@ itBwx.cutImg = function cutImg(num,img){
   }
 }
 
+
+
 export default itBwx;

@@ -14,12 +14,13 @@
     <span class="tools" title="工具"></span>
     <span class="games" title="酷狗网页游戏平台"></span>
     <span class="message" title="消息通知"></span>
-    <span class="skin" title="更换皮肤"></span>
+    <span class="skin" title="更换皮肤" @click="changeSkin"></span>
     <span class="set" title="主菜单"></span>
   </div>
 </div>
 </template>
 <script>
+  import {mapState} from 'vuex'
   export default{
     data(){
       return{
@@ -28,8 +29,15 @@
     },
     props:[],
     components:{},
-    methods:{},
-    computed:{},
+    methods:{
+      // 换肤
+      changeSkin:function(){
+        this.skin.showPage = true;
+      }
+    },
+    computed:{
+      ...mapState(['skin'])
+    },
     mounted(){},
     watch:{}
   }
