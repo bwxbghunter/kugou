@@ -1,6 +1,5 @@
 <template>
-  <div class="changeSkin" @click="hideBar"
-       :style="{background:imgUrl}">
+  <div class="changeSkin" @mousedown.stop="dragDown" :style="{background:imgUrl}">
     <div class="title">主题皮肤与窗口调整 <span class="closePage" @click="closePage"></span></div>
     <div class="skinBody">
       <div class="skinTab">
@@ -67,6 +66,9 @@
         isSkinOpacity:false,// 判断是否选择皮肤透明度
         status:1,          // tab默认选中项
         scrollBar:function(){},// 自定义滚动条
+        diffX:0,           // 鼠标按下时距离父元素的边框宽度
+        diffY:0,           // 鼠标按下时距离父元素的边框高度
+        drag:'',           // dom元素
         theme:[
           {id:200,img:'/static/images/mv_img/13.jpg'},
           {id:201,img:'/static/images/mv_img/16.jpg'},
@@ -154,12 +156,49 @@
           {id:53,color:'#9F6F55'},
           {id:54,color:'#8C6450'},
           {id:55,color:'#6B6F59'},
-        ]
+        ],
       }
     },
     props:[],
     components:{seekBar,pureColor,recommend,mine},
     methods:{
+      dragDown:function(e){
+        this.hideBar(e); // 调用点击其它地方拖动条组件隐藏
+        let drag = e.currentTarget; // 获取拖动元素
+        this.drag = drag;
+        let tag = e || window.event;
+        this.diffX = parseInt(tag.clientX - drag.offsetLeft)||0; // 鼠标按下时距离父元素的边框宽度
+        this.diffY = parseInt(tag.clientY - drag.offsetTop)||0;   // 鼠标按下时距离父元素的边框高度
+        if(typeof drag.setCapture!='undefined'){
+          drag.setCapture();
+        }
+        document.addEventListener('mousemove',this.dragMove);
+        document.addEventListener('mouseup',this.dragUp);
+      },
+      dragMove:function(e){
+        let tag = e|| window.event;
+        let left = tag.clientX - this.diffX;
+        let top = tag.clientY - this.diffY;
+        if(left < 0){
+          left = 0;
+        }else if(left > window.innerWidth - this.drag.offsetWidth){
+          left = window.innerWidth - this.drag.offsetWidth;
+        }
+        if(top < 0){
+          top = 0
+        }else if(top > window.innerHeight - this.drag.offsetHeight){
+          top = window.innerHeight - this.drag.offsetHeight;
+        }
+        this.drag.style.left = left +'px';
+        this.drag.style.top = top +'px';
+      },
+      dragUp:function(e){
+        document.removeEventListener('mousemove',this.dragMove);
+        document.removeEventListener('mouseup',this.dragUp);
+        if(typeof this.drag.releaseCapture!='undefined'){
+          this.drag.releaseCapture();
+        }
+      },
       // 关闭换肤页面按钮
       closePage:function(){
         this.skin.showPage = false;
