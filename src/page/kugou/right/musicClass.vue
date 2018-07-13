@@ -3,7 +3,7 @@
    <div class="topMusicClass clearfix">
      <div class="topm fr">
        <ul class="musicClassUl">
-         <li class="musicClassLis" :class="{choseLis:choseIndex==index}" v-for="(item,index) in option" @click="choseTab(item,index)">{{item}}
+         <li class="musicClassLis" :class="{choseLis:choseIndex==index&&public.choseItem!='修改资料'}" v-for="(item,index) in option" @click="choseTab(item,index)">{{item}}
          </li>
        </ul>
        <span class="bottomLine" :style="{left:(90+73*choseIndex)+'px'}"></span>

@@ -23,9 +23,11 @@
       <play></play>
     </div>
     <contribute v-if="showContribute" @closeContribute="showContribute=false"></contribute>
+    <!--换肤-->
     <div class="showSkin" v-show="skin.showPage">
       <changeSkin ></changeSkin>
     </div>
+    <!--设置主菜单-->
     <div class="showMainSet" v-show="public.showSet">
       <changeSet></changeSet>
     </div>
