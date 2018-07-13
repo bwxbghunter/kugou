@@ -1,5 +1,5 @@
 <template>
-  <div class="mainPage" @click="hideClick" >
+  <div class="mainPage"  @mousedown.stop="moveDown">
     <div class="headBox">
       <div class="leftHead"><account></account></div>
       <div class="rightHead">
@@ -26,6 +26,9 @@
     <div class="showSkin" v-show="skin.showPage">
       <changeSkin ></changeSkin>
     </div>
+    <div class="showMainSet" v-show="public.showSet">
+      <changeSet></changeSet>
+    </div>
     <img class="skinMainPage" :style="{background:imgValue,opacity:skin.skinCurrent}">
   </div>
 </template>
@@ -39,19 +42,24 @@
   import play from './foot/play.vue'
   import contribute from './right/songList/contribute.vue'
   import changeSkin from './changeSkin/changeSkin'
+  import changeSet from './changeSet/mainSet'
   export default{
     data(){
       return{
         ishide:false,
         isrightTab:false,
         showContribute:false,//显示歌单征集令----歌单投稿
+        downX:0,            // 鼠标按下时的横坐标距离
+        downY:0,            // 鼠标按下时纵坐标距离
+        dragDom:'',         // 获取拖动的元素
       }
     },
     props:[],
-    components:{account,searchBox,handles,musicList,musicClass,play,contribute,changeSkin},
+    components:{account,searchBox,handles,musicList,musicClass,play,contribute,changeSkin,changeSet},
     methods:{
       /*********隐藏用户设置************/
       hideClick:function(e){
+        this.public.showSet = false;
         let accountSet = document.getElementsByClassName('accountSet')[0];
         if(accountSet){
           if(!accountSet.contains(e.target)){
@@ -88,7 +96,39 @@
       } else {
         return sColor;
       }
-    }
+    },
+      // 拖动----鼠标按下
+      moveDown:function(e){
+        this.hideClick(e);
+        let drag = e.currentTarget;
+        this.dragDom = drag;
+        let tag = e||window.event;
+        this.downX = tag.clientX - drag.offsetLeft;
+        this.downY = tag.clientY - drag.offsetTop;
+        document.addEventListener('mousemove',this.moveMove);
+        document.addEventListener('mouseup',this.moveUp);
+      },
+      moveMove:function(e){
+        let tag = e|| window.event;
+        let left = tag.clientX - this.downX;
+        let top = tag.clientY - this.downY;
+        if(left<0){
+          left = 0;
+        }else if(left>window.innerWidth - this.dragDom.offsetWidth){
+          left = window.innerWidth - this.dragDom.offsetWidth;
+        }
+        if(top<0){
+          top = 0;
+        }else if(top>window.innerHeight - this.dragDom.offsetHeight){
+          top = window.innerHeight - this.dragDom.offsetHeight;
+        }
+        this.dragDom.style.left = left + 'px';
+        this.dragDom.style.top = top +'px';
+      },
+      moveUp:function(){
+        document.removeEventListener('mousemove',this.moveMove);
+        document.removeEventListener('mouseup',this.moveUp);
+      }
     },
     computed:{
       ...mapState(['public','skin']),
@@ -113,11 +153,11 @@
   height:760px;
   min-width: 1000px;
   min-height: 740px;
-  position: absolute;
-  left:20px;
+  position: fixed;
+  /*left:0;*/
   /*right:0;*/
-  bottom:0;
-  top:0;
+  /*bottom:0;*/
+  /*top:0;*/
   margin:auto;
 }
 .skinMainPage{
@@ -221,5 +261,18 @@
     left: 0;
     top: 0;
     background-color: rgba(0, 0, 0, 0.11);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /*设置*/
+  .showMainSet{
+    width: 184px;
+    height:485px;
+    border: 1px solid #CECECE;
+    position: absolute;
+    right: -25px;
+    top: 45px;
+    background-color: #fff;
   }
 </style>

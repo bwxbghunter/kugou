@@ -1,5 +1,5 @@
 <template>
-  <div class="changeSkin" @mousedown.stop="dragDown" :style="{background:imgUrl}">
+  <div class="changeSkin" :class="{moved:isdown}" @mousedown.stop="dragDown" :style="{background:imgUrl}">
     <div class="title">主题皮肤与窗口调整 <span class="closePage" @click="closePage"></span></div>
     <div class="skinBody">
       <div class="skinTab">
@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class="footerRight">
-        <div class="customSkin">自定义皮肤</div>
+        <div class="customSkin">自定义皮肤<input  type="file"></div>
       </div>
     </div>
   </div>
@@ -69,6 +69,7 @@
         diffX:0,           // 鼠标按下时距离父元素的边框宽度
         diffY:0,           // 鼠标按下时距离父元素的边框高度
         drag:'',           // dom元素
+        isdown:false,      // 判断鼠标是否按下
         theme:[
           {id:200,img:'/static/images/mv_img/13.jpg'},
           {id:201,img:'/static/images/mv_img/16.jpg'},
@@ -164,6 +165,7 @@
     methods:{
       dragDown:function(e){
         this.hideBar(e); // 调用点击其它地方拖动条组件隐藏
+        this.isdown = true;
         let drag = e.currentTarget; // 获取拖动元素
         this.drag = drag;
         let tag = e || window.event;
@@ -181,13 +183,13 @@
         let top = tag.clientY - this.diffY;
         if(left < 0){
           left = 0;
-        }else if(left > window.innerWidth - this.drag.offsetWidth){
-          left = window.innerWidth - this.drag.offsetWidth;
+        }else if(left > document.documentElement.clientWidth - this.drag.offsetWidth){
+          left = document.documentElement.clientWidth - this.drag.offsetWidth;
         }
         if(top < 0){
           top = 0
-        }else if(top > window.innerHeight - this.drag.offsetHeight){
-          top = window.innerHeight - this.drag.offsetHeight;
+        }else if(top > document.documentElement.clientHeight - this.drag.offsetHeight){
+          top = document.documentElement.clientHeight - this.drag.offsetHeight;
         }
         this.drag.style.left = left +'px';
         this.drag.style.top = top +'px';
@@ -195,6 +197,7 @@
       dragUp:function(e){
         document.removeEventListener('mousemove',this.dragMove);
         document.removeEventListener('mouseup',this.dragUp);
+        this.isdown = false;
         if(typeof this.drag.releaseCapture!='undefined'){
           this.drag.releaseCapture();
         }
@@ -287,16 +290,20 @@
 .changeSkin{
   width: 555px;
   height: 440px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
+  position: fixed;
+  /*position: absolute;*/
+  /*left: 0;*/
+  /*right: 0;*/
+  /*top: 0;*/
+  /*bottom: 0;*/
+  /*margin: auto;*/
   z-index: 20;
   background: url("/static/images/bg.png") no-repeat center;
   -webkit-background-size: 130% 100%;
   background-size: 130% 100%;
+}
+.moved{
+  cursor: move;
 }
   .title{
     width: 100%;
@@ -456,5 +463,20 @@
     line-height: 25px;
     border-radius: 3px;
     cursor: pointer;
+    overflow: hidden;
+    position: relative;
+  }
+.customSkin:hover{
+  color: #969696;
+  border: 1px solid #969696;
+}
+  .customSkin input{
+    opacity: 0;
+    width: 200%;
+    height: 100%;
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 </style>

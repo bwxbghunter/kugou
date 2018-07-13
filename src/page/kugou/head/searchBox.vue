@@ -10,12 +10,12 @@
     <span class="hear"></span>
   </div>
   <div class="rightCont">
-    <span class="CDRiper" title="CD抓轨"></span>
-    <span class="tools" title="工具"></span>
-    <span class="games" title="酷狗网页游戏平台"></span>
-    <span class="message" title="消息通知"></span>
+    <span class="CDRiper" title="CD抓轨" v-if="false"></span>
+    <span class="tools" title="工具" v-if="false"></span>
+    <span class="games" title="酷狗网页游戏平台" v-if="false"></span>
+    <span class="message" title="消息通知" v-if="false"></span>
     <span class="skin" title="更换皮肤" @click="changeSkin"></span>
-    <span class="set" title="主菜单"></span>
+    <span class="set" title="主菜单" @click="showSet"></span>
   </div>
 </div>
 </template>
@@ -33,10 +33,14 @@
       // 换肤
       changeSkin:function(){
         this.skin.showPage = true;
+      },
+      // 显示主菜单
+      showSet:function(){
+        this.public.showSet = true;
       }
     },
     computed:{
-      ...mapState(['skin'])
+      ...mapState(['skin','public'])
     },
     mounted(){},
     watch:{}

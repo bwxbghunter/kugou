@@ -15,7 +15,8 @@ export default new Vuex.Store({
       userName:'森界降临',
       gender:1,
       choseItem:'乐库',
-      userIcon:'/static/images/mv_img/8.jpg'
+      userIcon:'/static/images/mv_img/8.jpg',
+      showSet:false,// 是否显示顶部导航栏设置页面（主菜单）
     },
     music:{
       player:'',// 播放标签
@@ -34,7 +35,8 @@ export default new Vuex.Store({
       skinCurrent:1,// 皮肤透明度
       mainSkin:'./static/images/mv_img/13.jpg',// 皮肤路径
       skinId:0,// 皮肤id
-    }
+    },
+
   },
   getters,
   actions,
