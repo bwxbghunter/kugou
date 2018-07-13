@@ -37,6 +37,7 @@ export default{
   flex-flow: row nowrap;
   overflow: hidden;
   flex-flow: row nowrap;
+  color: #333333;
 }
 .operate{
   width:100px;
@@ -120,12 +121,10 @@ export default{
     font-weight:bold;
     text-align: left;
     margin-left:10px;
-    color: #333333;
   }
   .musicCur{
     font-size:12px;
     text-align: left;
-    color: #333;
     margin-left:5px;
   }
 </style>

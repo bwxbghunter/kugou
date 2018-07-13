@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="contentBox" :class="{ishideLeft:ishide,rightTab:isrightTab}">
-      <div class="contentLeft" :style="{backgroundColor:valueRgab}">
+      <div class="contentLeft" :style="{backgroundColor:valueRgab}" :class="{borderRnone:public.choseItem=='歌词'}">
         <musicList></musicList>
       </div>
       <div class="contentRight">
@@ -218,6 +218,9 @@
     top:0;
     opacity: 1;
     transition: all 0.2s linear;
+  }
+  .borderRnone{
+    border-right: none;
   }
   .contentBox.ishideLeft .contentLeft{
     left:-312px;

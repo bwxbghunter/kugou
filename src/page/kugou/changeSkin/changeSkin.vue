@@ -1,5 +1,5 @@
 <template>
-  <div class="changeSkin" :class="{moved:isdown}" @mousedown.stop="dragDown" :style="{background:imgUrl}">
+  <div class="changeSkin" :class="{moved:isdown}" @click.stop="hideBar" @mousedown.stop="dragDown" :style="{background:imgUrl}">
     <div class="title">主题皮肤与窗口调整 <span class="closePage" @click="closePage"></span></div>
     <div class="skinBody">
       <div class="skinTab">
@@ -164,7 +164,7 @@
     components:{seekBar,pureColor,recommend,mine},
     methods:{
       dragDown:function(e){
-        this.hideBar(e); // 调用点击其它地方拖动条组件隐藏
+        // this.hideBar(e); // 调用点击其它地方拖动条组件隐藏
         this.isdown = true;
         let drag = e.currentTarget; // 获取拖动元素
         this.drag = drag;

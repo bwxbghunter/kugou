@@ -8,7 +8,7 @@
       </div>
       <div class="strip">
         <div class="itemBox" ref="itemBox">
-          <div class="slidBlock" ref="slideBlock" @mousedown="moveDown" :style="{top:moveCur +'%',marginTop:mtop+'px'}">
+          <div class="slidBlock" ref="slideBlock" @mousedown.stop.prevent="moveDown" :style="{top:moveCur +'%',marginTop:mtop+'px'}">
             <span></span>
           </div>
         </div>
