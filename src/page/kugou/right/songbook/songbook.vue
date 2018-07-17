@@ -35,6 +35,7 @@
           {id:5,name:'明日之子2'},
           ],
         musicList:[
+
           {id:1,name:'NC.A - Oh My God',cur_time:'03:16'},
           {id:2,name:'郑国锋 - 倾城一笑',cur_time:'03:44'},
           {id:3,name:'Ellie Goulding - Love Me Like Yo Do',cur_time:'04:13'},

@@ -1,7 +1,7 @@
 <template>
   <div class="drag">
     <div class="left" @click="changeTransL(-1)"><span></span></div>
-    <div class="slider"> <span ref="bar" class="bar" @mousedown="mouseDown"></span></div>
+    <div class="slider"> <span ref="bar" class="bar" @mousedown.stop.prevent="mouseDown"></span></div>
     <div class="right"  @click="changeTransL(1)"> <span></span></div>
   </div>
 </template>

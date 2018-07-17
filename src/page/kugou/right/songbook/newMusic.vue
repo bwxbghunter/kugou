@@ -10,7 +10,7 @@
     </div>
     <div class="newMusicList">
       <ul class="newMusicListUl">
-        <li class="newMusicListLis" v-for="item in ArrayData">
+        <li class="newMusicListLis" v-for="item in ArrayData" v-bind:key="item.id">
           <div class="newMusicName"><span class="nameText">{{item.name}}</span><span class="dujia">独家</span></div>
           <div class="newMusicTime">{{item.cur_time}}</div>
         </li>
@@ -66,7 +66,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    font-size: 20px;
+    font-size: 19px;
     color: #333;
   }
   .leftNewHead span{
@@ -146,10 +146,11 @@
     color: #999999;
     font-size: 12px;
     text-align: center;
+    margin-right: 12px;
   }
   .newFooter{
     width: 100%;
-    height: 32px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;

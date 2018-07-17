@@ -3,7 +3,7 @@
   <div class="newPlate">
     <div class="newTitle">
       <div class="headlines">
-        <div class="leftNewHead"><span></span>新碟上架</div>
+        <div class="leftNewHead"><span></span>每日推荐</div>
       </div>
     </div>
   </div>
@@ -45,7 +45,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    font-size: 20px;
+    font-size: 19px;
     color: #333;
   }
   .leftNewHead span{
