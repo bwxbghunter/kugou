@@ -152,7 +152,7 @@
   }
   .bottomMusicClass{
     width:100%;
-    height:calc(100% - 40px);
+    height:calc(100% - 39px);
     overflow: hidden;
     position: relative;
   }

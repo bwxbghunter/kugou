@@ -11,8 +11,17 @@
              <newMusic :ArrayData="musicList"></newMusic>
            </div>
            <div class="newPlateRight">
-             <newPlate></newPlate>
+             <newPlate :newList="newList"></newPlate>
            </div>
+        </div>
+        <div class="songNav">
+          <div class="songNavePage">嗨爆DJ</div>
+          <div class="songNavePage">怀旧经典</div>
+          <div class="songNavePage">洗脑电音</div>
+          <div class="songNavePage">车载音乐</div>
+          <div class="songNavePage">网络红歌</div>
+          <div class="songNavePage">伤感情歌</div>
+          <div class="songNavePage">无损音乐</div>
         </div>
       </div>
     </div>
@@ -45,6 +54,12 @@
           {id:7,name:'Sistar - Bad Boy',cur_time:'04:14'},
           {id:8,name:'葛林 - 林中鸟',cur_time:'03:52'},
           {id:9,name:'徐歌阳 - 一万次悲伤',cur_time:'04:18'},
+        ],
+        newList:[
+          {id:0,text:'听不厌的唯美伤感',img:'/static/images/mv_img/1.jpg'},
+          {id:1,text:'劲爆中文DJ',img:'/static/images/mv_img/2.jpg'},
+          {id:2,text:'粤语新歌',img:'/static/images/mv_img/3.jpg'},
+          {id:3,text:'总有一首你喜欢',img:'/static/images/mv_img/4.jpg'},
         ]
       }
     },
@@ -87,7 +102,7 @@
   }
   .newThings{
     width: 100%;
-    height: 400px;
+    height: 440px;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -96,6 +111,24 @@
   .newMusicLeft,.newPlateRight{
     width: 50%;
     height: 100%;
+  }
+  .songNav{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    line-height: 26px;
+    color: #9E9E9E;
+    text-align: center;
+  }
+  .songNavePage{
+    width: 80px;
+    height: 26px;
+    border: 1px solid #E5E5E5;
+    border-radius: 1px;
+    cursor: pointer;
   }
 </style>
 

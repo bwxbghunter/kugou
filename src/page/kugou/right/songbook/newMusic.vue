@@ -94,9 +94,9 @@
   }
   .newMusicListLis{
     width: 100%;
-    height: 35px;
+    height: 39px;
     color: #333;
-    font-size: 15px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -150,7 +150,7 @@
   }
   .newFooter{
     width: 100%;
-    height: 40px;
+    height: 39px;
     display: flex;
     align-items: center;
     justify-content: space-between;
