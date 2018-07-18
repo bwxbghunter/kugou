@@ -40,7 +40,7 @@
   import songbook from './songbook/songbook.vue'
   import KTV from './KTV/KTV.vue'
   import songwords from './songwords/songwords.vue'
-  import changedata from './changeAccount/changedata.vue'
+  import changedata from '../changeAccount/changedata.vue'
   import lycirSet from './lycirSet.vue'
   export default{
     data(){

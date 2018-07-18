@@ -97,7 +97,7 @@
     background-color: #CECECE;
     color: #ffffff;
     cursor: pointer;
-    /*margin-bottom:1px;*/
+    margin-bottom:1px;
   }
   .changeTabLis:hover{
     background-color: #B8B8B8;

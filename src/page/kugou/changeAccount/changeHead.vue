@@ -4,9 +4,9 @@
     <p class="yourLove">（请选择图片文件，最佳尺寸400 x 400，支持JPG,JPEG,GIF,PNG）</p>
     <div class="headPicture">
       <div class="picture" >
-        <div class="pictureBoder"  @mousedown="mouseDown"></div>
+        <div class="pictureBoder"  @mousedown.stop.prevent="mouseDown"></div>
         <div class="imgboxB">
-          <img  :style="{transform:'scale('+(multiple/10+1)+')'}" ref="ImgPic" :src="url" alt="">
+          <img  :style="{transform:'scale('+(multiple/10+1)+')'}" ref="ImgPic" :src="imgSkin" alt="">
         </div>
         <div class="frame" style="left: 9px;top: 9px; transform: rotate(90deg)"></div>
         <div class="frame" style="left: 9px;bottom: 9px;top: auto; transform: rotate(0deg)"></div>
@@ -18,7 +18,7 @@
       </div>
       <div class="picLine"></div>
       <div class="previewImg">
-        <img :style="{transform:'scale('+(multiple/10+1)+')'}" ref="ImgPic1" :src="url" alt="">
+        <img :style="{transform:'scale('+(multiple/10+1)+')'}" ref="ImgPic1" :src="imgSkin" alt="">
       </div>
     </div>
   </div>
@@ -26,7 +26,7 @@
 <script>
   let that;
   import {mapState} from 'vuex'
-  import drag from '../tool/drag.vue'
+  import drag from '../right/tool/drag.vue'
   export default{
     data(){
       return{
@@ -121,7 +121,16 @@
       }
     },
     computed:{
-      ...mapState(['public'])
+      ...mapState(['public','skin']),
+      imgSkin:function(){
+        let skin = this.skin.mainSkin;
+        let skinUrl = skin.split('(');
+        if(skin.indexOf('#')>-1){
+          return '/static/images/mv_img/16.jpg'
+        }else{
+          return skinUrl[1].split(')')[0];
+        }
+      }
     },
     mounted(){
       this.choseImg(this.$refs.inp,this.$refs.ImgPic,this.$refs.ImgPic1);

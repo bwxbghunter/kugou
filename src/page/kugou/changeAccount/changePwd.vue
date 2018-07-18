@@ -132,8 +132,6 @@
         status.istrue = 1;
         return status;
       },
-
-
     },
     mounted(){}
   }

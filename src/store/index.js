@@ -33,7 +33,7 @@ export default new Vuex.Store({
       showPage:false,// 是否显示换肤页面
       listCurrent:1,// 列表透明度
       skinCurrent:1,// 皮肤透明度
-      mainSkin:'./static/images/mv_img/13.jpg',// 皮肤路径
+      mainSkin:'/static/images/mv_img/13.jpg',// 皮肤路径
       skinId:0,// 皮肤id
     },
 

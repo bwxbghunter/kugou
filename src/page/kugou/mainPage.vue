@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-    <div class="contentBox" :class="{ishideLeft:ishide,rightTab:isrightTab}">
+    <div class="contentBox" :class="{ishideLeft:ishide&&!isrightTab,rightTab:isrightTab}">
       <div class="contentLeft" :style="{backgroundColor:valueRgab}" :class="{borderRnone:public.choseItem=='歌词'}">
         <musicList></musicList>
       </div>

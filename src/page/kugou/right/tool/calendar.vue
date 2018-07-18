@@ -1,6 +1,6 @@
 <template>
   <div class="calendar">
-    <div class="selectDate" @click="showContent"><span>{{isYear}}</span>-<span>{{isMonth>9?isMonth:'0'+isMonth}}</span>-<span>{{isDate}}</span></div>
+    <div class="selectDate" @click="showContent"><span>{{curYear}}</span>-<span>{{curMonth>9?curMonth:'0'+curMonth}}</span>-<span>{{curDate}}</span></div>
     <div class="calendarBox" v-show="showDate">
       <div class="calendarChange">
         <span class="preYear" @click="changeYear(1)"></span>
@@ -17,7 +17,9 @@
       </div>
       <div class="calendardate">
         <ul class="calendarDateUl clearfix">
-          <li class="calendarDateLis fl" :class="{currentdate:val ==choseDa}" @click="choseDate(val)" v-for="(val,index) in date">{{val}}</li>
+          <li class="calendarDateLis preLis fl"  @click="choseDate(val,-1)" v-for="val in preventM">{{val}}</li>
+          <li class="calendarDateLis fl" :class="{currentdate:val ==curDate}" @click="choseDate(val,0)" v-for="val in currentM">{{val}}</li>
+          <li class="calendarDateLis preLis fl" @click="choseDate(val,1)" v-for="val in nextM">{{val}}</li>
         </ul>
       </div>
       <div class="choseCalendar">
@@ -32,55 +34,58 @@
     data(){
       return{
         showDate:false,
-        isYear:2018,
-        isMonth:5,
-        isDate:27,
-        week:['日','一','二','三','四','五','六'],
-        month:['一','二','三','四','五','六','七','八','九','十','十一','十二'],
-        date:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],
-        curYear:2018,
-        curMonth:5,
-        curDate:27,
-        choseDa:0
+        week:['日','一','二','三','四','五','六'], // 星期数
+        month:['一','二','三','四','五','六','七','八','九','十','十一','十二'],// 月份数
+        curYear:2018, // 展开后显示年份
+        curMonth:5,   // 展开后显示月份
+        curDate:27,   // 展开后显示天数
+        choseDa:0,
+        currentM:[],  // 当前月
+        preventM:[],  // 上个月
+        nextM:[],     // 下个月
       }
     },
     props:[],
     components:{},
     methods:{
+      loadCalendar:function(){
+        let firstDay = (new Date(this.curYear,this.curMonth-1,1)).getDay();// 计算当前月第一天是星期几
+        this.currentM = this.newDays(50, this.curYear, this.curMonth);     // 获取当前月天数
+        this.preventM = this.newDays(firstDay, this.curYear, this.curMonth-1);// 获取上个月天数
+        let sum = 42 - (this.currentM.length+this.preventM.length);  // 日历最多六行  42天减去当前月和上个月天数之和为下个月显示的天数
+        this.nextM = []; // 存取下个月天数  存取前先清空
+        for(let i=0;i<sum;i++){
+          this.nextM.push(i+1);
+        }
+      },
       // 获取日期
       getdate:function(){
-        let mon = {1:'一',2:'二',3:'三',4:'四',5:'五',6:'六',7:'七',8:'八',9:'九',10:'十',11:'十一',12:'十二'};
         let date = new Date();
-        let year = date.getFullYear();// 获取年份
-        let month = date.getMonth()+1;// 获取月份
-        let da = date.getDate();// 获取当前日
-        // month = month>9?month:'0'+month;
-       this.curYear = year;
-       this.curMonth = month;
-       this.curDate = da;
+        this.curYear = date.getFullYear();// 获取年份
+        this.curMonth = date.getMonth()+1;// 获取月份
+        this.curDate = date.getDate();// 获取当前日
       },
       //选择日期
-      choseDate:function(val){
-        this.choseDa = val;
+      choseDate:function(val,num){
+        this.curMonth += num;
+        if(this.curMonth>12){
+          this.curMonth = 1;
+          this.curYear+=1;
+        }else if(this.curMonth<1){
+          this.curMonth = 12;
+          this.curYear-=1;
+        }
+        this.curDate = val>9?val:'0'+val;
+        this.showDate = false;
       },
       // 确定按钮
       makeSure:function(){
-        this.isYear = this.curYear;
-        // this.curMonth = this.curMonth>9?this.curMonth:'0'+this.curMonth;
-        this.isMonth = this.curMonth;
-        this.choseDa = this.choseDa>9?this.choseDa:'0'+this.choseDa;
-        this.isDate = this.choseDa;
         this.showDate = false;
       },
       // 今天按钮
       nowaday:function(){
-        let mon = {一:'0',二:'02',三:'03',四:'04',五:'05',六:'06',七:'07',八:'08',九:'09',十:'10',十一:'11',十二:'12'};
-        this.isYear = this.curYear;
-        // this.curMonth = this.curMonth>9?this.curMonth:'0'+this.curMonth;
-        this.isMonth = this.curMonth;
-        this.choseDa = this.curDate>9?this.curDate:'0'+this.curDate;
-        this.isDate = this.curDate;
-        this.showDate = false;
+        this.getdate();
+        this.makeSure();
       },
       // 显示日期
       showContent:function(){
@@ -89,33 +94,65 @@
       // 改变年份
       changeYear:function(val){
          if(val>0){
-           // this.isYear = this.curYear--;
            this.curYear--;
+           this.loadCalendar();
          }else{
-           // this.isYear = this.curYear++;
            this.curYear++;
-
+           this.loadCalendar();
          }
       },
-      // 改变日期
+      // 改变月份
       changeMonth:function(val){
         if(val>0){
           this.curMonth--;
-          if(this.isMonth<=1 ||this.curMonth<=1){
-            this.curMonth = '01'
+          if(this.isMonth<1 ||this.curMonth<1){
+            this.curMonth = 12;
+            this.curYear-=1;
           }
+          this.loadCalendar();
         }else{
           this.curMonth++;
-          if(this.isMonth >= 12||this.curMonth>=12){
-            this.curMonth = 12;
+          if(this.isMonth > 12||this.curMonth>12){
+            this.curMonth = 1;
+            this.curYear+=1;
+          }
+          this.loadCalendar();
+        }
+      },
+      // 计算一个月的天数  未用
+      getMonthDays:function(year,month){
+        let days = 31;
+        // 判断2月份天数
+        if(month==2) {
+          days = (year % 4 == 0)&&(year % 100 != 0)||(year % 400 == 0)?29:28;
+        }else{
+          // 1-7月 单数月为31日
+          if(month<=7){
+            days = month%2==1?31:30;
+          }else{
+            // 8-12月 双月为31日
+            days = month%2==0?31:30;
           }
         }
+        return days;
+      },
+      newDays:function(num,year,month){
+        let firstDay = (new Date(year,month,1)).getTime();// 获取当前月第一天的时间戳
+        let date = firstDay - 24*60*60*1000; // 获取上个月最后一天的时间戳
+        let lastDate = (new Date(date)).getDate(); // 转换为上个月最后一天
+        let arry = [];
+        num=Math.min(num,lastDate);
+        for(let i=0;i<num;i++){
+          arry.push(lastDate-i);
+        }
+        return arry.reverse();
       }
     },
     computed:{},
     mounted(){
-        this.getdate();
-        this.choseDa = this.curDate;
+      this.getdate();
+      this.loadCalendar(); // 加载日历
+      this.newDays();
     }
   }
 </script>
@@ -207,6 +244,9 @@
     text-align: center;
     color: #000;
     cursor: pointer;
+  }
+  .preLis{
+    color: #aaa;
   }
   .currentdate{
     background-color: #B3CEEF;

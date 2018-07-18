@@ -58,7 +58,7 @@
 <script>
 
   import {mapState} from 'vuex'
-  import calendar from '../tool/calendar.vue'
+  import calendar from '../right/tool/calendar.vue'
   export default{
     data(){
       return{
