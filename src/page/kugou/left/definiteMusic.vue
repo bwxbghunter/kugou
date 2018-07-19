@@ -92,11 +92,11 @@
         let music=this.music_list[index];
         music.addEventListener('play',this.playEvent);
         music.addEventListener('pause',this.pauseEvent);
+        console.log(music,'-------',music.duration);
         music.play();
         let song = this.option[index];
         let dt,cur,ss,dur;
         dt = music.duration;
-        console.log(music,'-------',music.duration);
         cur = parseFloat((dt/60+'').split('.')[0])<10?'0'+(dt/60+'').split('.')[0]:(dt/60+'').split('.')[0];
         ss = parseInt((dt%60+'').substr(0,2))<10?'0'+parseInt((dt%60+'').substr(0,2)):parseInt((dt%60+'').substr(0,2));
         dur = cur+':'+ss;
