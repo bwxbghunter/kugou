@@ -255,8 +255,9 @@
     position: relative;
   }
   .strangerPicture img{
-    width:100%;
+    width:180%;
     height: 100%;
+    margin-left: -55px;
   }
   .groundGlass{
     position: absolute;
