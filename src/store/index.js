@@ -26,10 +26,10 @@ export default new Vuex.Store({
       music_duration:'00:00',// 音乐总时长
       playSong:function(){},// 播放音乐
       pauseSong:function(){},// 暂停音乐
-      // changeSong:function(){},// 切换音乐
+      changeSong:function(){},// 切换音乐
       status:false, // 播放状态---控制底部播放状态图标切换
-      index:-1,     // 播放索引---控制音乐列表显示样式切换
-      btns:false,// 按钮状态
+      listId:-1, // 播放列表id
+      listLength:0,// 播放列表长度
     },
     skin:{
       showPage:false,// 是否显示换肤页面

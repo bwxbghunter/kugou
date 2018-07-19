@@ -1,8 +1,8 @@
 <template>
  <div class="play">
-  <div class="prebtn" @click="changeMusic(1)"></div>
+  <div class="prebtn" @click="music.changeSong(-1)"></div>
   <div class="pausebtn" :class="{playbtn:music.status}" @click="playMusic"></div>
-  <div class="nextbtn" @click="changeMusic(-1)"></div>
+  <div class="nextbtn" @click="music.changeSong(1)"></div>
   <div class="progressBox">
     <div class="musicName clearfix">
       <div class="standard">标准 <span class="trangle"></span> </div>
@@ -43,21 +43,33 @@
     components:{},
     methods:{
       playMusic:function(){
-        this.music.btns = !this.music.btns; // 播放图标显示状态
-       if(this.music.status){
-         this.music.pauseSong();
-         this.music.status = false;
-       }else{
-         this.music.playSong();
-         this.music.status = true;
-       }
+        if(this.music.status){
+          this.music.pauseSong();
+        }else{
+          this.music.playSong();
+        }
+        if(this.music.listId==-1){
+          this.music.listId =  0;
+          this.music.playSong();
+          this.music.status = true;
+          console.log(this.music.listLength,'%++++++++++++');
+        }
+        // if(this.music.status){
+        //   this.music.pauseSong();
+        //   this.music.status = false;
+        // }else{
+        //   this.music.playSong();
+        //   this.music.status = true;
+        // }
+
       },
       changeMusic:function(val){
-        if(val>0){
-          this.music.index--;
-        }else{
-          this.music.index++;
-        }
+
+        // if(val>0){
+        //   this.music.index--;
+        // }else{
+        //   this.music.index++;
+        // }
       },
       mouseDown:function (e) {
         let sliderbg = this.$refs.sliderbg;

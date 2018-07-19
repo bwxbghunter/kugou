@@ -3,11 +3,11 @@
     <ul class="musicListUl">
       <li class="musicListLis" v-for="(item,index) in option">
         <!--<singleMusic :index="index" :option="item" ></singleMusic>-->
-        <div class="singleMusicBox" :class="{lisBg:music.index == index}" @dblclick="playSong(index)">
+        <div class="singleMusicBox" :class="{lisBg:musicIndex == index}" @dblclick="changeSong(index,true)">
           <span class="addMusic"></span>
           <div class="musicPH">
-            <div class="musicP"  v-show="music.index != index"><span>{{item.name}}</span></div>
-            <div class="musicH"  v-show="music.index == index">
+            <div class="musicP"  v-show="musicIndex != index"><span>{{item.name}}</span></div>
+            <div class="musicH"  v-show="musicIndex == index">
               <div class="singleMusic">
                 <div class="imgPic"><img class="imgPicIcon" :src="item.img" alt=""></div>
                 <div class="musicA">
@@ -45,19 +45,36 @@
     components:{singleMusic},
     methods:{
       /************播放音乐*****************/
-      playSong:function(index){
-        this.musicIndex = index;
+      changeSong:function(index,set){
+        // console.log(index,'===========');
+        if(set){
+          this.musicIndex = index;
+        }else{
+          let musicIndex=this.musicIndex;
+          musicIndex+=index;
+          if(musicIndex>-1&&musicIndex<this.option.length){
+            this.musicIndex=musicIndex;
+          }
+        }
       },
+      playEvent:function(){
+        this.music.status = true;
+      },
+      pauseEvent:function(){
+        this.music.status = false;
+      }
     },
     computed:{...mapState(['music'])},
     mounted(){
-        this.music_list=document.getElementsByTagName('audio');
-        this.musicIndex = -1;
+      this.music.changeSong = this.changeSong;
+      this.music_list=document.getElementsByTagName('audio');
+      this.musicIndex = 0;
+      // console.log(this.music.listLength,'__+++++++++++______');
     },
     watch:{
       musicIndex:function(index){
-        this.music.index = index;   // 设置索引
-        if(this.option.length<1) return; // 判断音乐列表长度是否为0
+        // console.log('99999====',index,'=======',this.option.length);
+        // if(this.option.length<1) return; // 判断音乐列表长度是否为0
         if(index==-1){
           this.music.playSong = ()=>{
             setTimeout(()=>{
@@ -67,14 +84,19 @@
           return
         }
         for(let i=0;i<this.music_list.length;i++){
+          this.music_list[i].removeEventListener('play',this.playEvent);
+          this.music_list[i].removeEventListener('pause',this.pauseEvent);
           this.music_list[i].pause();
+          this.music_list[i].currentTime = 0;
         }
-        let music=this.music_list[this.music.index];
+        let music=this.music_list[index];
+        music.addEventListener('play',this.playEvent);
+        music.addEventListener('pause',this.pauseEvent);
         music.play();
-        this.music.status = true;   // 控制底部播放图标切换
-        let song = this.option[this.music.index];
+        let song = this.option[index];
         let dt,cur,ss,dur;
         dt = music.duration;
+        console.log(music,'-------',music.duration);
         cur = parseFloat((dt/60+'').split('.')[0])<10?'0'+(dt/60+'').split('.')[0]:(dt/60+'').split('.')[0];
         ss = parseInt((dt%60+'').substr(0,2))<10?'0'+parseInt((dt%60+'').substr(0,2)):parseInt((dt%60+'').substr(0,2));
         dur = cur+':'+ss;
@@ -91,14 +113,19 @@
           //获取当前播放时长
           this.music.music_time = ct;
         });
+
         // 获取总时长
         this.music.music_duration = dur;
         //改变专辑图片
         this.music.photo_src =song.img;
         //改变歌曲名
         this.music.music_name = song.name;
-        this.music.playSong = music.play;
-        this.music.pauseSong = music.pause;
+        this.music.playSong = ()=>{
+          music.play();
+        };
+        this.music.pauseSong = ()=>{
+          music.pause();
+        };
         music.style.src=song.src;
       }
     }

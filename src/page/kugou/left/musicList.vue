@@ -56,16 +56,19 @@
         netAry:[
           {
             list_name:'我喜欢',
+            list_id:11,
             list_length:505,
             data_list:[]
           },
           {
             list_name:'默认收藏',
+            list_id:12,
             list_length:179,
             data_list:[]
           },
           {
             list_name:'凤凰传奇',
+            list_id:13,
             list_length:40,
             data_list:[]
           }

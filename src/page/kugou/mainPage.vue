@@ -59,7 +59,7 @@
         locality:[
           {
             list_name:'默认列表',
-            list_length:822,
+            list_length:4,
             list_id:0,
             data_list:[
               {
@@ -86,7 +86,7 @@
           },
           {
             list_name:'每日歌曲推荐',
-            list_length:30,
+            list_length:3,
             list_id:1,
             data_list:[
               {
@@ -108,8 +108,8 @@
           },
           {
             list_name:'最近播放',
-            list_length:50,
-            list_id:3,
+            list_length:3,
+            list_id:2,
             data_list:[
               {
                 name:'云朵 - 我的楼兰 (DJ沫沫版)',
