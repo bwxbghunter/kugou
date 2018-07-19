@@ -92,7 +92,7 @@
         let music=this.music_list[index];
         music.addEventListener('play',this.playEvent);
         music.addEventListener('pause',this.pauseEvent);
-        console.log(music,'-------',music.duration);
+        // console.log(music,'-------',music.duration);
         music.play();
         let song = this.option[index];
         let dt,cur,ss,dur;
