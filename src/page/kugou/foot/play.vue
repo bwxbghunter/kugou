@@ -48,28 +48,12 @@
         }else{
           this.music.playSong();
         }
-        if(this.music.listId==-1){
-          this.music.listId =  0;
-          this.music.playSong();
-          this.music.status = true;
-          console.log(this.music.listLength,'%++++++++++++');
-        }
-        // if(this.music.status){
-        //   this.music.pauseSong();
-        //   this.music.status = false;
-        // }else{
+        // if(this.music.listId==-1){
+        //   this.music.listId =  0;
         //   this.music.playSong();
         //   this.music.status = true;
         // }
 
-      },
-      changeMusic:function(val){
-
-        // if(val>0){
-        //   this.music.index--;
-        // }else{
-        //   this.music.index++;
-        // }
       },
       mouseDown:function (e) {
         let sliderbg = this.$refs.sliderbg;

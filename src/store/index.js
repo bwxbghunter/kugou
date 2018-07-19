@@ -28,7 +28,7 @@ export default new Vuex.Store({
       pauseSong:function(){},// 暂停音乐
       changeSong:function(){},// 切换音乐
       status:false, // 播放状态---控制底部播放状态图标切换
-      listId:-1, // 播放列表id
+      listId:0, // 播放列表id
       listLength:0,// 播放列表长度
     },
     skin:{

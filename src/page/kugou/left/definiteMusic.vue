@@ -68,7 +68,7 @@
     mounted(){
       this.music.changeSong = this.changeSong;
       this.music_list=document.getElementsByTagName('audio');
-      this.musicIndex = 0;
+      this.musicIndex = -1;
       // console.log(this.music.listLength,'__+++++++++++______');
     },
     watch:{
