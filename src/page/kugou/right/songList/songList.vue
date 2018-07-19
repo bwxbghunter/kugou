@@ -20,7 +20,7 @@
         </ul>
       </div>
       <div class="songListBox">
-        <songTable :songAry="dataAry"></songTable>
+        <songTable ref="songTable" :songAry="dataAry"></songTable>
       </div>
     </div>
   </div>
@@ -325,6 +325,7 @@
     components:{songTable,category},
     methods:{
       scrollTop_:function(){
+        this.$refs.songTable.imgChange();
         //获取滚动条滑动的距离
         let scrollTop = this.$refs.songlistBox.scrollTop;
         // 获取可视窗口高度
@@ -343,6 +344,7 @@
       },
       /***********加载更多****/
       lazyLoad:function(){
+        this.$refs.songTable.imgChange();
         if(this.flag){
            return;
         }

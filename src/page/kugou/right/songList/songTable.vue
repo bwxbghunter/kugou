@@ -31,6 +31,7 @@
     methods:{
       imgChange:function(){
         let img = document.getElementsByClassName('songImg');
+        // console.log(111);
         for(let i = 0; i<img.length;i++){
           img[i].style.width = 200+'%';
           img[i].style.marginLeft = -90 + 'px';
@@ -40,11 +41,11 @@
     },
     computed:{},
     mounted(){
-     this.imgChange();
+     // this.imgChange();
     },
     watch:{
       songAry:function(val){
-        this.imgChange();
+        // this.imgChange();
       }
     }
   }

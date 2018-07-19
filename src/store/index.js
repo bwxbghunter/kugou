@@ -38,7 +38,6 @@ export default new Vuex.Store({
       mainSkin:'/static/images/mv_img/13.jpg',// 皮肤路径
       skinId:0,// 皮肤id
     },
-
   },
   getters,
   actions,
