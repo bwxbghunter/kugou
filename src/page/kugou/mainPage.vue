@@ -62,6 +62,12 @@
             list_length:4,
             list_id:0,
             data_list:[
+              // 不二小倩 - 大花轿 (Live).mp3
+              {
+                name:'不二小倩 - 大花轿 (Live)',
+                img:'/static/images/mv_img/37.jpg',
+                src:'/static/audios/不二小倩 - 大花轿 (Live).mp3'
+              },
               {
                 name:'云朵 - 我的楼兰 (DJ沫沫版)',
                 img:'/static/images/mv_img/16.jpg',
