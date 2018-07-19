@@ -24,9 +24,11 @@ export default new Vuex.Store({
       music_time:'00:00',// 当前播放时间进度
       music_bar:0,// 进度条
       music_duration:'00:00',// 音乐总时长
-      playM:function(){},// 播放音乐
-      pauseM:function(){},// 暂停音乐
-      status:false, // 播放状态
+      playSong:function(){},// 播放音乐
+      pauseSong:function(){},// 暂停音乐
+      // changeSong:function(){},// 切换音乐
+      status:false, // 播放状态---控制底部播放状态图标切换
+      index:-1,     // 播放索引---控制音乐列表显示样式切换
       btns:false,// 按钮状态
     },
     skin:{

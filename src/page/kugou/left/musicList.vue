@@ -53,79 +53,6 @@
         option:['本地列表','网络收藏','音乐电台','手机音乐管理','本地音乐'],
         lised:0,
         isradio:false,
-        locality:[
-          {
-            list_name:'默认列表',
-            list_length:822,
-            list_id:0,
-            data_list:[
-              {
-                 name:'云朵 - 我的楼兰 (DJ沫沫版)',
-                 img:'/static/images/mv_img/16.jpg',
-                 src:'/static/audios/云朵 - 我的楼兰 (DJ沫沫版).mp3'
-              },
-              {
-                name:'格子兮 - 西塘有雨',
-                img:'/static/images/mv_img/10.jpg',
-                src:'/static/audios/格子兮 - 西塘有雨.flac'
-              },
-              {
-                name:'时砂 - 解锁',
-                img:'/static/images/mv_img/8.jpg',
-                src:'/static/audios/时砂 - 解锁.mp3'
-              },
-              {
-                name:'SISTAR - 바빠 (Bad Boy 很忙)',
-                img:'/static/images/mv_img/2.jpg',
-                src:'/static/audios/SISTAR - 바빠 (Bad Boy 很忙).flac'
-              }
-            ]
-          },
-          {
-            list_name:'每日歌曲推荐',
-            list_length:30,
-            list_id:1,
-            data_list:[
-              {
-                name:'云朵 - 我的楼兰 (DJ沫沫版)',
-                img:'/static/images/kg_logo.jpg',
-                src:'/static/audios/云朵 - 我的楼兰 (DJ沫沫版).mp3'
-              },
-              {
-                name:'格子兮 - 西塘有雨',
-                img:'/static/images/kg_logo.jpg',
-                src:'/static/audios/格子兮 - 西塘有雨.flac'
-              },
-              {
-                name:'时砂 - 解锁',
-                img:'/static/images/kg_logo.jpg',
-                src:'/static/audios/时砂 - 解锁.mp3'
-              }
-            ]
-          },
-          {
-            list_name:'最近播放',
-            list_length:50,
-            list_id:3,
-            data_list:[
-              {
-                name:'云朵 - 我的楼兰 (DJ沫沫版)',
-                img:'/static/images/kg_logo.jpg',
-                src:'/static/audios/云朵 - 我的楼兰 (DJ沫沫版).mp3'
-              },
-              {
-                name:'格子兮 - 西塘有雨',
-                img:'/static/images/kg_logo.jpg',
-                src:'/static/audios/格子兮 - 西塘有雨.flac'
-              },
-              {
-                name:'时砂 - 解锁',
-                img:'/static/images/kg_logo.jpg',
-                src:'/static/audios/时砂 - 解锁.mp3'
-              }
-            ]
-          }
-        ],
         netAry:[
           {
             list_name:'我喜欢',
@@ -148,7 +75,7 @@
         downloadTitle:{text1:'我的下载',id1:0,text2:'本地导入',id2:1}
       }
     },
-    props:[],
+    props:['locality'],
     components:{commonList},
     methods:{
       /**********选择类型Tab*************/

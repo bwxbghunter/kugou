@@ -13,10 +13,12 @@
     </div>
     <div class="contentBox" :class="{ishideLeft:ishide&&!isrightTab,rightTab:isrightTab}">
       <div class="contentLeft" :style="{backgroundColor:valueRgab}" :class="{borderRnone:public.choseItem=='歌词'}">
-        <musicList></musicList>
+        <musicList :locality="locality"></musicList>
       </div>
       <div class="contentRight">
-        <musicClass @hideLeft="hideLeft_fn" @changeTab="changeTab_fn" @submitContribute_fn="showContribute=true"></musicClass>
+        <!--收起左侧列表-->
+        <div class="hideLeft" @click="hideLeftList"><span></span></div>
+        <musicClass @changeTab="changeTab_fn" @submitContribute_fn="showContribute=true"></musicClass>
       </div>
     </div>
     <div class="footBox">
@@ -54,6 +56,79 @@
         downX:0,            // 鼠标按下时的横坐标距离
         downY:0,            // 鼠标按下时纵坐标距离
         dragDom:'',         // 获取拖动的元素
+        locality:[
+          {
+            list_name:'默认列表',
+            list_length:822,
+            list_id:0,
+            data_list:[
+              {
+                name:'云朵 - 我的楼兰 (DJ沫沫版)',
+                img:'/static/images/mv_img/16.jpg',
+                src:'/static/audios/云朵 - 我的楼兰 (DJ沫沫版).mp3'
+              },
+              {
+                name:'格子兮 - 西塘有雨',
+                img:'/static/images/mv_img/10.jpg',
+                src:'/static/audios/格子兮 - 西塘有雨.flac'
+              },
+              {
+                name:'时砂 - 解锁',
+                img:'/static/images/mv_img/8.jpg',
+                src:'/static/audios/时砂 - 解锁.mp3'
+              },
+              {
+                name:'SISTAR - 바빠 (Bad Boy 很忙)',
+                img:'/static/images/mv_img/2.jpg',
+                src:'/static/audios/SISTAR - 바빠 (Bad Boy 很忙).flac'
+              }
+            ]
+          },
+          {
+            list_name:'每日歌曲推荐',
+            list_length:30,
+            list_id:1,
+            data_list:[
+              {
+                name:'云朵 - 我的楼兰 (DJ沫沫版)',
+                img:'/static/images/kg_logo.jpg',
+                src:'/static/audios/云朵 - 我的楼兰 (DJ沫沫版).mp3'
+              },
+              {
+                name:'格子兮 - 西塘有雨',
+                img:'/static/images/kg_logo.jpg',
+                src:'/static/audios/格子兮 - 西塘有雨.flac'
+              },
+              {
+                name:'时砂 - 解锁',
+                img:'/static/images/kg_logo.jpg',
+                src:'/static/audios/时砂 - 解锁.mp3'
+              }
+            ]
+          },
+          {
+            list_name:'最近播放',
+            list_length:50,
+            list_id:3,
+            data_list:[
+              {
+                name:'云朵 - 我的楼兰 (DJ沫沫版)',
+                img:'/static/images/kg_logo.jpg',
+                src:'/static/audios/云朵 - 我的楼兰 (DJ沫沫版).mp3'
+              },
+              {
+                name:'格子兮 - 西塘有雨',
+                img:'/static/images/kg_logo.jpg',
+                src:'/static/audios/格子兮 - 西塘有雨.flac'
+              },
+              {
+                name:'时砂 - 解锁',
+                img:'/static/images/kg_logo.jpg',
+                src:'/static/audios/时砂 - 解锁.mp3'
+              }
+            ]
+          }
+        ],
       }
     },
     props:[],
@@ -69,9 +144,8 @@
           }
         }
       },
-      /*********侧边栏收起和展开***********/
-      hideLeft_fn:function(val){
-        this.ishide = val;
+      hideLeftList:function(){
+        this.ishide = !this.ishide;
       },
       /*********右侧tab切换************/
       changeTab_fn:function(val){
@@ -217,7 +291,7 @@
     left:0;
     top:0;
     opacity: 1;
-    transition: all 0.2s linear;
+    transition: all 0.2s ease;
   }
   .borderRnone{
     border-right: none;
@@ -235,8 +309,47 @@
     height:100%;
     position: absolute;
     left:312px;
-    transition: all 0.2s linear;
+    /*transition: all 0.2s linear;*/
   }
+.hideLeft{
+  display: block;
+  width:15px;
+  height:54px;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+  position: absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  right:auto;
+  margin:auto;
+  cursor: pointer;
+  opacity: 0.8;
+  overflow: hidden;
+  z-index: 1;
+}
+.hideLeft span{
+  width:15px;
+  height:100%;
+  display: inline-block;
+  background: rgba(249, 249, 249, 0.65) url("/static/images/hide_list.png") no-repeat 0px center;
+  -webkit-background-size:18px 25px;
+  background-size:18px 25px;
+  transform: rotate(180deg);
+}
+
+.rightTab .hideLeft{
+  display: none;
+}
+
+.hideLeft:hover{
+  opacity: 1;
+}
+.hideLeft:active{
+  opacity: 0.8;
+}
+
+
   .footBox{
     height: 65px;
     width:100%;

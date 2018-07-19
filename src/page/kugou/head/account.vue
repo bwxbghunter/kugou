@@ -1,7 +1,7 @@
 <template>
   <div class="account">
-   <div class="accountIcon" @click="showSet"><img :src="public.userIcon" alt=""></div>
-    <div class="accountName" @click="showSet">{{public.userName}} <span></span>
+   <div class="accountIcon" @click.stop="showSet"><img :src="public.userIcon" alt=""></div>
+    <div class="accountName" @click.stop="showSet">{{public.userName}} <span></span>
       <div  v-if="public.isshowSet" >
         <accountSet @closeSetPage="public.isshowSet=false"></accountSet>
       </div>

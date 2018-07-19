@@ -10,8 +10,6 @@
      </div>
    </div>
    <div class="bottomMusicClass">
-     <!--收起左侧列表-->
-     <div class="hideLeft" @click="hideLeftList"><span></span></div>
    <!--界面设置  -->
     <div class="lycBox">
       <div class="lycr">
@@ -45,7 +43,6 @@
   export default{
     data(){
       return{
-        ishideList:false,
         option:['乐库','电台','歌单','MV','直播','KTV','歌词'],
         choseIndex:0,
       }
@@ -66,10 +63,7 @@
           this.$emit('changeTab',false)
         }
       },
-      hideLeftList:function(){
-         this.ishideList = !this.ishideList;
-         this.$emit('hideLeft',this.ishideList)
-      },
+
 
     },
     computed:{
@@ -86,9 +80,13 @@
     width:100%;
     height:100%;
     background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    right: 0;
   }
   .musicClass.hideBgc{
     background-color:transparent;
+    width: calc(100% - 312px);
   }
   .musicClass.hideBgc .topMusicClass{
     border-bottom: 1px solid transparent;
@@ -156,41 +154,7 @@
     overflow: hidden;
     position: relative;
   }
-  .hideBgc .hideLeft{
-    display: block;
-  }
-  .hideLeft{
-    display: none;
-    width:15px;
-    height:54px;
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
-    position: absolute;
-    left:0;
-    top:0;
-    bottom:0;
-    right:auto;
-    margin:auto;
-    cursor: pointer;
-    opacity: 0.8;
-    overflow: hidden;
-  }
-  .hideLeft span{
-    width:15px;
-    height:100%;
-    display: inline-block;
-    background: rgba(249, 249, 249, 0.65) url("/static/images/hide_list.png") no-repeat 0px center;
-    -webkit-background-size:18px 25px;
-    background-size:18px 25px;
-    transform: rotate(180deg);
-  }
 
-  .hideLeft:hover{
-    opacity: 1;
-  }
-  .hideLeft:active{
-    opacity: 0.8;
-  }
   .hideBgc .lycBox{
     display: block;
   }

@@ -3,12 +3,11 @@
     <ul class="musicListUl">
       <li class="musicListLis" v-for="(item,index) in option">
         <!--<singleMusic :index="index" :option="item" ></singleMusic>-->
-        <div class="singleMusicBox" :class="{lisBg:musicIndex == index}" @dblclick="playerMusic(index)">
+        <div class="singleMusicBox" :class="{lisBg:music.index == index}" @dblclick="playSong(index)">
           <span class="addMusic"></span>
           <div class="musicPH">
-            <div class="musicP"  v-show="musicIndex != index"><span>{{item.name}}</span></div>
-            <div class="musicH"  v-show="musicIndex == index">
-              <!--<singleMusic :option="item" ></singleMusic>-->
+            <div class="musicP"  v-show="music.index != index"><span>{{item.name}}</span></div>
+            <div class="musicH"  v-show="music.index == index">
               <div class="singleMusic">
                 <div class="imgPic"><img class="imgPicIcon" :src="item.img" alt=""></div>
                 <div class="musicA">
@@ -37,7 +36,7 @@
   export default{
     data(){
       return{
-        musicIndex:-1,
+        musicIndex:-2,
         music_list:[],
         player_src:''
       }
@@ -46,42 +45,41 @@
     components:{singleMusic},
     methods:{
       /************播放音乐*****************/
-      playerMusic:function(index){
-        if(this.musicIndex!=-1){
-          this.music.player = this.music_list[this.musicIndex];
-          this.music.player.pause();
-          this.music.player.currentTime =0;
-        }
+      playSong:function(index){
         this.musicIndex = index;
-        this.music.player = this.music_list[index];
-        //paused,表示当前音乐是否为暂停状态
-        if(this.music.player.paused){
-          // 播放当前音乐
-          this.playMusic();
-          this.music.status = true;
-        }else {
-          // 暂停当前音乐
-          this.music.player.pause();
-          this.music.status = false;
+      },
+    },
+    computed:{...mapState(['music'])},
+    mounted(){
+        this.music_list=document.getElementsByTagName('audio');
+        this.musicIndex = -1;
+    },
+    watch:{
+      musicIndex:function(index){
+        this.music.index = index;   // 设置索引
+        if(this.option.length<1) return; // 判断音乐列表长度是否为0
+        if(index==-1){
+          this.music.playSong = ()=>{
+            setTimeout(()=>{
+              this.musicIndex = 0;
+            },100)
+          };
+          return
         }
-        // 调用载入歌曲信息函数
-        this.loadMusic();
-      },
-      // 播放
-      playMusic:function(){
-        this.music.player.play();
-      },
-      // 载入歌曲信息
-      loadMusic:function(){
-        if(this.option.length<1) return;
-        let music=this.option[this.musicIndex];
-        let dt,cur,ss,dur,audio_src;
-        dt = this.music.player.duration;
+        for(let i=0;i<this.music_list.length;i++){
+          this.music_list[i].pause();
+        }
+        let music=this.music_list[this.music.index];
+        music.play();
+        this.music.status = true;   // 控制底部播放图标切换
+        let song = this.option[this.music.index];
+        let dt,cur,ss,dur;
+        dt = music.duration;
         cur = parseFloat((dt/60+'').split('.')[0])<10?'0'+(dt/60+'').split('.')[0]:(dt/60+'').split('.')[0];
         ss = parseInt((dt%60+'').substr(0,2))<10?'0'+parseInt((dt%60+'').substr(0,2)):parseInt((dt%60+'').substr(0,2));
         dur = cur+':'+ss;
-        this.music.player.addEventListener("timeupdate",()=>{
-          let ct =parseInt(this.music.player.currentTime);
+        music.addEventListener("timeupdate",()=>{
+          let ct =parseInt(music.currentTime);
           if(ct<10){
             ct = '00:'+'0'+ct;
           }else if(ct<60){
@@ -96,30 +94,12 @@
         // 获取总时长
         this.music.music_duration = dur;
         //改变专辑图片
-        this.music.photo_src =music.img;
+        this.music.photo_src =song.img;
         //改变歌曲名
-        this.music.music_name = music.name;
-        //改变歌曲路径
-        this.music.src = music.src;
-        this.player_src = music.src;
-        audio_src = this.music.player;
-        audio_src.style.src=music.src;
-        console.log(this.music.player,'---------======',music);
-      },
-    },
-    computed:{...mapState(['music'])},
-    mounted(){
-        this.music_list=document.getElementsByTagName('audio');
-//        this.player_src =this.option[0].src;
-//      console.log(this.player_src,'########');
-
-    },
-    watch:{
-      'music.btns':function(val){
-
-        /*if(this.musicIndex ==-1){
-          this.playerMusic(0);
-        }*/
+        this.music.music_name = song.name;
+        this.music.playSong = music.play;
+        this.music.pauseSong = music.pause;
+        music.style.src=song.src;
       }
     }
   }
