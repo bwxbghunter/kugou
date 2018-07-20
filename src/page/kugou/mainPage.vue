@@ -1,6 +1,6 @@
 <template>
-  <div class="mainPage"  ref="mainPage" style="left:0;top:0;margin-left:0;margin-top: 0">
-    <div class="headBox" ref="headBox" @mousedown.stop="moveDown">
+  <div class="mainPage"  ref="mainPage" style="left:0;top:0;margin-left:0;margin-top: 0" @click="hideClick">
+    <div class="headBox" ref="headBox" @mousedown.stop.prevent="moveDown">
       <div class="leftHead"><account></account></div>
       <div class="rightHead">
         <div class="rightHeadSearch">
@@ -183,11 +183,9 @@
     },
       // 拖动----鼠标按下
       moveDown:function(e){
-        this.hideClick(e);
         this.mainDom = this.$refs.mainPage;
         this.leftDom = parseInt(this.mainDom.style.left);
         this.topDom = parseInt(this.mainDom.style.top);
-        // this.dragDom = drag;
         let tag = e||window.event;
         this.downX = tag.pageX;
         this.downY = tag.pageY;

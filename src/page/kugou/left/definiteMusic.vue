@@ -66,7 +66,7 @@
       // 暂停
       pauseEvent:function(){
         this.music.status = false;
-      }
+      },
     },
     computed:{...mapState(['music'])},
     mounted(){
@@ -135,6 +135,11 @@
         this.music.photo_src =song.img;
         //改变歌曲名
         this.music.music_name = song.name;
+        this.music.sethead = (num)=>{
+          console.log(dt * num,'^^^^^^^',dt,num);
+          music.currentTime = dt*num;
+          music.play();
+        };
         this.music.playSong = ()=>{
           music.play();
         };

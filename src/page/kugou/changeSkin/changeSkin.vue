@@ -1,6 +1,6 @@
 <template>
-  <div class="changeSkin" :class="{moved:isdown}" @click.stop="hideBar" @mousedown.stop="dragDown" :style="{background:imgUrl}">
-    <div class="title">主题皮肤与窗口调整 <span class="closePage" @click="closePage"></span></div>
+  <div class="changeSkin" style="left:0;top:0;margin-left:0;margin-top: 0" ref="changeSkin" :class="{moved:isdown}" @click.stop="hideBar"  :style="{background:imgUrl}">
+    <div class="title" @mousedown.stop.prevent="dragDown">主题皮肤与窗口调整 <span class="closePage" @click="closePage"></span></div>
     <div class="skinBody">
       <div class="skinTab">
         <div class="tabItem" :class="{isItem:status==1}" @click="choseType(1)">推荐</div>
@@ -69,6 +69,8 @@
         diffX:0,           // 鼠标按下时距离父元素的边框宽度
         diffY:0,           // 鼠标按下时距离父元素的边框高度
         drag:'',           // dom元素
+        leftDom:0,
+        topDom:0,
         isdown:false,      // 判断鼠标是否按下
         theme:[
           {id:200,img:'/static/images/mv_img/13.jpg'},
@@ -164,13 +166,14 @@
     components:{seekBar,pureColor,recommend,mine},
     methods:{
       dragDown:function(e){
-        // this.hideBar(e); // 调用点击其它地方拖动条组件隐藏
         this.isdown = true;
-        let drag = e.currentTarget; // 获取拖动元素
+        let drag = this.$refs.changeSkin; // 获取拖动元素
         this.drag = drag;
+        this.leftDom = parseInt(drag.style.left);
+        this.topDom = parseInt(drag.style.top);
         let tag = e || window.event;
-        this.diffX = parseInt(tag.clientX - drag.offsetLeft)||0; // 鼠标按下时距离父元素的边框宽度
-        this.diffY = parseInt(tag.clientY - drag.offsetTop)||0;   // 鼠标按下时距离父元素的边框高度
+        this.diffX = tag.pageX; // 鼠标按下时距离父元素的边框宽度
+        this.diffY = tag.pageY;   // 鼠标按下时距离父元素的边框高度
         if(typeof drag.setCapture!='undefined'){
           drag.setCapture();
         }
@@ -179,22 +182,27 @@
       },
       dragMove:function(e){
         let tag = e|| window.event;
-        let left = tag.clientX - this.diffX;
-        let top = tag.clientY - this.diffY;
-        if(left < 0){
-          left = 0;
-        }else if(left > document.documentElement.clientWidth - this.drag.offsetWidth){
-          left = document.documentElement.clientWidth - this.drag.offsetWidth;
-        }
-        if(top < 0){
-          top = 0
-        }else if(top > document.documentElement.clientHeight - this.drag.offsetHeight){
-          top = document.documentElement.clientHeight - this.drag.offsetHeight;
-        }
-        this.drag.style.left = left +'px';
-        this.drag.style.top = top +'px';
+        let pageX = tag.pageX;
+        let pageY = tag.pageY;
+        pageX = Math.min(pageX,window.innerWidth);
+        pageX = Math.max(0,pageX);
+        pageY = Math.min(pageY,window.innerHeight);
+        pageY = Math.max(0,pageY);
+        let left = pageX - this.diffX;
+        let top = pageY - this.diffY;
+
+        this.drag.style.marginLeft = left +'px';
+        this.drag.style.marginTop = top +'px';
       },
       dragUp:function(e){
+        let ml = parseInt(this.drag.style.marginLeft);
+        let mt = parseInt(this.drag.style.marginTop);
+        let l = parseInt(this.drag.style.left);
+        let t = parseInt(this.drag.style.top);
+        this.drag.style.marginLeft = 0;
+        this.drag.style.marginTop = 0;
+        this.drag.style.left = ml+l+'px';
+        this.drag.style.top = mt+t+'px';
         document.removeEventListener('mousemove',this.dragMove);
         document.removeEventListener('mouseup',this.dragUp);
         this.isdown = false;
@@ -290,13 +298,12 @@
 .changeSkin{
   width: 555px;
   height: 440px;
-  position: fixed;
-  /*position: absolute;*/
-  /*left: 0;*/
-  /*right: 0;*/
-  /*top: 0;*/
-  /*bottom: 0;*/
-  /*margin: auto;*/
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
   z-index: 20;
   background: url("/static/images/bg.png") no-repeat center;
   -webkit-background-size: 130% 100%;
