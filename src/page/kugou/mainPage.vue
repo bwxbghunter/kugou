@@ -1,6 +1,6 @@
 <template>
-  <div class="mainPage"  @mousedown.stop="moveDown">
-    <div class="headBox">
+  <div class="mainPage"  ref="mainPage" style="left:0;top:0;margin-left:0;margin-top: 0">
+    <div class="headBox" ref="headBox" @mousedown.stop="moveDown">
       <div class="leftHead"><account></account></div>
       <div class="rightHead">
         <div class="rightHeadSearch">
@@ -55,7 +55,9 @@
         showContribute:false,//显示歌单征集令----歌单投稿
         downX:0,            // 鼠标按下时的横坐标距离
         downY:0,            // 鼠标按下时纵坐标距离
-        dragDom:'',         // 获取拖动的元素
+        mainDom:'',         // 获取拖动的元素父级
+        leftDom:0,
+        topDom:0,
         locality:[
           {
             list_name:'默认列表',
@@ -182,32 +184,41 @@
       // 拖动----鼠标按下
       moveDown:function(e){
         this.hideClick(e);
-        let drag = e.currentTarget;
-        this.dragDom = drag;
+        this.mainDom = this.$refs.mainPage;
+        this.leftDom = parseInt(this.mainDom.style.left);
+        this.topDom = parseInt(this.mainDom.style.top);
+        // this.dragDom = drag;
         let tag = e||window.event;
-        this.downX = tag.clientX - drag.offsetLeft;
-        this.downY = tag.clientY - drag.offsetTop;
+        this.downX = tag.pageX;
+        this.downY = tag.pageY;
         document.addEventListener('mousemove',this.moveMove);
         document.addEventListener('mouseup',this.moveUp);
       },
       moveMove:function(e){
         let tag = e|| window.event;
-        let left = tag.clientX - this.downX;
-        let top = tag.clientY - this.downY;
-        if(left<0){
-          left = 0;
-        }else if(left>window.innerWidth - this.dragDom.offsetWidth){
-          left = window.innerWidth - this.dragDom.offsetWidth;
-        }
-        if(top<0){
-          top = 0;
-        }else if(top>window.innerHeight - this.dragDom.offsetHeight){
-          top = window.innerHeight - this.dragDom.offsetHeight;
-        }
-        this.dragDom.style.left = left + 'px';
-        this.dragDom.style.top = top +'px';
+        let pageX = tag.pageX;
+        let pageY = tag.pageY;
+        // 判断鼠标不能超出浏览器边框
+        pageX=Math.min(pageX,window.innerWidth);
+        pageX=Math.max(0,pageX);
+        pageY=Math.min(pageY,window.innerHeight);
+        pageY=Math.max(0,pageY);
+        let left = pageX - this.downX;
+        let top = pageY - this.downY;
+        this.mainDom.style.marginTop =top + 'px';
+        this.mainDom.style.marginLeft = left +'px';
       },
       moveUp:function(){
+        let mainDom = this.mainDom;
+        let ml = parseInt(mainDom.style.marginLeft);
+        let mt = parseInt(mainDom.style.marginTop);
+        let l =  this.leftDom ;
+        let t =  this.topDom ;
+        mainDom.style.marginLeft = 0;
+        mainDom.style.marginTop = 0;
+        mainDom.style.left = ml + l+'px';
+        mainDom.style.top = mt +t+'px';
+        // console.log('marginLeft='+ml,'marignTop='+mt,'left='+l,'top='+t);
         document.removeEventListener('mousemove',this.moveMove);
         document.removeEventListener('mouseup',this.moveUp);
       }
@@ -230,16 +241,19 @@
   }
 </script>
 <style>
+  html,body{
+    overflow: hidden;
+  }
 .mainPage{
   width:1000px;
   height:760px;
   min-width: 1000px;
   min-height: 740px;
-  position: fixed;
-  /*left:0;*/
-  /*right:0;*/
-  /*bottom:0;*/
-  /*top:0;*/
+  position: absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  top:0;
   margin:auto;
 }
 .skinMainPage{
