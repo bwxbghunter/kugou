@@ -86,7 +86,7 @@
   }
   .musicClass.hideBgc{
     background-color:transparent;
-    width: calc(100% - 312px);
+    /*width: calc(100% - 312px);*/
   }
   .musicClass.hideBgc .topMusicClass{
     border-bottom: 1px solid transparent;
