@@ -53,7 +53,6 @@
         //   this.music.playSong();
         //   this.music.status = true;
         // }
-
       },
       mouseDown:function (e) {
         let sliderbg = this.$refs.sliderbg;

@@ -47,9 +47,11 @@
       /************播放音乐*****************/
       changeSong:function(index,set){
         // console.log(index,'===========');
+        // 如果传了第二个参数 表示播放当前索引的列表音乐
         if(set){
           this.musicIndex = index;
         }else{
+          // 否则为切换音乐
           let musicIndex=this.musicIndex;
           musicIndex+=index;
           if(musicIndex>-1&&musicIndex<this.option.length){
@@ -57,9 +59,11 @@
           }
         }
       },
+      // 播放
       playEvent:function(){
         this.music.status = true;
       },
+      // 暂停
       pauseEvent:function(){
         this.music.status = false;
       }
@@ -75,6 +79,7 @@
       musicIndex:function(index){
         // console.log('99999====',index,'=======',this.option.length);
         // if(this.option.length<1) return; // 判断音乐列表长度是否为0
+        // 判断如果索引为-1 则播放第一首
         if(index==-1){
           this.music.playSong = ()=>{
             setTimeout(()=>{
@@ -83,12 +88,14 @@
           };
           return
         }
+        // 循环将所有都暂停
         for(let i=0;i<this.music_list.length;i++){
           this.music_list[i].removeEventListener('play',this.playEvent);
           this.music_list[i].removeEventListener('pause',this.pauseEvent);
           this.music_list[i].pause();
           this.music_list[i].currentTime = 0;
         }
+        // 播放当前音乐
         let music=this.music_list[index];
         music.addEventListener('play',this.playEvent);
         music.addEventListener('pause',this.pauseEvent);
@@ -96,12 +103,16 @@
         music.play();
         let song = this.option[index];
         let dt,cur,ss,dur;
+        // 获取总播放时长
         dt = music.duration;
         cur = parseFloat((dt/60+'').split('.')[0])<10?'0'+(dt/60+'').split('.')[0]:(dt/60+'').split('.')[0];
         ss = parseInt((dt%60+'').substr(0,2))<10?'0'+parseInt((dt%60+'').substr(0,2)):parseInt((dt%60+'').substr(0,2));
         dur = cur+':'+ss;
+        // 监听时长播放更新---保存到vuex中
         music.addEventListener("timeupdate",()=>{
           let ct =parseInt(music.currentTime);
+          // 保存当前播放时长十进制
+          let curCt = ct;
           if(ct<10){
             ct = '00:'+'0'+ct;
           }else if(ct<60){
@@ -109,6 +120,10 @@
           }else if(ct>=60){
             let se = (ct%60).toFixed(0)<10?'0'+(ct%60).toFixed(0):(ct%60).toFixed(0);
             ct ='0'+parseInt(ct/60)+':'+se;
+          }
+          // 判断当前播放时长  如果与总时长相等则自动播放下一首
+          if(curCt == parseInt(dt)){
+            this.musicIndex++;
           }
           //获取当前播放时长
           this.music.music_time = ct;
