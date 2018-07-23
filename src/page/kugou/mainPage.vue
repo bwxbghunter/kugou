@@ -86,9 +86,9 @@
                 src:'/static/audios/时砂 - 解锁.mp3'
               },
               {
-                name:'SISTAR - 바빠 (Bad Boy 很忙)',
+                name:'小潘潘、小峰峰 - 学猫叫',
                 img:'/static/images/mv_img/2.jpg',
-                src:'/static/audios/SISTAR - 바빠 (Bad Boy 很忙).flac'
+                src:'/static/audios/小潘潘、小峰峰 - 学猫叫.flac'
               }
             ]
           },

@@ -31,6 +31,7 @@ export default new Vuex.Store({
       status:false, // 播放状态---控制底部播放状态图标切换
       listId:0, // 播放列表id
       listLength:0,// 播放列表长度
+      index:0,// 播放歌词索引
     },
     skin:{
       showPage:false,// 是否显示换肤页面
