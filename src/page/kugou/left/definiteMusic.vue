@@ -81,7 +81,6 @@
         // console.log('99999====',index,'=======',this.option.length);
         // if(this.option.length<1) return; // 判断音乐列表长度是否为0
         // 判断如果索引为-1 则播放第一首
-        console.log(this.music_list.length,'$$$$$$$$$$$$$$$$$$',index);
         if(index==-1){
           this.music.playSong = ()=>{
             setTimeout(()=>{
@@ -142,7 +141,7 @@
         //改变歌曲名
         this.music.music_name = song.name;
         this.music.sethead = (num)=>{
-          console.log(dt * num,'^^^^^^^',dt,'=======',num);
+          // console.log(dt * num,'^^^^^^^',dt,'=======',num);
           music.currentTime = dt*num;
           music.play();
         };

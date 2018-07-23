@@ -37,7 +37,7 @@
         let sliderbg = this.$refs.sliderbg;
         let x = e.pageX; // 鼠标x轴距离
         this.startX = x;
-        console.log(x,'++++++++++');
+        // console.log(x,'++++++++++');
         let barLeft = sliderbg.offsetLeft;// bar距离左侧的offsetLeft
         let w = x-barLeft-4;// 鼠标点击与offsetLeft差值--偏移量
         this.music.sethead(w/370); // 设置播放头
