@@ -77,7 +77,7 @@
     },
     watch:{
       musicIndex:function(index){
-        this.music.index = index;
+        this.music.index = this.musicIndex;
         // console.log('99999====',index,'=======',this.option.length);
         // if(this.option.length<1) return; // 判断音乐列表长度是否为0
         // 判断如果索引为-1 则播放第一首

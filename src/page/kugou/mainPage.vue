@@ -87,7 +87,7 @@
               },
               {
                 name:'小潘潘、小峰峰 - 学猫叫',
-                img:'/static/images/mv_img/2.jpg',
+                img:'/static/images/mv_img/10.jpg',
                 src:'/static/audios/小潘潘、小峰峰 - 学猫叫.flac'
               }
             ]

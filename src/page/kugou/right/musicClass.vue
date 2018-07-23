@@ -23,7 +23,7 @@
        <MVBox v-if="public.choseItem=='MV'"></MVBox>
        <boradcast v-if="public.choseItem=='直播'"></boradcast>
        <KTV  v-if="public.choseItem=='KTV'"></KTV>
-       <songwords  v-if="public.choseItem=='歌词'"></songwords>
+       <songwords  v-show="public.choseItem=='歌词'"></songwords>
        <changedata  v-if="public.choseItem=='修改资料'"></changedata>
      </div>
    </div>

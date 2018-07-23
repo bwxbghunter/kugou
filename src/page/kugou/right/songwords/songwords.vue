@@ -1,6 +1,6 @@
 <template>
   <div class="songword">
-    <div class="wordBox" style="top:32%" :style="{marginTop:-currentLine*40-20+'px'}">
+    <div class="wordBox" style="top:30%" :style="{marginTop:-currentLine*40-10+'px'}">
       <ul class="wordUl" >
         <li class="wordLis " v-for="(item,index) in lrcText.head">{{item}}</li>
         <li class="wordLis " v-for="(item,index) in lrcText.text"
