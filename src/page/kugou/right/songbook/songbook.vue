@@ -23,6 +23,13 @@
           <div class="songNavePage">伤感情歌</div>
           <div class="songNavePage">无损音乐</div>
         </div>
+        <div class="moreChoose">
+          <ul class="moreChooseUl">
+            <li class="moreChooseLis">
+              <moreChoose></moreChoose>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -31,6 +38,7 @@
   import navBar from '../tool/navBar.vue'
   import newMusic from './newMusic'
   import newPlate from './newPlate'
+  import moreChoose from './moreChoose'
   export default{
     data(){
       return{
@@ -44,7 +52,6 @@
           {id:5,name:'明日之子2'},
           ],
         musicList:[
-
           {id:1,name:'NC.A - Oh My God',cur_time:'03:16'},
           {id:2,name:'郑国锋 - 倾城一笑',cur_time:'03:44'},
           {id:3,name:'Ellie Goulding - Love Me Like Yo Do',cur_time:'04:13'},
@@ -64,7 +71,7 @@
       }
     },
     props:[],
-    components:{navBar,newMusic,newPlate},
+    components:{navBar,newMusic,newPlate,moreChoose},
     methods:{
       /****************自定义滚动条****************************/
       mouseWheel_:function(){
@@ -77,6 +84,13 @@
     computed:{},
     mounted(){
       this.scrollBar();
+    },
+    watch:{
+      musicList:function(){
+        setTimeout(()=>{
+          this.scrollBar();
+        })
+      }
     }
   }
 </script>
@@ -96,9 +110,11 @@
     position: relative;
   }
   .songbookClassify{
-    width: calc(100% - 40px);
+    width: calc(100% - 20px);
     height: 100%;
     padding: 0 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
   .newThings{
     width: 100%;
@@ -129,6 +145,14 @@
     border: 1px solid #E5E5E5;
     border-radius: 1px;
     cursor: pointer;
+  }
+  .moreChoose,.moreChooseUl{
+    width: 100%;
+    height: auto;
+  }
+  .moreChooseLis{
+    width: 100%;
+    height: 230px;
   }
 </style>
 
