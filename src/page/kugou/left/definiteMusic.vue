@@ -81,6 +81,7 @@
         // console.log('99999====',index,'=======',this.option.length);
         // if(this.option.length<1) return; // 判断音乐列表长度是否为0
         // 判断如果索引为-1 则播放第一首
+        console.log(this.music_list.length,'$$$$$$$$$$$$$$$$$$',index);
         if(index==-1){
           this.music.playSong = ()=>{
             setTimeout(()=>{
@@ -88,6 +89,10 @@
             },100)
           };
           return
+        }
+        if(index > this.music_list.length-1){
+           this.musicIndex = -1;
+          return;
         }
         // 循环将所有都暂停
         for(let i=0;i<this.music_list.length;i++){
@@ -112,6 +117,7 @@
         // 监听时长播放更新---保存到vuex中
         music.addEventListener("timeupdate",()=>{
           let ct =parseInt(music.currentTime);
+          // console.log(music.currentTime,'$$$$$$$$$$$');
           // 保存当前播放时长十进制
           let curCt = ct;
           if(ct<10){
@@ -129,7 +135,6 @@
           //获取当前播放时长
           this.music.music_time = ct;
         });
-
         // 获取总时长
         this.music.music_duration = dur;
         //改变专辑图片
@@ -137,7 +142,7 @@
         //改变歌曲名
         this.music.music_name = song.name;
         this.music.sethead = (num)=>{
-          console.log(dt * num,'^^^^^^^',dt,num);
+          console.log(dt * num,'^^^^^^^',dt,'=======',num);
           music.currentTime = dt*num;
           music.play();
         };

@@ -38,7 +38,6 @@
     data(){
       return{
         isbtn:false,// 播放图标显示状态
-        audioTag:'',
       }
     },
     props:['option'],
@@ -55,16 +54,8 @@
     },
     computed:{
       ...mapState(['music']),
-      /*circleLeft:function () {
-        let time = this.music.music_duration;
-        let moment = this.music.music_time;
-        let second = (time.split(':')[0]*60)+Number(time.split(':')[1]);
-        let present = (moment.split(':')[0]*60)+Number(moment.split(':')[1]);
-        return present/second*370+'px';
-      },*/
     },
     mounted(){
-      this.audioTag = this.$refs.audioPlay;
     },
     watch:{
     }
@@ -216,7 +207,7 @@
     background-size:100% 100%;
     cursor: pointer;
     margin-left:18px;
-    opacity: 0.8;
+    opacity: 1;
   }
   .more{
     width:16px;
@@ -226,17 +217,17 @@
     background-size:100% 100%;
     cursor: pointer;
     margin-left:18px;
-    opacity: 0.8;
+    opacity: 1;
   }
   .playType{
     width:20px;
     height:20px;
-    background: url("/static/images/random.png") no-repeat center;
+    background: url("/static/images/listforEach.png") no-repeat center;
     -webkit-background-size:100% 100%;
     background-size:100% 100%;
     cursor: pointer;
     margin-left:18px;
-    opacity: 0.8;
+    opacity: 1;
   }
   .volume{
     width:20px;
@@ -246,7 +237,7 @@
     background-size:100% 100%;
     cursor: pointer;
     margin-left:18px;
-    opacity: 0.8;
+    opacity: 1;
   }
   .sound{
     width:48px;
@@ -292,7 +283,7 @@
     background-size:100% 100%;
     cursor: pointer;
     margin-left:18px;
-    opacity: 0.85;
+    opacity: 1;
   }
   .playQueue{
     width:55px;
