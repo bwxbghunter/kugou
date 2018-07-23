@@ -1,7 +1,7 @@
 <template>
-  <div class="sliderBg" ref="sliderbg" @click="clickDown($event)">
+  <div class="sliderBg" ref="sliderbg" @click.stop="clickDown($event)">
     <span class="barBg" :style="{left:circleLeft}"></span>
-    <span class="circle" :style="{left:cirLeft||circleLeft}" @mousedown="mouseDown($event)" style="left: 0;margin-left: 0" ref="circle"></span>
+    <span class="circle" :style="{left:cirLeft||circleLeft}" @mousedown.stop.prevent="mouseDown($event)" style="left: 0;margin-left: 0" ref="circle"></span>
   </div>
 </template>
 <script>
@@ -37,9 +37,9 @@
         let sliderbg = this.$refs.sliderbg;
         let x = e.pageX; // 鼠标x轴距离
         this.startX = x;
-        // console.log(x,'++++++++++');
         let barLeft = sliderbg.offsetLeft;// bar距离左侧的offsetLeft
         let w = x-barLeft-4;// 鼠标点击与offsetLeft差值--偏移量
+        // console.log(w,'++++++++++',w/370);
         this.music.sethead(w/370); // 设置播放头
       },
       mouseDown:function(e){
