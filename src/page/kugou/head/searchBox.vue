@@ -14,8 +14,8 @@
     <span class="tools" title="工具" v-if="false"></span>
     <span class="games" title="酷狗网页游戏平台" v-if="false"></span>
     <span class="message" title="消息通知" v-if="false"></span>
-    <span class="skin" title="更换皮肤" @click="changeSkin"></span>
-    <span class="set" title="主菜单" @click="showSet"></span>
+    <span class="skin" title="更换皮肤" @click.stop="changeSkin"></span>
+    <span class="set" title="主菜单" @click.stop="public.showSet = true"></span>
   </div>
 </div>
 </template>
@@ -35,9 +35,10 @@
         this.skin.showPage = true;
       },
       // 显示主菜单
-      showSet:function(){
-        this.public.showSet = true;
-      }
+      // showSet:function(){
+      //   console.log(111);
+      //   this.public.showSet = true;
+      // }
     },
     computed:{
       ...mapState(['skin','public'])

@@ -71,6 +71,8 @@
               {url_img:'/static/images/mv_img/15.jpg',online:'听的越多，猜的越准',tipText:'英文儿歌',play_img:'/static/images/mv_play.png'},
               {url_img:'/static/images/mv_img/14.jpg',online:'听的越多，猜的越准',tipText:'迪士尼',play_img:'/static/images/mv_play.png'},
               {url_img:'/static/images/mv_img/21.jpg',online:'听的越多，猜的越准',tipText:'启蒙音乐剧',play_img:'/static/images/mv_play.png'},
+              {url_img:'/static/images/mv_img/37.jpg',online:'听的越多，猜的越准',tipText:'启蒙音乐剧',play_img:'/static/images/mv_play.png'},
+              {url_img:'/static/images/mv_img/36.jpg',online:'听的越多，猜的越准',tipText:'启蒙音乐剧',play_img:'/static/images/mv_play.png'},
             ]
           },
           {
@@ -84,6 +86,8 @@
               {url_img:'/static/images/mv_img/28.jpg',online:'听的越多，猜的越准',tipText:'养眼美女',play_img:'/static/images/mv_play.png'},
               {url_img:'/static/images/mv_img/24.jpg',online:'听的越多，猜的越准',tipText:'长袜天使',play_img:'/static/images/mv_play.png'},
               {url_img:'/static/images/mv_img/6.jpg',online:'听的越多，猜的越准',tipText:'热裤控',play_img:'/static/images/mv_play.png'},
+              {url_img:'/static/images/mv_img/35.jpg',online:'听的越多，猜的越准',tipText:'热裤控',play_img:'/static/images/mv_play.png'},
+              {url_img:'/static/images/mv_img/34.jpg',online:'听的越多，猜的越准',tipText:'热裤控',play_img:'/static/images/mv_play.png'},
             ]
           },
           {
@@ -97,6 +101,8 @@
               {url_img:'/static/images/mv_img/17.jpg',online:'听的越多，猜的越准',tipText:'电音派对',play_img:'/static/images/mv_play.png'},
               {url_img:'/static/images/mv_img/18.jpg',online:'听的越多，猜的越准',tipText:'夜店混音舞曲',play_img:'/static/images/mv_play.png'},
               {url_img:'/static/images/mv_img/23.jpg',online:'听的越多，猜的越准',tipText:'K拉OK',play_img:'/static/images/mv_play.png'},
+              {url_img:'/static/images/mv_img/32.jpg',online:'听的越多，猜的越准',tipText:'K拉OK',play_img:'/static/images/mv_play.png'},
+              {url_img:'/static/images/mv_img/33.jpg',online:'听的越多，猜的越准',tipText:'K拉OK',play_img:'/static/images/mv_play.png'},
             ]
           },
           {
@@ -110,6 +116,8 @@
               {url_img:'/static/images/mv_img/15.jpg',online:'听的越多，猜的越准',tipText:'影视',play_img:'/static/images/mv_play.png'},
               {url_img:'/static/images/mv_img/14.jpg',online:'听的越多，猜的越准',tipText:'王者荣耀',play_img:'/static/images/mv_play.png'},
               {url_img:'/static/images/mv_img/30.jpg',online:'听的越多，猜的越准',tipText:'王者荣耀',play_img:'/static/images/mv_play.png'},
+              {url_img:'/static/images/mv_img/31.jpg',online:'听的越多，猜的越准',tipText:'王者荣耀',play_img:'/static/images/mv_play.png'},
+              {url_img:'/static/images/mv_img/29.jpg',online:'听的越多，猜的越准',tipText:'王者荣耀',play_img:'/static/images/mv_play.png'},
             ]
           },
           {
@@ -123,6 +131,8 @@
               {url_img:'/static/images/mv_img/6.jpg',online:'听的越多，猜的越准',tipText:'韩国音乐现场',play_img:'/static/images/mv_play.png'},
               {url_img:'/static/images/mv_img/11.jpg',online:'听的越多，猜的越准',tipText:'创造101',play_img:'/static/images/mv_play.png'},
               {url_img:'/static/images/mv_img/29.jpg',online:'听的越多，猜的越准',tipText:'酷狗直播盛典',play_img:'/static/images/mv_play.png'},
+              {url_img:'/static/images/mv_img/28.jpg',online:'听的越多，猜的越准',tipText:'酷狗直播盛典',play_img:'/static/images/mv_play.png'},
+              {url_img:'/static/images/mv_img/27.jpg',online:'听的越多，猜的越准',tipText:'酷狗直播盛典',play_img:'/static/images/mv_play.png'},
             ]
           },
           {
@@ -135,6 +145,8 @@
               {url_img:'/static/images/mv_img/29.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
               {url_img:'/static/images/mv_img/28.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
               {url_img:'/static/images/mv_img/24.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
+              {url_img:'/static/images/mv_img/27.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
+              {url_img:'/static/images/mv_img/25.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
             ]
           },
           {
@@ -147,6 +159,8 @@
               {url_img:'/static/images/mv_img/16.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
               {url_img:'/static/images/mv_img/15.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
               {url_img:'/static/images/mv_img/14.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
+              {url_img:'/static/images/mv_img/24.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
+              {url_img:'/static/images/mv_img/23.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
             ]
           },
           {
@@ -159,6 +173,8 @@
               {url_img:'/static/images/mv_img/5.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
               {url_img:'/static/images/mv_img/6.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
               {url_img:'/static/images/mv_img/7.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
+              {url_img:'/static/images/mv_img/22.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
+              {url_img:'/static/images/mv_img/21.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
             ]
           },
           {
@@ -171,6 +187,8 @@
               {url_img:'/static/images/mv_img/25.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
               {url_img:'/static/images/mv_img/24.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
               {url_img:'/static/images/mv_img/27.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
+              {url_img:'/static/images/mv_img/20.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
+              {url_img:'/static/images/mv_img/19.jpg',online:'听的越多，猜的越准',tipText:'网络红歌',play_img:'/static/images/mv_play.png'},
             ]
           }
         ],

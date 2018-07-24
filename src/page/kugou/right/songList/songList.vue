@@ -325,7 +325,7 @@
     components:{songTable,category},
     methods:{
       scrollTop_:function(){
-        this.$refs.songTable.imgChange();
+        this.$refs.songTable.changeImg(150);
         //获取滚动条滑动的距离
         let scrollTop = this.$refs.songlistBox.scrollTop;
         // 获取可视窗口高度
@@ -344,7 +344,7 @@
       },
       /***********加载更多****/
       lazyLoad:function(){
-        this.$refs.songTable.imgChange();
+        this.$refs.songTable.changeImg(150);
         if(this.flag){
            return;
         }

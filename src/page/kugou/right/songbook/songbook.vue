@@ -15,13 +15,13 @@
            </div>
         </div>
         <div class="songNav">
-          <div class="songNavePage">嗨爆DJ</div>
-          <div class="songNavePage">怀旧经典</div>
-          <div class="songNavePage">洗脑电音</div>
-          <div class="songNavePage">车载音乐</div>
-          <div class="songNavePage">网络红歌</div>
-          <div class="songNavePage">伤感情歌</div>
-          <div class="songNavePage">无损音乐</div>
+          <div class="songNavePage" title="嗨爆DJ">嗨爆DJ</div>
+          <div class="songNavePage" title="怀旧经典">怀旧经典</div>
+          <div class="songNavePage" title="洗脑电音">洗脑电音</div>
+          <div class="songNavePage" title="车载音乐">车载音乐</div>
+          <div class="songNavePage" title="网络红歌">网络红歌</div>
+          <div class="songNavePage" title="伤感情歌">伤感情歌</div>
+          <div class="songNavePage" title="无损音乐">无损音乐</div>
         </div>
         <div class="moreChoose">
           <ul class="moreChooseUl">
@@ -174,7 +174,7 @@
     },
     computed:{},
     mounted(){
-      this.scrollBar();
+      this.mouseWheel_();
     },
     watch:{
       recommend:function(){
@@ -237,6 +237,10 @@
     border: 1px solid #E5E5E5;
     border-radius: 1px;
     cursor: pointer;
+  }
+  .songNavePage:hover{
+    background-color: #F9F9F9;
+    color: #555555;
   }
   .moreChoose,.moreChooseUl{
     width: 100%;

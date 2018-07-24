@@ -109,7 +109,13 @@
     right:0;
     top:0;
     margin:auto;
-    border: 12px solid rgba(0, 0, 0, 0.35);
+    border: 12px solid rgba(0, 0, 0, 0.15);
+    /*-webkit-filter: blur(5px);*/
+    /*-moz-filter: blur(5px);*/
+    /*-ms-filter: blur(5px);*/
+    /*-o-filter: blur(5px);*/
+    /*filter: blur(5px);*/
+    /*!*filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=4, MakeShadow=false);*! 毛玻璃效果*/
     border-radius: 100%;
   }
   .radiostipPlay{

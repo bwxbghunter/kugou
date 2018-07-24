@@ -404,5 +404,6 @@
     right: -25px;
     top: 45px;
     background-color: #fff;
+    z-index: 10;
   }
 </style>

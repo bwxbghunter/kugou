@@ -29,25 +29,18 @@
     props:['songAry'],
     components:{},
     methods:{
-      imgChange:function(){
-        let img = document.getElementsByClassName('songImg');
-        // console.log(111);
-        for(let i = 0; i<img.length;i++){
-          img[i].style.width = 200+'%';
-          img[i].style.marginLeft = -90 + 'px';
+      changeImg:function(h){
+        let imgs = document.getElementsByClassName('songImg');
+        for(let i = 0; i<imgs.length; i++){
+          imgs[i].style.width= h*2 + 'px';
+          imgs[i].style.marginLeft = -h/2+'px';
+          imgs[i].style.height = h+'px';
         }
-        // $g.cutImg(135,document.getElementsByClassName('songImg'));
-      }
+      },
     },
     computed:{},
-    mounted(){
-     // this.imgChange();
-    },
-    watch:{
-      songAry:function(val){
-        // this.imgChange();
-      }
-    }
+    mounted(){},
+    watch:{}
   }
 </script>
 <style>
