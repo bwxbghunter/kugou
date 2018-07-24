@@ -17,7 +17,7 @@
       </div>
       <div class="contentRight">
         <!--收起左侧列表-->
-        <div class="hideLeft" @click="hideLeftList"><span></span></div>
+        <div class="hideLeft" @click="hideLeftList" v-show="public.choseItem=='歌词'"><span></span></div>
         <musicClass @changeTab="changeTab_fn" @submitContribute_fn="showContribute=true"></musicClass>
       </div>
     </div>
@@ -356,18 +356,12 @@
   transform: rotate(180deg);
 }
 
-.rightTab .hideLeft{
-  display: none;
-}
-
 .hideLeft:hover{
   opacity: 1;
 }
 .hideLeft:active{
   opacity: 0.8;
 }
-
-
   .footBox{
     height: 65px;
     width:100%;

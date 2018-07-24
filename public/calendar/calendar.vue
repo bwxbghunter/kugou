@@ -373,7 +373,7 @@
 </script>
 
 <style>
-  @import "../../static/public.css";
+  @import "../../static/common/public.css";
   @import "../../src/page/colors/default.css";
   .dateCon{
     width:100%;
