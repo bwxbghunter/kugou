@@ -30,7 +30,7 @@
     watch:{}
   }
 </script>
-<style>
+<style scoped>
 .account{
   width:100%;
   height:100%;

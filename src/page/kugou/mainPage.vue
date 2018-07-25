@@ -33,6 +33,10 @@
     <div class="showMainSet" v-show="public.showSet">
       <changeSet></changeSet>
     </div>
+    <div class="dlandzc" >
+      <login v-show="showLogin" @goregister="showRegister=true;showLogin=false"></login>
+      <register v-show="showRegister" @gologin="showRegister=false;showLogin=true"></register>
+    </div>
     <img class="skinMainPage" :style="{background:imgValue,opacity:skin.skinCurrent}">
   </div>
 </template>
@@ -40,6 +44,8 @@
   import {mapState} from 'vuex'
   import account from './head/account.vue'
   import searchBox from './head/searchBox.vue'
+  import login from './head/login.vue'
+  import register from './head/register.vue'
   import handles from './head/handles.vue'
   import musicList from './left/musicList.vue'
   import musicClass from './right/musicClass.vue'
@@ -58,6 +64,8 @@
         mainDom:'',         // 获取拖动的元素父级
         leftDom:0,
         topDom:0,
+        showLogin:true, // 显示登录
+        showRegister:false, // 显示注册
         locality:[
           {
             list_name:'默认列表',
@@ -140,7 +148,7 @@
       }
     },
     props:[],
-    components:{account,searchBox,handles,musicList,musicClass,play,contribute,changeSkin,changeSet},
+    components:{account,searchBox,handles,musicList,musicClass,play,contribute,changeSkin,changeSet,login,register},
     methods:{
       /*********隐藏用户设置************/
       hideClick:function(e){
@@ -405,5 +413,14 @@
     top: 45px;
     background-color: #fff;
     z-index: 10;
+  }
+  .dlandzc{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.22);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 20;
   }
 </style>

@@ -76,7 +76,7 @@
   }
 
 </script>
-<style>
+<style scoped>
   .songword{
     width:100%;
     height:100%;
