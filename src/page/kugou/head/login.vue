@@ -180,7 +180,7 @@
   }
   .accountName .accountInp,.passwordInp,.phoneNum .phoneInp{
     width: 100%;
-    height: 100%;
+    height: 37px;
     outline: none;
     border:none;
     text-indent: 10px;
