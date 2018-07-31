@@ -33,7 +33,7 @@
     <div class="showMainSet" v-show="public.showSet">
       <changeSet></changeSet>
     </div>
-    <div class="dlandzc" v-show="true">
+    <div class="dlandzc" v-show="false">
       <login v-show="showLogin" @goregister="showRegister=true;showLogin=false"></login>
       <register v-show="showRegister" @gologin="showRegister=false;showLogin=true"></register>
     </div>

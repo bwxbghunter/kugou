@@ -1,7 +1,11 @@
 <template>
   <div class="slideShow">
     <ul class="slideUl" ref="slideUl">
-      <li class="pic" v-for="(item,index) in picAry"><img :src="item.img" alt="旋转木马"></li>
+      <li class="pic" ><img src="/static/images/mv_img/12.jpg" alt="旋转木马"></li>
+      <li class="pic" ><img src="/static/images/mv_img/13.jpg" alt="旋转木马"></li>
+      <li class="pic" ><img src="/static/images/mv_img/14.jpg" alt="旋转木马"></li>
+      <li class="pic" ><img src="/static/images/mv_img/15.jpg" alt="旋转木马"></li>
+      <li class="pic" ><img src="/static/images/mv_img/16.jpg" alt="旋转木马"></li>
     </ul>
       <div class="slideprebtn" id="prebtn" @click="changePic(1)"></div>
       <div class="slidenextbtn" id="nextbtn" @click="changePic(-1)"></div>
@@ -17,40 +21,41 @@
           w:162,
           h:80,
           t:47,
-          r:0,
-          l:'auto',
-          img:'/static/images/mv_img/12.jpg',
+          l:243,
+          z: 2,
+          id: 1,
         },
         {
           w:325,
           h:130,
           t:22,
           l:0,
-          r:'auto',
-          img:'/static/images/mv_img/13.jpg',
+          z: 3,
+          id: 2,
         },
         {
           w:480,
           h:175,
           t:0,
           l:85,
-          r:'auto',
-          img:'/static/images/mv_img/14.jpg',
+          z: 4,
+          id: 3,
         },
         {
           w:325,
           h:130,
           t:22,
-          r:0,
-          img:'/static/images/mv_img/18.jpg',
+          l:324,
+          z: 3,
+          id: 4,
         },
         {
           w:162,
           h:80,
           t:47,
-          r:0,
-          l:'auto',
-          img:'/static/images/mv_img/16.jpg',
+          l:487,
+          z: 2,
+          id: 5,
         }
       ],
      }
@@ -63,20 +68,22 @@
         let ul = this.$refs.slideUl;
         this.liAry  = ul.getElementsByClassName('pic');
         this.liAry =  Array.prototype.slice.call(this.liAry,0);
+        console.log(this.liAry.length);
       },
       /**********转动*******************/
       startMove:function(arr){
-          for(let i = 0; i<arr.length;i++){
+        console.log(arr);
+        for(let i = 0; i<arr.length;i++){
             this.animation(arr[i],this.picAry[i]);
           }
       },
       /******************/
       animation:function(ele,json){
-//        ele.style.left=json.l;
-//        ele.style.top = json.t;
-//        ele.style.right = json.r;
-        ele.style.width = json.w;
-        ele.style.height = json.h;
+        ele.style.left=json.l+'px';
+        ele.style.top = json.t + 'px';
+        ele.style.width = json.w+'px';
+        ele.style.height = json.h+'px';
+        ele.style.zIndex = json.z;
       },
       /**********切换图片***********/
       changePic:function(val){
@@ -120,11 +127,56 @@
   width:100%;
   height:100%;
 }
-  .pic:nth-child(1){width:162px;height:80px;opacity: 1;z-index: 1;left:0;top:0;right:auto;bottom:0;margin:auto;}
-  .pic:nth-child(2){width:325px;height:130px;opacity: 1;z-index: 2;left:0;top:0;right:auto;bottom:0;margin:auto;}
-  .pic:nth-child(3){width:480px;height:175px;opacity: 1;z-index: 3;left:0;top:0;right:0;bottom:0;margin:auto;}
-  .pic:nth-child(4){width:325px;height:130px;opacity: 1;z-index: 2;left:auto;top:0;right:0;bottom:0;margin:auto;}
-  .pic:nth-child(5){width:162px;height:80px;opacity: 1;z-index: 1;left:auto;top:0;right:0;bottom:0;margin:auto;}
+
+.pic:nth-child(1) {
+  width: 162px;
+  height: 80px;
+  opacity: 1;
+  z-index: 1;
+  left: 243px;
+  top: 47px;
+  margin: auto;
+}
+
+.pic:nth-child(2) {
+  width: 325px;
+  height: 130px;
+  opacity: 1;
+  z-index: 2;
+  left: 0px;
+  top: 22px;
+  margin: auto;
+}
+
+.pic:nth-child(3) {
+  width: 480px;
+  height: 175px;
+  opacity: 1;
+  z-index: 3;
+  left:85px;
+  top: 0;
+  margin: auto;
+}
+
+.pic:nth-child(4) {
+  width: 325px;
+  height: 130px;
+  opacity: 1;
+  z-index: 2;
+  left: 324px;
+  top: 22px;
+  margin: auto;
+}
+
+.pic:nth-child(5) {
+  width: 162px;
+  height: 80px;
+  opacity: 1;
+  z-index: 1;
+  left: 487px;
+  top: 47px;
+  margin: auto;
+}
   .slideprebtn,.slidenextbtn{
     position: absolute;
     left:12px;
