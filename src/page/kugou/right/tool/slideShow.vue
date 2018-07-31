@@ -68,7 +68,6 @@
         let ul = this.$refs.slideUl;
         this.liAry  = ul.getElementsByClassName('pic');
         this.liAry =  Array.prototype.slice.call(this.liAry,0);
-        console.log(this.liAry.length);
       },
       /**********转动*******************/
       startMove:function(arr){
