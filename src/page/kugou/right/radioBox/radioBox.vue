@@ -8,8 +8,8 @@
         </ul>
       </div>
       <div class="slideshowBox">
-        <!--<slideShow></slideShow>-->
-        <slider></slider>
+        <slideShow></slideShow>
+        <!--<slider></slider>-->
       </div>
 
       <div class="radioTab" :class="{suspend:compare}"><tabBar :option="tabAry"  @changeIndex="changeIndex" :letterType="letterType"></tabBar></div>

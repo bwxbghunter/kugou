@@ -101,7 +101,7 @@
   .active{
     font-size:24px;
     line-height: 40px;
-    color: #fff;
+    color: #f9ff02;
     font-family: sans-serif;
   }
   .opacity{
